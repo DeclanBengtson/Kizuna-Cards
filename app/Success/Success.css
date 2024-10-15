@@ -1,18 +1,19 @@
+/* app/success/success.css */
 .success-page {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    text-align: center;
-    background-color: #e0ffe0;
-    color: #2d7a2d;
-  }
-  
-  .success-page h1 {
-    font-size: 2.5rem;
-  }
-  
-  .success-page p {
-    font-size: 1.2rem;
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  background-color: #e0ffe0;
+  color: #2d7a2d;
+}
+
+.success-page h1 {
+  font-size: 2.5rem;
+}
+
+.success-page p {
+  font-size: 1.2rem;
+}

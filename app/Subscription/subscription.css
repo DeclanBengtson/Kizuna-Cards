@@ -1,66 +1,67 @@
+/* app/subscriptions/subscriptions.css */
 body {
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-  }
-  
-  .subscriptions-page {
-    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: #333;
-  }
-  
-  .subscriptions-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    margin: 0 auto;
-  }
-  
-  .subscription-card {
-    background: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    padding: 20px;
-    width: 300px;
-    text-align: center;
-    color: #333;
-    transition: transform 0.3s ease;
-  }
-  
-  .subscription-card:hover {
-    transform: translateY(-10px);
-  }
-  
-  .subscription-card h2 {
-    margin-top: 0;
-    font-size: 1.5em;
-    color: #6772e5;
-  }
-  
-  .subscription-card p {
-    margin: 10px 0;
-  }
-  
-  .subscription-card button {
-    background-color: #6772e5;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .subscription-card button:hover {
-    background-color: #5469d4;
-  }
-  
-  .loading, .error {
-    font-size: 1.2em;
-    color: #333;
-  }
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+.subscriptions-page {
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #333;
+}
+
+.subscriptions-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.subscription-card {
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+  width: 300px;
+  text-align: center;
+  color: #333;
+  transition: transform 0.3s ease;
+}
+
+.subscription-card:hover {
+  transform: translateY(-10px);
+}
+
+.subscription-card h2 {
+  margin-top: 0;
+  font-size: 1.5em;
+  color: #6772e5;
+}
+
+.subscription-card p {
+  margin: 10px 0;
+}
+
+.subscription-card button {
+  background-color: #6772e5;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.subscription-card button:hover {
+  background-color: #5469d4;
+}
+
+.loading, .error {
+  font-size: 1.2em;
+  color: #333;
+}

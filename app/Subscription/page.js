@@ -1,6 +1,8 @@
+"use client"; // Add this line to mark the component as a Client Component
+
 import React, { useState, useEffect } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
-import './subscription.css';
+import './subscriptions.css';
 
 const stripePromise = loadStripe('pk_live_51Q7aOCP1puy8XJGNgZZz8HOtmiIJVQspEJ2QIalMLT3CkdYdNQjEBX9y8Lmrz6DgyKpcWr7MuC4oxBx4h2M2ggtZ00xtvTVC48');
 
