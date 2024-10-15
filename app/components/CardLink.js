@@ -1,15 +1,22 @@
 // app/components/CardLink.js
 import React from 'react';
 import Link from 'next/link';
+import './CardLink.css';
 
 const CardLink = ({ to, image, description }) => {
   return (
-    <div className="card-link">
-      <Link href={to}>
-          <img src={image.src} alt={description} />
-          <p>{description}</p>
-      </Link>
-    </div>
+    <Link href={to} legacyBehavior>
+      <a className="card-link">
+        <div className="card-inner">
+          <div className="card-front" style={{ backgroundImage: `url(${image.src})` }}>
+            {/* Front side content */}
+          </div>
+          <div className="card-back">
+            <p>{description}</p>
+          </div>
+        </div>
+      </a>
+    </Link>
   );
 };
 

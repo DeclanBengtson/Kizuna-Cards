@@ -1,14 +1,17 @@
 // app/components/CardScroll.js
 import React from 'react';
+import './CardScroll.css';
 
 const CardScroll = ({ cards }) => {
   return (
     <div className="card-scroll">
-      {cards.map((card, index) => (
-        <div key={index} className="card">
-          <img src={card.image.src} alt={card.alt} />
-        </div>
-      ))}
+      <div className="card-scroll-track">
+        {cards.map((card, index) => (
+          <div key={index} className="card-scroll-item">
+            <img src={card.image.src} alt={card.alt} />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

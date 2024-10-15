@@ -1,24 +1,176 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Apply box-sizing to all elements */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Base styles */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-family: 'Roboto', sans-serif;
+  background-color: rgba(187, 179, 168, 0.4);
+  background-size: cover; /* Ensure the image covers the entire page */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  color: #333; /* Dark grey text */
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding-top: 60px; /* Add padding to account for the fixed navbar */
+  overflow: hidden;
+}
+
+.homepage {
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #F2E5D9;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 20px; /* Add some space between sections */
+}
+
+.container .text-content {
+  flex: 1;
+  text-align: left;
+  padding-right: 20px;
+}
+
+.container .card-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+.card-link {
+  margin: 10px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s;
+}
+
+.card-link:hover {
+  transform: scale(1.05);
+}
+
+.card-link img {
+  width: 100%;
+  max-width: 200px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-scroll {
+  overflow: hidden;
+  width: 60%; /* Adjusted to 60% */
+  position: relative;
+  box-sizing: border-box;
+  padding: 20px 0;
+  margin: 0 auto; /* Center the container */
+  background-color: #f5f5f5; /* Match this to your page's background color */
+}
+
+.card-scroll::before,
+.card-scroll::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 10%; /* Adjust the width of the gradient overlay */
+  height: 100%;
+  z-index: 1;
+  pointer-events: none; /* Allow clicks to pass through */
+}
+
+.card-scroll::before {
+  left: 0;
+  background: linear-gradient(to right, #f5f5f5, rgba(245, 245, 245, 0)); /* Match the background color */
+}
+
+.card-scroll::after {
+  right: 0;
+  background: linear-gradient(to left, #f5f5f5, rgba(245, 245, 245, 0)); /* Match the background color */
+}
+
+.card-scroll-track {
+  display: flex;
+  width: calc(200px * 20); /* Adjust based on the number of cards */
+  animation: scroll 20s linear infinite;
+}
+
+.card-scroll-item {
+  flex: 0 0 auto;
+  margin: 0 10px;
+  transition: transform 0.2s;
+}
+
+.card-scroll-item img {
+  width: 100%;
+  max-width: 200px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-200px * 10)); /* Adjust based on the number of cards */
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
+/* Media query for smaller screens */
+@media (max-width: 600px) {
+  .homepage {
+    padding: 10px;
+  }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .container {
+    flex-direction: column;
+  }
+
+  .container .text-content {
+    padding-right: 0;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .card-link img {
+    max-width: 150px;
+  }
+
+  .card-scroll-track {
+    width: calc(150px * 20); /* Adjust based on the number of cards */
+    animation: scroll 20s linear infinite;
+  }
+
+  .card-scroll-item img {
+    max-width: 150px;
   }
 }

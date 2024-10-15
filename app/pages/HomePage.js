@@ -28,22 +28,22 @@ const cards = [
 ];
 
 const HomePage = () => {
-    return (
-      <div className="homepage">
-        <div className="container">
-          <div className="text-content">
-            <h2>Play for free</h2>
-            <p>Discover a variety of questions designed to spark interesting conversations and deepen your connections with friends and loved ones. Play for free or subscribe for unlimited access to more decks with deeper questions and different themes.</p>
-          </div>
-          <div className="card-links">
-            <CardLink to="/friends" image={friendsImage} description="Questions for Friends" />
-            <CardLink to="/lovers" image={LoversImage} description="Questions for Lovers" />
-          </div>
+  return (
+    <div className="homepage">
+      <div className="container">
+        <div className="text-content">
+          <h2>Play for free</h2>
+          <p>Discover a variety of questions designed to spark interesting conversations and deepen your connections with friends and loved ones. Play for free or subscribe for unlimited access to more decks with deeper questions and different themes.</p>
         </div>
-        <h2>Premium Decks</h2>
-        <CardScroll cards={cards} />
+        <div className="card-links">
+          <CardLink to="/friends" image={friendsImage} description="Questions for Friends" />
+          <CardLink to="/lovers" image={LoversImage} description="Questions for Lovers" />
+        </div>
       </div>
-    );
-  };
-  
-  export default HomePage;
+      <h2>Premium Decks</h2>
+      <CardScroll cards={cards} />
+    </div>
+  );
+};
+
+export default HomePage;

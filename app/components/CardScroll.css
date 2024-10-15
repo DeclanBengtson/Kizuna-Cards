@@ -1,3 +1,4 @@
+/* app/components/CardScroll.css */
 .card-scroll {
   overflow: hidden;
   width: 60%;
@@ -50,21 +51,21 @@
 
 @keyframes scroll {
   0% {
-      transform: translateX(0);
+    transform: translateX(0);
   }
   100% {
-      transform: translateX(calc(-200px * 10)); /* Adjust based on the number of cards */
+    transform: translateX(calc(-200px * 10)); /* Adjust based on the number of cards */
   }
 }
 
 /* Media query for smaller screens */
 @media (max-width: 600px) {
   .card-scroll-track {
-      width: calc(150px * 20); /* Adjust based on the number of cards */
-      animation: scroll 20s linear infinite;
+    width: calc(150px * 20); /* Adjust based on the number of cards */
+    animation: scroll 20s linear infinite;
   }
 
   .card-scroll-item img {
-      max-width: 150px;
+    max-width: 150px;
   }
 }
