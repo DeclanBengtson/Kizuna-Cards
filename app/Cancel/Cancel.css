@@ -1,0 +1,19 @@
+/* app/cancel/cancel.css */
+.cancel-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  background-color: #ffe0e0;
+  color: #7a2d2d;
+}
+
+.cancel-page h1 {
+  font-size: 2.5rem;
+}
+
+.cancel-page p {
+  font-size: 1.2rem;
+}

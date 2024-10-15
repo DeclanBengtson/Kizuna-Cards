@@ -7,8 +7,8 @@ export default function Navbar() {
     <nav className="navbar">
       <Link href="/" className="navbar-logo">Couples Questions</Link>
       <div className="navbar-links">
-        <Link href="/subscriptions" className="navbar-icon">Subscriptions</Link>
-        <Link href="/browser" className="navbar-icon">Browser</Link>
+        <Link href="/Subscriptions" className="navbar-icon">Subscriptions</Link>
+        <Link href="/Browser" className="navbar-icon">Browser</Link>
         <Link href="/login" className="navbar-icon">Login</Link>
         <Link href="/register" className="navbar-icon">Register</Link>
         
