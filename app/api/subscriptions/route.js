@@ -1,11 +1,11 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
   apiVersion: '2020-08-27',
 });
 
-export default async (req = NextApiRequest, res = NextApiResponse) => {
+export async function GET() {
   try {
     const prices = await stripe.prices.list({
       expand: ['data.product'],
@@ -17,8 +17,8 @@ export default async (req = NextApiRequest, res = NextApiResponse) => {
       price: price.unit_amount,
       interval: price.recurring.interval,
     }));
-    res.status(200).json(subscriptions);
+    return NextResponse.json(subscriptions);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    return NextResponse.error(new Error(error.message));
   }
-};
+}
