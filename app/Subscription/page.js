@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
-import './subscriptions.css';
+import './subscription.css';
 
 const stripePromise = loadStripe('pk_live_51Q7aOCP1puy8XJGNgZZz8HOtmiIJVQspEJ2QIalMLT3CkdYdNQjEBX9y8Lmrz6DgyKpcWr7MuC4oxBx4h2M2ggtZ00xtvTVC48');
 
