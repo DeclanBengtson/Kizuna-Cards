@@ -1,0 +1,48 @@
+/* CardLink.css */
+.card-link {
+  perspective: 1000px;
+  width: 175px; /* 70% of 250px */
+  height: 266px; /* 70% of 380px */
+  margin: 20px;
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.card-link:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 27px;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.card-front {
+  background-size: contain;
+  background-position: center;
+}
+
+.card-back {
+  background: #f8f8f8;
+  transform: rotateY(180deg);
+  padding: 20px;
+  box-sizing: border-box;
+}

@@ -1,0 +1,23 @@
+/* Friends.css */
+.friends-page {
+  background-image: url('../Images/Green_Wallpaper.png'); /* Replace with the actual path to your image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 60px; /* Add padding to account for the fixed navbar */
+}
+
+.friends-card .front {
+    background-image: url('../Images/Beige_Card.png');
+  }
+  
+  .friends-card .back {
+    background: rgb(242, 225, 199);
+    transform: rotateY(180deg);
+  }

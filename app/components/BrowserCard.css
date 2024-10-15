@@ -1,0 +1,39 @@
+/* BrowserCard.css */
+.browser-card {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 30%; /* Adjust to fit three per row */
+    min-width: 300px; /* Ensure a minimum width */
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 10px;
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .browser-card img {
+    border-radius: 10px;
+    width: 100px; /* Fixed width for the image */
+    height: auto;
+    margin-right: 20px;
+  }
+  
+  .browser-card .card-description {
+    flex: 1;
+    text-align: left;
+  }
+  
+  @media (max-width: 900px) {
+    .browser-card {
+      width: 45%; /* Adjust to fit two per row */
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .browser-card {
+      width: 100%; /* Full width for small screens */
+    }
+  }
