@@ -1,6 +1,6 @@
-/* Friends.css */
+/* app/friends.css */
 .friends-page {
-  background-image: url('../Images/Green_Wallpaper.png'); /* Replace with the actual path to your image */
+  background-image: url('../../public/Images/Green_Wallpaper.png'); /* Update the path to your image */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -14,10 +14,10 @@
 }
 
 .friends-card .front {
-    background-image: url('../Images/Beige_Card.png');
-  }
-  
-  .friends-card .back {
-    background: rgb(242, 225, 199);
-    transform: rotateY(180deg);
-  }
+  background-image: url('../../public/Images/Beige_Card.png'); /* Update the path to your image */
+}
+
+.friends-card .back {
+  background: rgb(242, 225, 199);
+  transform: rotateY(180deg);
+}
