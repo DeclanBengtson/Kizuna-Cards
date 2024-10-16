@@ -1,39 +1,28 @@
-"use client";
+"use client"; // Ensure this page is a client component
 
-// app/login/page.js
-import React, { useState } from 'react';
-import { useRouter } from 'next/router';
-import axios from 'axios';
-import './login.css';
+import { useEffect } from 'react';
+import { useRouter } from 'next/compat/router';
 
-const Login = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+const LoginPage = () => {
   const router = useRouter();
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post('/api/auth/login', { username, password });
-      localStorage.setItem('token', response.data.token);
+  useEffect(() => {
+    // Ensure router is defined
+    if (!router || !router.isReady) return;
+
+    // Example: Redirect if user is already logged in
+    const isLoggedIn = false; // Replace with actual login check
+    if (isLoggedIn) {
       router.push('/');
-    } catch (error) {
-      console.error('Login error:', error);
-      alert('Login failed. Please check your credentials.');
     }
-  };
+  }, [router]);
 
   return (
-    <div className="auth-container">
-      <form className="auth-form" onSubmit={handleLogin}>
-        <h2>Login</h2>
-        <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} required />
-        <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        <button type="submit">Login</button>
-        <a href="/register" className="link">Don&apos;t have an account? Register</a>
-      </form>
+    <div>
+      <h1>Login</h1>
+      <p>Don&apos;t have an account? <a href="/signup">Sign up</a></p>
     </div>
   );
 };
 
-export default Login;
+export default LoginPage;
