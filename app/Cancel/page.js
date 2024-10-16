@@ -1,6 +1,6 @@
 // app/cancel/page.js
 import React from 'react';
-import './cancel.css';
+import './Cancel.css';
 
 const Cancel = () => {
   return (

@@ -1,7 +1,7 @@
 "use client"; // Add this line to mark the component as a Client Component
 
 import React from 'react';
-import './success.css';
+import './Success.css';
 
 const Success = () => {
   return (

@@ -1,7 +1,7 @@
 // app/browser/page.js
 import React from 'react';
 import BrowserCard from '../components/BrowserCard'; // Adjust the import path as necessary
-import './browser.css';
+import './Browser.css';
 
 // Images
 import friendsImage from '../../public/Images/Beige_Card.png'; 
