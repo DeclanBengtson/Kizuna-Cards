@@ -1,11 +1,10 @@
-import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
   apiVersion: '2020-08-27',
 });
 
-export async function GET() {
+export const GET = async () => {
   try {
     const prices = await stripe.prices.list({
       expand: ['data.product'],
@@ -17,9 +16,9 @@ export async function GET() {
       price: price.unit_amount,
       interval: price.recurring.interval,
     }));
-    return NextResponse.json(subscriptions);
+    return new Response(JSON.stringify(subscriptions), { status: 200 });
   } catch (error) {
-    // Corrected error response
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    console.error(error); // Log the error for debugging purposes
+    return new Response(JSON.stringify({ message: 'Internal Server Error' }), { status: 500 });
   }
-}
+};
