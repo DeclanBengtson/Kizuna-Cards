@@ -1,7 +1,7 @@
 // app/lovers/page.js
 import React from 'react';
 import Deck from '../components/Deck';
-import './lovers.css'; 
+import './Lovers.css'; 
 
 const cards = [
   { id: 1, frontContent: '', backContent: '', isFlipped: false, isSlid: false },
