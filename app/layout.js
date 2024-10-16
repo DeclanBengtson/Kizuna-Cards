@@ -6,12 +6,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <AuthProvider>
           <Navbar />
           <div className="App">
             {children}
           </div>
-        </AuthProvider>
       </body>
     </html>
   );

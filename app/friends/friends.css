@@ -14,10 +14,12 @@
 }
 
 .friends-card .front {
-  background-image: url('../../public/Images/Beige_Card.png'); /* Update the path to your image */
+  background-size: cover;
+  background-position: center;
 }
 
 .friends-card .back {
-  background: rgb(242, 225, 199);
+  background-size: cover;
+  background-position: center;
   transform: rotateY(180deg);
 }

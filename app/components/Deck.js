@@ -1,88 +1,100 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useReducer } from 'react';
+import { motion } from 'framer-motion';
 import './Deck.css';
 
-const Deck = ({ title, initialCards, customStyles }) => {
-  const [cards, setCards] = useState(initialCards);
+const initialState = (initialCards) => ({
+  cards: initialCards,
+  nextCardId: initialCards.length + 1,
+});
 
-  const handleCardClick = (id) => {
-    const cardIndex = cards.findIndex(card => card.id === id);
-    if (cardIndex === -1) return;
-
-    const cardToFlip = cards[cardIndex];
-
-    if (!cardToFlip.isFlipped) {
-      flipCard(cardIndex);
-    } else {
-      slideCard(cardIndex);
-      addNewCard();
-    }
-  };
-
-  const flipCard = (index) => {
-    setCards(prevCards => {
-      const updatedCards = prevCards.map((card, idx) => 
-        idx === index ? { ...card, backContent: 'response', isFlipped: true, zIndex: prevCards.length + 1 } : card
-      );
-      return updatedCards;
-    });
-  };
-
-  const slideCard = (index) => {
-    setCards(prevCards => 
-      prevCards.map((card, idx) => 
-        idx === index ? { ...card, isSlid: true, zIndex: prevCards.length + 1 } : { ...card, zIndex: 1 }
-      )
-    );
-  };
-
-  const addNewCard = () => {
-    setCards(prevCards => {
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'FLIP_CARD':
+      return {
+        ...state,
+        cards: state.cards.map(card =>
+          card.id === action.id ? { ...card, isFlipped: true, zIndex: state.cards.length + 1 } : card
+        ),
+      };
+    case 'SLIDE_CARD':
+      return {
+        ...state,
+        cards: state.cards.map(card =>
+          card.id === action.id ? { ...card, isSlid: true, zIndex: state.cards.length + 1 } : card
+        ),
+      };
+    case 'ADD_NEW_CARD':
       const newCard = {
-        id: prevCards.length + 1,
+        id: state.nextCardId,
         isFlipped: false,
         isSlid: false,
         frontContent: '',
         backContent: '',
         zIndex: 1
       };
+      return {
+        ...state,
+        cards: [...state.cards, newCard].filter(card => !card.isSlid || card.id === action.id),
+        nextCardId: state.nextCardId + 1,
+      };
+    default:
+      return state;
+  }
+};
 
-      const updatedCards = [...prevCards, newCard];
-      const slidCards = updatedCards.filter(card => card.isSlid);
+const Deck = ({ title, initialCards, customStyles, frontImage, backImage }) => {
+  const [state, dispatch] = useReducer(reducer, initialCards, initialState);
 
-      // If there are more than 2 slid cards, remove the oldest one
-      if (slidCards.length > 2) {
-        const firstSlidIndex = updatedCards.findIndex(card => card.isSlid);
-        updatedCards.splice(firstSlidIndex, 1);
-      }
+  const handleCardClick = (id) => {
+    const card = state.cards.find(card => card.id === id);
+    if (!card) return;
 
-      return updatedCards;
-    });
+    if (!card.isFlipped) {
+      dispatch({ type: 'FLIP_CARD', id });
+    } else {
+      dispatch({ type: 'SLIDE_CARD', id });
+      dispatch({ type: 'ADD_NEW_CARD', id });
+    }
   };
 
   return (
     <div className="deck-container">
       <h1>{title}</h1>
       <div className="card-container">
-        {cards.map(card => (
-          <div
+        {state.cards.map(card => (
+          <Card
             key={card.id}
-            className={`card ${card.isFlipped ? 'flipped' : ''} ${card.isSlid ? 'slid' : ''} ${customStyles}`}
-            style={{ zIndex: card.zIndex }}
+            card={card}
+            customStyles={customStyles}
             onClick={() => handleCardClick(card.id)}
-          >
-            <div className="front">
-              <p>{card.frontContent}</p>
-            </div>
-            <div className="back">
-              <p>{card.backContent}</p>
-            </div>
-          </div>
+            frontImage={frontImage}
+            backImage={backImage}
+          />
         ))}
       </div>
     </div>
   );
 };
+
+const Card = ({ card, customStyles, onClick, frontImage, backImage }) => (
+  <motion.div
+    className={`card ${card.isFlipped ? 'flipped' : ''} ${card.isSlid ? 'slid' : ''} ${customStyles}`}
+    style={{ zIndex: card.zIndex }}
+    onClick={onClick}
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    transition={{ duration: 0.6 }}
+  >
+    <div className="front" style={{ backgroundImage: `url(${frontImage})` }}>
+      <p>{card.frontContent}</p>
+    </div>
+    <div className="back" style={{ backgroundImage: `url(${backImage})` }}>
+      <p>{card.backContent}</p>
+    </div>
+  </motion.div>
+);
 
 export default Deck;
