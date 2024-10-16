@@ -1,5 +1,5 @@
 import { compare } from 'bcryptjs';
-import clientPromise from '../../../lib/mogodb';
+import clientPromise from '../../../lib/mongodb';
 import { sign } from 'jsonwebtoken';
 
 export const POST = async (req) => {
@@ -31,6 +31,7 @@ export const POST = async (req) => {
 
     return new Response(JSON.stringify({ token }), { status: 200 });
   } catch (error) {
+    console.error(error); // Log the error for debugging purposes
     return new Response(JSON.stringify({ message: 'Internal Server Error' }), { status: 500 });
   }
 };

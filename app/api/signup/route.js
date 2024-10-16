@@ -1,5 +1,5 @@
 import { hash } from 'bcryptjs';
-import clientPromise from '../../../lib/mogodb';
+import clientPromise from '../../../lib/mongodb';
 
 export const POST = async (req) => {
   const { name, email, password } = await req.json();
@@ -26,6 +26,7 @@ export const POST = async (req) => {
 
     return new Response(JSON.stringify({ message: 'User created successfully' }), { status: 201 });
   } catch (error) {
+    console.error(error); // Log the error for debugging purposes
     return new Response(JSON.stringify({ message: 'Internal Server Error' }), { status: 500 });
   }
 };
