@@ -1,4 +1,3 @@
-// app/HomePage.js
 import React from 'react';
 import CardLink from '../components/CardLink';
 import CardScroll from '../components/CardScroll';
@@ -30,7 +29,7 @@ const cards = [
 const HomePage = () => {
   return (
     <div className="homepage">
-      <div className="container">
+      <div className="inline-container">
         <div className="text-content">
           <h2>Play for free</h2>
           <p>Discover a variety of questions designed to spark interesting conversations and deepen your connections with friends and loved ones. Play for free or subscribe for unlimited access to more decks with deeper questions and different themes.</p>

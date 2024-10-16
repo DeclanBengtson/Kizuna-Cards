@@ -22,30 +22,44 @@ html, body {
   justify-content: flex-start;
   width: 100%;
   box-sizing: border-box;
+  padding-top: 20px; /* Push content off the navbar */
 }
 
-.container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #F2E5D9;
-  padding: 20px;
-  width: 100%;
-  box-sizing: border-box;
-  margin-bottom: 20px; /* Add some space between sections */
-}
-
-.container .text-content {
-  flex: 1;
-  text-align: left;
-  padding-right: 20px;
-}
-
-.container .card-links {
+.inline-container {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
+  align-items: stretch; /* Make children the same height */
+  gap: 20px; /* Adjust the gap between the text content and the card links */
+  margin-bottom: 20px;
+  width: 90%;
+  max-width: 1000px;
+}
+
+.text-content, .card-links {
+  background-color: #F2E5D9;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center content vertically */
+}
+
+.text-content {
+  max-width: 500px; /* Adjust the max width as needed */
+}
+
+.text-content h2 {
+  margin-top: 0;
+}
+
+.card-links {
+  display: flex;
+  flex-direction: row; /* Ensure cards are laid out in a row */
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; /* Allow wrapping if necessary */
 }
 
 .card-link {
@@ -129,14 +143,16 @@ html, body {
 @media (max-width: 600px) {
   .homepage {
     padding: 10px;
+    padding-top: 20px; /* Push content off the navbar */
   }
 
-  .container {
+  .inline-container {
     flex-direction: column;
+    align-items: center;
   }
 
-  .container .text-content {
-    padding-right: 0;
+  .text-content {
+    margin-right: 0;
     text-align: center;
     margin-bottom: 20px;
   }
