@@ -24,7 +24,7 @@ export const POST = async (req) => {
     }
 
     const token = sign(
-      { userId: user._id, email: user.email },
+      { userId: user._id, email: user.email, subscribed: user.subscribed }, // Include subscription status
       process.env.JWT_SECRET,
       { expiresIn: '1h' }
     );

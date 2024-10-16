@@ -1,20 +1,24 @@
-import React from 'react';
-import { Navigate } from 'react-router-dom';
+"use client";
+
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
+import { useAuth } from '../context/AuthContext';
 
 const ProtectedRoute = ({ children }) => {
-  const token = localStorage.getItem('token');
+  const { user, loading } = useAuth();
+  const router = useRouter();
 
-  if (!token) {
-    return <Navigate to="/login" />;
+  useEffect(() => {
+    if (!loading && (!user || !user.subscribed)) {
+      router.push('/login');
+    }
+  }, [user, loading, router]);
+
+  if (loading) {
+    return <div>Loading...</div>;
   }
 
-  // Decode token to check subscription status
-  const payload = JSON.parse(atob(token.split('.')[1]));
-  if (!payload.isSubscribed) {
-    return <Navigate to="/subscriptions" />;
-  }
-
-  return children;
+  return user && user.subscribed ? children : null;
 };
 
 export default ProtectedRoute;
