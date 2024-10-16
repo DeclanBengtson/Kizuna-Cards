@@ -15,7 +15,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         cards: state.cards.map(card =>
-          card.id === action.id ? { ...card, isFlipped: true, zIndex: state.cards.length + 1 } : card
+          card.id === action.id ? { ...card, isFlipped: !card.isFlipped, zIndex: state.cards.length + 1 } : card
         ),
       };
     case 'SLIDE_CARD':
@@ -88,11 +88,13 @@ const Card = ({ card, customStyles, onClick, frontImage, backImage }) => (
     exit={{ opacity: 0 }}
     transition={{ duration: 0.6 }}
   >
-    <div className="front" style={{ backgroundImage: `url(${frontImage})` }}>
-      <p>{card.frontContent}</p>
-    </div>
-    <div className="back" style={{ backgroundImage: `url(${backImage})` }}>
-      <p>{card.backContent}</p>
+    <div className="card-inner">
+      <div className="front" style={{ backgroundImage: frontImage ? `url(${frontImage})` : 'none' }}>
+        <div className="content">{card.frontContent}</div>
+      </div>
+      <div className="back" style={{ backgroundImage: backImage ? `url(${backImage})` : 'none' }}>
+        <div className="content">{card.backContent}</div>
+      </div>
     </div>
   </motion.div>
 );
