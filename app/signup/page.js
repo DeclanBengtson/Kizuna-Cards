@@ -1,7 +1,7 @@
 "use client"; // Ensure this page is a client component
 
 import { useState } from 'react';
-import { useRouter } from 'next/compat/router';
+import { useRouter } from 'next/navigation';
 import './signup.css'; // Import the CSS file
 
 const SignupPage = () => {
@@ -10,14 +10,23 @@ const SignupPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSignup = (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
-    // Handle signup logic here
-    console.log('Name:', name);
-    console.log('Email:', email);
-    console.log('Password:', password);
-    // Redirect to home page after sig nup
-    router.push('/');
+
+    const res = await fetch('/api/signup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name, email, password }),
+    });
+
+    if (res.ok) {
+      router.push('/login');
+    } else {
+      const data = await res.json();
+      alert(data.message);
+    }
   };
 
   return (
