@@ -5,7 +5,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
   apiVersion: '2020-08-27',
 });
 
-export default async (req = NextApiRequest, res = NextApiResponse) => {
+export default async function handler(req = NextApiRequest, res = NextApiResponse) {
   const { priceId } = req.body;
   try {
     const session = await stripe.checkout.sessions.create({
@@ -22,4 +22,4 @@ export default async (req = NextApiRequest, res = NextApiResponse) => {
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
-};
+}

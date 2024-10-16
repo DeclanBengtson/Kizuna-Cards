@@ -19,6 +19,7 @@ export async function GET() {
     }));
     return NextResponse.json(subscriptions);
   } catch (error) {
-    return NextResponse.error(new Error(error.message));
+    // Corrected error response
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
