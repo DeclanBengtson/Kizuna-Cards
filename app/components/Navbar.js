@@ -1,6 +1,6 @@
 "use client"; // Add this directive at the top of the file
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image'; // Import Image component
 import './Navbar.css';
@@ -12,6 +12,20 @@ export default function Navbar() {
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
+
+  // Close the dropdown menu when the window is resized
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 600 && isDropdownOpen) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [isDropdownOpen]);
 
   return (
     <nav className="navbar">
