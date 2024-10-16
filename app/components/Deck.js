@@ -4,9 +4,10 @@ import React, { useReducer } from 'react';
 import { motion } from 'framer-motion';
 import './Deck.css';
 
-const initialState = (initialCards) => ({
+const initialState = (initialCards, questions) => ({
   cards: initialCards,
   nextCardId: initialCards.length + 1,
+  questions: questions.slice(initialCards.length), // Remaining questions
 });
 
 const reducer = (state, action) => {
@@ -26,26 +27,31 @@ const reducer = (state, action) => {
         ),
       };
     case 'ADD_NEW_CARD':
+      if (state.questions.length === 0) return state; // No more questions to add
+
+      const newQuestion = state.questions[0];
       const newCard = {
         id: state.nextCardId,
         isFlipped: false,
         isSlid: false,
         frontContent: '',
-        backContent: '',
+        backContent: newQuestion.backContent,
         zIndex: 1
       };
+
       return {
         ...state,
         cards: [...state.cards, newCard].filter(card => !card.isSlid || card.id === action.id),
         nextCardId: state.nextCardId + 1,
+        questions: state.questions.slice(1), // Remove the used question
       };
     default:
       return state;
   }
 };
 
-const Deck = ({ title, initialCards, customStyles, frontImage, backImage }) => {
-  const [state, dispatch] = useReducer(reducer, initialCards, initialState);
+const Deck = ({ title, initialCards, questions, customStyles, frontImage, backImage }) => {
+  const [state, dispatch] = useReducer(reducer, { initialCards, questions }, ({ initialCards, questions }) => initialState(initialCards, questions));
 
   const handleCardClick = (id) => {
     const card = state.cards.find(card => card.id === id);

@@ -7,7 +7,7 @@ import BackImage from '../../public/Images/Beige_Card_Back.png';
 import friendsQuestions from '../../questions/friendsQuestions.json';
 
 const Friends = () => {
-  const initialCards = friendsQuestions.map((question, index) => ({
+  const initialCards = friendsQuestions.slice(0, 1).map((question) => ({
     ...question,
     isFlipped: false,
     isSlid: false,
@@ -17,8 +17,9 @@ const Friends = () => {
   return (
     <div className="friends-page">
       <Deck
-        title="Friends Deck"
+        title="Friends Questions"
         initialCards={initialCards}
+        questions={friendsQuestions}
         customStyles="friends-card"
         frontImage={FrontImage.src}
         backImage={BackImage.src}

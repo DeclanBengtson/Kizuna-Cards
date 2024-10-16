@@ -3,16 +3,30 @@ import React from 'react';
 import Deck from '../components/Deck';
 import './Lovers.css'; 
 
-const cards = [
-  { id: 1, frontContent: '', backContent: '', isFlipped: false, isSlid: false },
-  { id: 2, frontContent: '', backContent: '', isFlipped: false, isSlid: false },
-];
+import FrontImage from '../../public/Images/Lovers_Background.png';
+import BackImage from '../../public/Images/Lovers_Background.png';
+
+import friendsQuestions from '../../questions/friendsQuestions.json';
+
 
 const Lovers = () => {
+  const initialCards = friendsQuestions.slice(0, 1).map((question) => ({
+    ...question,
+    isFlipped: false,
+    isSlid: false,
+    zIndex: 1
+  }));
+
   return (
     <div className="lovers-page">
-      <h2 className="lovers-title">Lovers</h2>
-      <Deck initialCards={cards} customStyles="lovers-card" />
+      <Deck
+        title="Lovers Questions"
+        initialCards={initialCards}
+        questions={friendsQuestions}
+        customStyles="lovers-card"
+        frontImage={FrontImage.src}
+        backImage={BackImage.src}
+      />
     </div>
   );
 };
