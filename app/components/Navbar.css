@@ -51,3 +51,50 @@
 .navbar-icon:hover {
   background-color: #c5cfda;
 }
+
+.navbar-menu-icon {
+  display: none;
+  cursor: pointer;
+}
+
+.navbar-menu-icon img {
+  width: 30px;
+  height: 30px;
+}
+
+.navbar-dropdown {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background-color: rgba(243, 239, 239);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  overflow: hidden;
+  z-index: 1000;
+}
+
+.navbar-dropdown-link {
+  display: block;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #0a0a0a;
+  background-color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-dropdown-link:hover {
+  background-color: #c5cfda;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 600px) {
+  .navbar-links {
+    display: none;
+  }
+
+  .navbar-menu-icon {
+    display: block;
+  }
+}

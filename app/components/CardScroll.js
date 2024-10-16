@@ -1,5 +1,4 @@
-// app/components/CardScroll.js
-import React from 'react';
+import Image from 'next/image';
 import './CardScroll.css';
 
 const CardScroll = ({ cards }) => {
@@ -8,7 +7,7 @@ const CardScroll = ({ cards }) => {
       <div className="card-scroll-track">
         {cards.map((card, index) => (
           <div key={index} className="card-scroll-item">
-            <img src={card.image.src} alt={card.alt} />
+            <Image src={card.image} alt={card.alt} width={200} height={300} />
           </div>
         ))}
       </div>
