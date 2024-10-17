@@ -4,7 +4,9 @@ import CardScroll from '../components/CardScroll';
 
 // Images
 import friendsImage from '../../public/Images/Beige_Card.png'; 
+import friendsImageBack from '../../public/Images/Beige_Card_Back.png'
 import LoversImage from '../../public/Images/Lovers.png'; 
+import LoversImageBack from '../../public/Images/Lovers_Back.png'; 
 import MarriedImage from '../../public/Images/Married.png'; 
 import GirlsImage from '../../public/Images/Girls.png'; 
 import BoysImage from '../../public/Images/Boys.png'; 
@@ -35,8 +37,8 @@ const HomePage = () => {
           <p>Discover a variety of questions designed to spark interesting conversations and deepen your connections with friends and loved ones. Play for free or subscribe for unlimited access to more decks with deeper questions and different themes.</p>
         </div>
         <div className="card-links">
-          <CardLink to="/friends" image={friendsImage} description="Questions for Friends" />
-          <CardLink to="/lovers" image={LoversImage} description="Questions for Lovers" />
+          <CardLink to="/friends" frontImage={friendsImage} backImage={friendsImageBack} description="Questions for Friends" />
+          <CardLink to="/lovers" frontImage={LoversImage} backImage={LoversImageBack} description="Questions for Lovers" />
         </div>
       </div>
       <h2>Premium Decks</h2>
