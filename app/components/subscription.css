@@ -10,7 +10,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background for shadow effect */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,6 +24,7 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 80%;
     max-width: 600px;
+    text-align: center;
     position: relative;
     max-height: 80vh; /* Ensure it doesn't overflow the viewport */
     overflow-y: auto; /* Add scroll if content overflows */
