@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import CardLink from '../components/CardLink';
 import CardScroll from '../components/CardScroll';

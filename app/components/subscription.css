@@ -1,0 +1,107 @@
+/* app/subscriptions/subscription.css */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    background: #f5f5dc; /* Nice beige color */
+    padding: 20px;
+    border-radius: 20px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 600px;
+    position: relative;
+    max-height: 80vh; /* Ensure it doesn't overflow the viewport */
+    overflow-y: auto; /* Add scroll if content overflows */
+  }
+  
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+  }
+  
+  .subscriptions-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin: 0 auto;
+  }
+  
+  .subscription-card {
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    color: #333;
+    transition: transform 0.3s ease;
+  }
+  
+  .subscription-card:hover {
+    transform: translateY(-10px);
+  }
+  
+  .subscription-card h2 {
+    margin-top: 0;
+    font-size: 1.5em;
+    color: #6772e5;
+  }
+  
+  .subscription-card p {
+    margin: 10px 0;
+  }
+  
+  .subscription-card button {
+    background-color: #6772e5;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .subscription-card button:hover {
+    background-color: #5469d4;
+  }
+  
+  .loading, .error {
+    font-size: 1.2em;
+    color: #333;
+  }
+  
+  .open-modal-button {
+    background-color: #6772e5;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 20px;
+  }
+  
+  .open-modal-button:hover {
+    background-color: #5469d4;
+  }

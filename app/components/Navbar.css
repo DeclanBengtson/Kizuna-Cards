@@ -1,17 +1,19 @@
 /* app/components/Navbar.css */
 .navbar {
-  width: 100%;
+  width: calc(100% - 40px); /* Space in from the edges */
   height: 60px;
-  background-color: rgba(243, 239, 239);
+  background-color: #f5f5dc; /* Nice beige color */
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 10px; /* Spacing from the top */
+  left: 20px; /* Space in from the left edge */
+  right: 20px; /* Space in from the right edge */
   z-index: 1000;
+  border-radius: 10px; /* Rounded edges */
 }
 
 .navbar-logo {
@@ -33,7 +35,7 @@
   background-size: 60%;
   background-repeat: no-repeat;
   background-position: center;
-  border: none;
+  border: none; /* Remove border */
   border-radius: 5px;
   cursor: pointer;
   display: flex;
@@ -41,7 +43,7 @@
   align-items: center;
   text-decoration: none;
   color: #0a0a0a;
-  background-color: #fff;
+  background-color: transparent; /* Remove background color */
   padding: 10px 20px;
   font-size: 16px;
   font-weight: bold;
@@ -49,7 +51,7 @@
 }
 
 .navbar-icon:hover {
-  background-color: #c5cfda;
+  background-color: rgba(197, 207, 218, 0.3); /* Light hover effect */
 }
 
 .navbar-menu-icon {
@@ -66,9 +68,9 @@
   position: absolute;
   top: 60px;
   right: 20px;
-  background-color: rgba(243, 239, 239);
+  background-color: #f5f5dc; /* Nice beige color */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
+  border-radius: 10px; /* Rounded edges */
   overflow: hidden;
   z-index: 1000;
 }
@@ -78,14 +80,14 @@
   padding: 10px 20px;
   text-decoration: none;
   color: #0a0a0a;
-  background-color: #fff;
+  background-color: transparent; /* Remove background color */
   font-size: 16px;
   font-weight: bold;
   transition: background-color 0.3s ease;
 }
 
 .navbar-dropdown-link:hover {
-  background-color: #c5cfda;
+  background-color: rgba(197, 207, 218, 0.3); /* Light hover effect */
 }
 
 /* Media query for smaller screens */

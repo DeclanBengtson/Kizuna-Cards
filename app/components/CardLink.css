@@ -42,7 +42,8 @@
 }
 
 .card-back {
-  background: #f8f8f8;
+  background-size: contain;
+  background-position: center;
   transform: rotateY(180deg);
   padding: 20px;
   box-sizing: border-box;

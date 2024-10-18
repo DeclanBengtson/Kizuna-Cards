@@ -6,7 +6,7 @@ import './subscription.css';
 
 const stripePromise = loadStripe('pk_live_51Q7aOCP1puy8XJGNgZZz8HOtmiIJVQspEJ2QIalMLT3CkdYdNQjEBX9y8Lmrz6DgyKpcWr7MuC4oxBx4h2M2ggtZ00xtvTVC48');
 
-const Subscriptions = () => {
+const Subscriptions = ({ onClose }) => {
   const [subscriptions, setSubscriptions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -60,19 +60,22 @@ const Subscriptions = () => {
   }
 
   return (
-    <div className="subscriptions-page">
-      <h1>Choose Your Subscription Plan</h1>
-      <div className="subscriptions-container">
-        {subscriptions.map((subscription) => (
-          <div key={subscription.priceId} className="subscription-card">
-            <h2>{subscription.name}</h2>
-            <p>{subscription.description}</p>
-            <p>${(subscription.price / 100).toFixed(2)} / {subscription.interval}</p>
-            <button onClick={() => handleSubscribe(subscription.priceId)}>
-              Subscribe
-            </button>
-          </div>
-        ))}
+    <div className="modal-overlay">
+      <div className="modal-content">
+        <button className="close-button" onClick={onClose}>X</button>
+        <h1>Choose Your Subscription Plan</h1>
+        <div className="subscriptions-container">
+          {subscriptions.map((subscription) => (
+            <div key={subscription.priceId} className="subscription-card">
+              <h2>{subscription.name}</h2>
+              <p>{subscription.description}</p>
+              <p>${(subscription.price / 100).toFixed(2)} / {subscription.interval}</p>
+              <button onClick={() => handleSubscribe(subscription.priceId)}>
+                Subscribe
+              </button>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
