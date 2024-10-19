@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 const BrowserCard = ({ to, image, description }) => {
   return (
-    <a href={to} className="card w-full md:w-50 bg-base-100 shadow-xl transition-transform transform hover:scale-105 ">
+    <a href={to} className="card w-full md:w-100 bg-base-100 shadow-xl transition-transform transform hover:scale-105 ">
       <figure className="px-10 pt-10">
         <Image src={image} alt={description} width={100} height={100} className="rounded-xl" />
       </figure>
