@@ -44,7 +44,7 @@ export default function Navbar() {
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
-            <li><Link href="/Browser" className="btn btn-ghost">Browser</Link></li>
+            <li><Link href="/browse" className="btn btn-ghost">Browser</Link></li>
             <li><Link href="/login" className="btn btn-ghost">Login</Link></li>
             <li><button className="btn btn-ghost" onClick={openModal}>Premium</button></li>
           </ul>
