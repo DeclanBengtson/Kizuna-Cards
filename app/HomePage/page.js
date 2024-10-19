@@ -14,6 +14,7 @@ import BoysImage from '../../public/Images/Boys.png';
 import PurpleImage from '../../public/Images/Purple.png'; 
 import GreenImage from '../../public/Images/Light_green.png';
 
+
 import './HomePage.css';
 
 const cards = [

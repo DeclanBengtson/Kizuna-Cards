@@ -18,12 +18,13 @@ body {
   }
   
   .modal-content {
-    background: #f5f5dc; /* Nice beige color */
+    background: #fff; /* Nice beige color */
     padding: 20px;
     border-radius: 20px; /* Rounded corners */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 80%;
-    max-width: 600px;
+    max-width: 700px;
+    max-height: 700px;
     text-align: center;
     position: relative;
     max-height: 80vh; /* Ensure it doesn't overflow the viewport */

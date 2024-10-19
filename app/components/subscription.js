@@ -63,7 +63,8 @@ const Subscriptions = ({ onClose }) => {
     <div className="modal-overlay">
       <div className="modal-content">
         <button className="close-button" onClick={onClose}>X</button>
-        <h1>Choose Your Subscription Plan</h1>
+        <h1>Upgrade to Pro -</h1>
+        <h1>Get unlimited access</h1>
         <div className="subscriptions-container">
           {subscriptions.map((subscription) => (
             <div key={subscription.priceId} className="subscription-card">
@@ -71,7 +72,7 @@ const Subscriptions = ({ onClose }) => {
               <p>{subscription.description}</p>
               <p>${(subscription.price / 100).toFixed(2)} / {subscription.interval}</p>
               <button onClick={() => handleSubscribe(subscription.priceId)}>
-                Subscribe
+                Get Pro
               </button>
             </div>
           ))}
