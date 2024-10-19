@@ -1,9 +1,8 @@
 import React from 'react';
 import Deck from '../components/Deck';
-import './friends.css';
 
-import FrontImage from '../../public/Images/Beige_Card.png';
-import BackImage from '../../public/Images/Beige_Card_Back.png';
+import FrontImage from '../../public/Images/Friends/Friends_Front.png';
+import BackImage from '../../public/Images/Friends/Friends_Back.png';
 import friendsQuestions from '../../questions/friendsQuestions.json';
 
 const Friends = () => {
@@ -15,7 +14,10 @@ const Friends = () => {
   }));
 
   return (
-    <div className="friends-page">
+    <div
+      className="flex flex-col justify-center items-center h-screen w-full bg-cover bg-center"
+
+    >
       <Deck
         title="Friends Questions"
         initialCards={initialCards}

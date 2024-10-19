@@ -3,10 +3,10 @@ import React from 'react';
 import CardLink from '../components/CardLink';
 
 // Images
-import friendsImage from '../../public/Images/Beige_Card.png'; 
-import friendsImageBack from '../../public/Images/Beige_Card_Back.png';
-import LoversImage from '../../public/Images/Lovers.png'; 
-import LoversImageBack from '../../public/Images/Lovers_Back.png';
+import friendsImage from '../../public/Images/Friends/Friends_Front.png'; 
+import friendsImageBack from '../../public/Images/Friends/Friends_Content.png';
+import LoversImage from '../../public/Images/Couples/Couples_Front.png'; 
+import LoversImageBack from '../../public/Images/Couples/Couples_Content.png';
 
 const HomePage = () => {
   return (
@@ -20,8 +20,8 @@ const HomePage = () => {
           </p>
         </div>
         <div className="flex space-x-4">
-          <CardLink to="/friends" frontImage={friendsImage} backImage={friendsImageBack} description="Questions for Friends" />
-          <CardLink to="/lovers" frontImage={LoversImage} backImage={LoversImageBack} description="Questions for Lovers" />
+          <CardLink to="/friends" frontImage={friendsImage} backImage={friendsImageBack} />
+          <CardLink to="/couples" frontImage={LoversImage} backImage={LoversImageBack} />
         </div>
       </div>
 
@@ -34,8 +34,8 @@ const HomePage = () => {
           </p>
         </div>
         <div className="flex space-x-4">
-          <CardLink to="/friends" frontImage={friendsImage} backImage={friendsImageBack} description="Questions for Friends" />
-          <CardLink to="/lovers" frontImage={LoversImage} backImage={LoversImageBack} description="Questions for Lovers" />
+          <CardLink to="/friends" frontImage={friendsImage} backImage={friendsImageBack} />
+          <CardLink to="/couples" frontImage={LoversImage} backImage={LoversImageBack}  />
         </div>
       </div>
     </div>
