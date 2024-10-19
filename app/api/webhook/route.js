@@ -1,26 +1,18 @@
 import { NextResponse } from 'next/server';
 import { headers } from 'next/headers';
 import Stripe from 'stripe';
-import clientPromise from '../../../../lib/mongodb';
-import { buffer } from 'micro';
+import clientPromise from '../../../lib/mongodb';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
   apiVersion: '2023-10-16',
 });
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
-// Route Segment Configurations
-export const runtime = 'nodejs'; // Use Node.js runtime
-export const revalidate = false; // No revalidation
-export const dynamic = 'force-dynamic'; // Force dynamic rendering
-export const fetchCache = 'force-no-store'; // Do not cache
-export const preferredRegion = 'auto'; // Default region
-
-export const POST = async (req) => {
+export async function POST(req) {
   const client = await clientPromise;
-  const db = client.db('myDatabase'); // Replace with your database name
+  const db = client.db('Couples-Questions'); 
 
-  const body = await buffer(req);
+  const body = await req.text();
   const signature = headers().get('stripe-signature');
 
   let event;
@@ -39,6 +31,7 @@ export const POST = async (req) => {
   try {
     switch (eventType) {
       case 'checkout.session.completed': {
+        // First payment is successful and a subscription is created
         const session = await stripe.checkout.sessions.retrieve(data.object.id, {
           expand: ['line_items'],
         });
@@ -49,7 +42,7 @@ export const POST = async (req) => {
         let user = await db.collection('users').findOne({ email: customer.email });
 
         if (!user) {
-          await db.collection('users').insertOne({
+          user = await db.collection('users').insertOne({
             email: customer.email,
             name: customer.name,
             stripeCustomerId: customerId,
@@ -67,6 +60,7 @@ export const POST = async (req) => {
       }
 
       case 'customer.subscription.deleted': {
+        // Revoke access to the product
         const subscription = await stripe.subscriptions.retrieve(data.object.id);
         const user = await db.collection('users').findOne({
           stripeCustomerId: subscription.customer,
@@ -90,4 +84,6 @@ export const POST = async (req) => {
   }
 
   return NextResponse.json({});
-};
+}
+
+// Removed the deprecated config export
