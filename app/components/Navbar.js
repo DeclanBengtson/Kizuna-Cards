@@ -1,9 +1,8 @@
-"use client"; // Add this directive at the top of the file
+'use client'; // Add this directive at the top of the file
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import './Navbar.css';
 import navigationIcon from '../../public/Images/navigation.png'; // Adjust the path as needed
 import Subscriptions from './subscription'; // Import the Subscriptions modal component
 
@@ -39,21 +38,29 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="navbar">
-        <Link href="/" className="navbar-logo">Couples Questions</Link>
-        <div className="navbar-links">
-          <Link href="/Browser" className="navbar-icon">Browser</Link>
-          <Link href="/login" className="navbar-icon">Login</Link>
-          <button className="navbar-icon" onClick={openModal}>Premium</button>
+      <nav className="navbar bg-base-100 shadow-lg">
+        <div className="navbar-start">
+          <Link href="/" className="btn btn-ghost normal-case text-xl">Couples Questions</Link>
         </div>
-        <div className="navbar-menu-icon" onClick={toggleDropdown}>
-          <Image src={navigationIcon} alt="Menu" width={30} height={30} />
+        <div className="navbar-center hidden lg:flex">
+          <ul className="menu menu-horizontal px-1">
+            <li><Link href="/Browser">Browser</Link></li>
+            <li><Link href="/login">Login</Link></li>
+            <li><button className="btn btn-ghost" onClick={openModal}>Premium</button></li>
+          </ul>
+        </div>
+        <div className="navbar-end lg:hidden">
+          <button className="btn btn-ghost btn-circle" onClick={toggleDropdown}>
+            <Image src={navigationIcon} alt="Menu" width={30} height={30} />
+          </button>
         </div>
         {isDropdownOpen && (
-          <div className="navbar-dropdown">
-            <Link href="/Browser" className="navbar-dropdown-link">Browser</Link>
-            <Link href="/Login" className="navbar-dropdown-link">Login</Link>
-            <button className="navbar-dropdown-link" onClick={openModal}>Premium</button>
+          <div className="navbar-dropdown lg:hidden">
+            <ul className="menu menu-vertical bg-base-100 w-full p-2 shadow-lg">
+              <li><Link href="/Browser">Browser</Link></li>
+              <li><Link href="/Login">Login</Link></li>
+              <li><button className="btn btn-ghost" onClick={openModal}>Premium</button></li>
+            </ul>
           </div>
         )}
       </nav>
