@@ -1,13 +1,14 @@
-"use client";
+'use client';
 
-import React, { useReducer } from 'react';
-import { motion } from 'framer-motion';
+import React, { useReducer, useRef, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import './Deck.css';
 
 const initialState = (initialCards, questions) => ({
   cards: initialCards,
   nextCardId: initialCards.length + 1,
-  questions: questions.slice(initialCards.length), // Remaining questions
+  questions: questions.slice(initialCards.length),
+  isAnimating: false,
 });
 
 const reducer = (state, action) => {
@@ -18,6 +19,7 @@ const reducer = (state, action) => {
         cards: state.cards.map(card =>
           card.id === action.id ? { ...card, isFlipped: !card.isFlipped, zIndex: state.cards.length + 1 } : card
         ),
+        isAnimating: true,
       };
     case 'SLIDE_CARD':
       return {
@@ -25,9 +27,10 @@ const reducer = (state, action) => {
         cards: state.cards.map(card =>
           card.id === action.id ? { ...card, isSlid: true, zIndex: state.cards.length + 1 } : card
         ),
+        isAnimating: true,
       };
     case 'ADD_NEW_CARD':
-      if (state.questions.length === 0) return state; // No more questions to add
+      if (state.questions.length === 0) return { ...state, isAnimating: false };
 
       const newQuestion = state.questions[0];
       const newCard = {
@@ -41,10 +44,13 @@ const reducer = (state, action) => {
 
       return {
         ...state,
-        cards: [...state.cards, newCard].filter(card => !card.isSlid || card.id === action.id),
+        cards: [...state.cards.filter(card => !card.isSlid), newCard],
         nextCardId: state.nextCardId + 1,
-        questions: state.questions.slice(1), // Remove the used question
+        questions: state.questions.slice(1),
+        isAnimating: false,
       };
+    case 'SET_ANIMATING':
+      return { ...state, isAnimating: action.value };
     default:
       return state;
   }
@@ -52,16 +58,30 @@ const reducer = (state, action) => {
 
 const Deck = ({ title, initialCards, questions, customStyles, frontImage, backImage }) => {
   const [state, dispatch] = useReducer(reducer, { initialCards, questions }, ({ initialCards, questions }) => initialState(initialCards, questions));
+  const animationTimeoutRef = useRef(null);
+
+  useEffect(() => {
+    return () => {
+      if (animationTimeoutRef.current) {
+        clearTimeout(animationTimeoutRef.current);
+      }
+    };
+  }, []);
 
   const handleCardClick = (id) => {
+    if (state.isAnimating) return;
+
     const card = state.cards.find(card => card.id === id);
     if (!card) return;
 
     if (!card.isFlipped) {
       dispatch({ type: 'FLIP_CARD', id });
+      animationTimeoutRef.current = setTimeout(() => dispatch({ type: 'SET_ANIMATING', value: false }), 600);
     } else {
       dispatch({ type: 'SLIDE_CARD', id });
-      dispatch({ type: 'ADD_NEW_CARD', id });
+      animationTimeoutRef.current = setTimeout(() => {
+        dispatch({ type: 'ADD_NEW_CARD', id });
+      }, 600);
     }
   };
 
@@ -69,16 +89,18 @@ const Deck = ({ title, initialCards, questions, customStyles, frontImage, backIm
     <div className="deck-container">
       <h1>{title}</h1>
       <div className="card-container">
-        {state.cards.map(card => (
-          <Card
-            key={card.id}
-            card={card}
-            customStyles={customStyles}
-            onClick={() => handleCardClick(card.id)}
-            frontImage={frontImage}
-            backImage={backImage}
-          />
-        ))}
+        <AnimatePresence>
+          {state.cards.map(card => (
+            <Card
+              key={card.id}
+              card={card}
+              customStyles={customStyles}
+              onClick={() => handleCardClick(card.id)}
+              frontImage={frontImage}
+              backImage={backImage}
+            />
+          ))}
+        </AnimatePresence>
       </div>
     </div>
   );
@@ -89,10 +111,10 @@ const Card = ({ card, customStyles, onClick, frontImage, backImage }) => (
     className={`card ${card.isFlipped ? 'flipped' : ''} ${card.isSlid ? 'slid' : ''} ${customStyles}`}
     style={{ zIndex: card.zIndex }}
     onClick={onClick}
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    exit={{ opacity: 0 }}
-    transition={{ duration: 0.6 }}
+    initial={{ opacity: 0, scale: 0.8, y: 50 }}
+    animate={{ opacity: 1, scale: 1, y: 0 }}
+    exit={{ opacity: 0, scale: 0.8, y: 50 }}
+    transition={{ duration: 0.4 }}
   >
     <div className="card-inner">
       <div className="front" style={{ backgroundImage: frontImage ? `url(${frontImage})` : 'none' }}>

@@ -48,7 +48,7 @@ export default function Navbar() {
               <li><Link href="/myo" className="btn btn-ghost">MYO</Link></li>
               <li><Link href="/browse" className="btn btn-ghost">Browse</Link></li>
               <li><Link href="/login" className="btn btn-ghost">Login</Link></li>
-              <li><button className="btn btn-ghost" onClick={openModal}>Premium</button></li>
+              <li><button className="btn bg-black text-white" onClick={openModal}>Get Pro</button></li>
             </ul>
           </div>
           <div className="lg:hidden">
@@ -63,7 +63,7 @@ export default function Navbar() {
               <li><Link href="/myo" className="btn btn-ghost">MYO</Link></li>
               <li><Link href="/browse" className="btn btn-ghost">Browse</Link></li>
               <li><Link href="/login" className="btn btn-ghost">Login</Link></li>
-              <li><button className="btn btn-ghost" onClick={openModal}>Premium</button></li>
+              <li><button className="btn bg-black text-white" onClick={openModal}>Get Pro</button></li>
             </ul>
           </div>
         )}

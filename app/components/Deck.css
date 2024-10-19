@@ -16,16 +16,15 @@
   position: relative;
   width: 700px;
   height: 700px;
+  perspective: 1000px;
 }
 
 .card {
   position: absolute;
   width: 350px;
   height: 540px;
-  perspective: 1000px;
   cursor: pointer;
-  transition: left 0.6s, z-index 0.6s;
-  left: 0;
+  transition: transform 0.6s, z-index 0.6s;
 }
 
 .card-inner {
@@ -36,7 +35,7 @@
   text-align: center;
   transition: transform 0.6s;
   transform-style: preserve-3d;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .card.flipped .card-inner {
@@ -60,6 +59,7 @@
   background-position: center;
   color: rgb(7, 7, 7);
   font-size: 16px;
+  background-color: white;
 }
 
 .card .back {
@@ -67,8 +67,9 @@
 }
 
 .card.slid {
-  left: 380px;
-  z-index: 0; /* Ensure slid cards stay behind the new card */
+  transform: translateX(380px);
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* Media query for smaller screens */
@@ -76,15 +77,14 @@
   .card-container {
     width: 100%;
     height: auto;
-    justify-content: center;
+    perspective: none;
   }
 
   .card {
     position: relative;
-    left: 0;
     margin-bottom: 20px;
     width: 100%;
-    width: 350px;
+    max-width: 350px;
   }
 
   .card.slid {
