@@ -1,7 +1,5 @@
-// app/browser/page.js
 import React from 'react';
 import BrowserCard from '../components/BrowserCard'; // Adjust the import path as necessary
-import './Browser.css';
 
 // Images
 import friendsImage from '../../public/Images/Beige_Card.png'; 
@@ -28,16 +26,13 @@ const coming_soon = [
 
 const Browser = () => {
   return (
-    <div className="browser-page">
-      <h2>Current Decks:</h2>
-      <div className="deck-list">
-        {decks.map((deck, index) => (
-          <BrowserCard key={index} to={deck.to} image={deck.image} description={deck.description} />
-        ))}
+    <div className="container mx-auto px-4 py-8 ">
+      <div className="text-center mb-12 ">
+        <h2 className="text-4xl font-bold mb-6 ">Current Decks</h2>
+        <p className="text-lg text-gray-600 ">Explore our collection of question decks to spark interesting conversations.</p>
       </div>
-      <h2>Coming soon:</h2>
-      <div className="deck-list">
-        {coming_soon.map((deck, index) => (
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 ">
+        {decks.map((deck, index) => (
           <BrowserCard key={index} to={deck.to} image={deck.image} description={deck.description} />
         ))}
       </div>

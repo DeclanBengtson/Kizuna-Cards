@@ -16,12 +16,10 @@
 /* Base styles */
 html, body {
   height: 100%;
-  margin: 0;
-  padding: 0;
   overflow-x: hidden;
   overflow-y: auto;
   font-family: 'Roboto', sans-serif;
-  background-color: rgba(187, 179, 168, 0.4);
+  background-color: rgba(187, 179, 168, 0.4); /* Adjust or remove if necessary */
   background-size: cover; /* Ensure the image covers the entire page */
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Prevent the image from repeating */
@@ -34,7 +32,6 @@ html, body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  padding-top: 60px; /* Add padding to account for the fixed navbar */
   overflow: hidden;
 }
 
@@ -53,17 +50,14 @@ html, body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #F2E5D9;
-  padding: 20px;
+  background-color: transparent; /* Set to transparent */
   width: 100%;
   box-sizing: border-box;
-  margin-bottom: 20px; /* Add some space between sections */
 }
 
 .container .text-content {
   flex: 1;
   text-align: left;
-  padding-right: 20px;
 }
 
 .container .card-links {

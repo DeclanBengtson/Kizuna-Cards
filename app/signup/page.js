@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import './signup.css'; // Import the CSS file
+import 'tailwindcss/tailwind.css';
+import 'daisyui/dist/full.css';
 
 const SignupPage = () => {
   const router = useRouter();
@@ -30,32 +31,52 @@ const SignupPage = () => {
   };
 
   return (
-    <div className="auth-container">
-      <form className="auth-form" onSubmit={handleSignup}>
-        <h2>Sign Up</h2>
-        <input
-          type="text"
-          placeholder="Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <button type="submit">Sign Up</button>
-        <p>Already have an account? <a href="/login" className="link">Login</a></p>
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <form className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md" onSubmit={handleSignup}>
+        <h2 className="text-2xl font-bold text-center">Sign Up</h2>
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Name</span>
+          </label>
+          <input
+            type="text"
+            placeholder="Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="input input-bordered w-full"
+            required
+          />
+        </div>
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Email</span>
+          </label>
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="input input-bordered w-full"
+            required
+          />
+        </div>
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Password</span>
+          </label>
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="input input-bordered w-full"
+            required
+          />
+        </div>
+        <button type="submit" className="btn btn-primary w-full">Sign Up</button>
+        <p className="text-center">
+          Already have an account? <a href="/login" className="link link-primary">Login</a>
+        </p>
       </form>
     </div>
   );

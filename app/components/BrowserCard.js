@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Image from 'next/image';
-import './BrowserCard.css';
 
 const BrowserCard = ({ to, image, description }) => {
   return (
-    <a href={to} className="browser-card">
-      <Image src={image} alt={description} width={100} height={100} />
-      <div className="card-description">
-        <p>{description}</p>
+    <a href={to} className="card w-full md:w-50 bg-base-100 shadow-xl transition-transform transform hover:scale-105 ">
+      <figure className="px-10 pt-10">
+        <Image src={image} alt={description} width={100} height={100} className="rounded-xl" />
+      </figure>
+      <div className="card-body items-center text-center">
+        <h2 className="card-title">{description}</h2>
       </div>
     </a>
   );

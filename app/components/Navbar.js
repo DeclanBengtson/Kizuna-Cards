@@ -44,8 +44,8 @@ export default function Navbar() {
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
-            <li><Link href="/Browser">Browser</Link></li>
-            <li><Link href="/login">Login</Link></li>
+            <li><Link href="/Browser" className="btn btn-ghost">Browser</Link></li>
+            <li><Link href="/login" className="btn btn-ghost">Login</Link></li>
             <li><button className="btn btn-ghost" onClick={openModal}>Premium</button></li>
           </ul>
         </div>
@@ -57,8 +57,8 @@ export default function Navbar() {
         {isDropdownOpen && (
           <div className="navbar-dropdown lg:hidden">
             <ul className="menu menu-vertical bg-base-100 w-full p-2 shadow-lg">
-              <li><Link href="/Browser">Browser</Link></li>
-              <li><Link href="/Login">Login</Link></li>
+              <li><Link href="/Browser" className="btn btn-ghost">Browser</Link></li>
+              <li><Link href="/Login" className="btn btn-ghost">Login</Link></li>
               <li><button className="btn btn-ghost" onClick={openModal}>Premium</button></li>
             </ul>
           </div>
