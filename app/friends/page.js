@@ -13,6 +13,13 @@ const Friends = () => {
     zIndex: 1
   }));
 
+  const fontStyle = {
+    fontFamily: 'Arial, sans-serif',
+    fontSize: '18px',
+    color: '#FF8C00', // Dark orange color
+    padding: '0 20px', // Add padding to the sides
+    };
+
   return (
     <div
       className="flex flex-col justify-center items-center h-screen w-full bg-cover bg-center"
@@ -22,6 +29,7 @@ const Friends = () => {
         initialCards={initialCards}
         questions={friendsQuestions}
         customStyles="friends-card"
+        fontStyle={fontStyle}
         frontImage={FrontImage.src}
         backImage={BackImage.src}
       />

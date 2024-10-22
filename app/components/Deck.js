@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import React, { useReducer, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -56,7 +56,7 @@ const reducer = (state, action) => {
   }
 };
 
-const Deck = ({ title, initialCards, questions, customStyles, frontImage, backImage }) => {
+const Deck = ({ title, initialCards, questions, customStyles, frontImage, backImage, fontStyle }) => {
   const [state, dispatch] = useReducer(reducer, { initialCards, questions }, ({ initialCards, questions }) => initialState(initialCards, questions));
   const animationTimeoutRef = useRef(null);
 
@@ -95,6 +95,7 @@ const Deck = ({ title, initialCards, questions, customStyles, frontImage, backIm
               key={card.id}
               card={card}
               customStyles={customStyles}
+              fontStyle={fontStyle}
               onClick={() => handleCardClick(card.id)}
               frontImage={frontImage}
               backImage={backImage}
@@ -106,7 +107,7 @@ const Deck = ({ title, initialCards, questions, customStyles, frontImage, backIm
   );
 };
 
-const Card = ({ card, customStyles, onClick, frontImage, backImage }) => (
+const Card = ({ card, customStyles, fontStyle, onClick, frontImage, backImage }) => (
   <motion.div
     className={`card ${card.isFlipped ? 'flipped' : ''} ${card.isSlid ? 'slid' : ''} ${customStyles}`}
     style={{ zIndex: card.zIndex }}
@@ -118,10 +119,10 @@ const Card = ({ card, customStyles, onClick, frontImage, backImage }) => (
   >
     <div className="card-inner">
       <div className="front" style={{ backgroundImage: frontImage ? `url(${frontImage})` : 'none' }}>
-        <div className="content">{card.frontContent}</div>
+        <div className="content" style={fontStyle}>{card.frontContent}</div>
       </div>
       <div className="back" style={{ backgroundImage: backImage ? `url(${backImage})` : 'none' }}>
-        <div className="content">{card.backContent}</div>
+        <div className="content" style={fontStyle}>{card.backContent}</div>
       </div>
     </div>
   </motion.div>
