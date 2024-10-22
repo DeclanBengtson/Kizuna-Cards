@@ -19,7 +19,6 @@ const Friends = () => {
 
     >
       <Deck
-        title="Friends Questions"
         initialCards={initialCards}
         questions={friendsQuestions}
         customStyles="friends-card"
