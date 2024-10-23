@@ -65,7 +65,7 @@ export default function Navbar() {
               <li><NavLink href="/login">Login</NavLink></li>
               <li>
                 <button className="btn bg-black text-white" onClick={openModal}>
-                  Get Pro
+                  Get Premium
                 </button>
               </li>
             </ul>
@@ -84,7 +84,7 @@ export default function Navbar() {
               <li><NavLink href="/login">Login</NavLink></li>
               <li>
                 <button className="btn bg-black text-white" onClick={openModal}>
-                  Get Pro
+                  Get Premium
                 </button>
               </li>
             </ul>
