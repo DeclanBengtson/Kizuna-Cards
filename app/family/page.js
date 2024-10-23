@@ -3,7 +3,7 @@ import Deck from '../components/Deck';
 
 import FrontImage from '../../public/Images/Family/Family_Front.png';
 import BackImage from '../../public/Images/Family/Family_Back.png';
-import familyQuestions from '../../questions/familyQuestions.json';
+import familyQuestions from '../../questions/FamilyQuestions.json';
 
 const Family = () => {
   const initialCards = familyQuestions.slice(0, 1).map((question) => ({
