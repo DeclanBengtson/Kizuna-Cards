@@ -7,9 +7,12 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        customBackground: '#ede6fa', // Add your custom background color here
+      },
       fontFamily: {
         sriracha: ['Sriracha', 'cursive'],
-        titanOne: ['Titan One', 'serif'], // Add Titan One here
+        titanOne: ['Titan One', 'serif'],
       },
     },
   },

@@ -4,7 +4,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 
-// Move this to an environment variable
+// Make sure this matches your environment variable
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 
 const SubscriptionCard = ({ subscription, onSubscribe, isLoading }) => (
@@ -15,7 +15,10 @@ const SubscriptionCard = ({ subscription, onSubscribe, isLoading }) => (
       
       <div className="my-4">
         <div className="text-3xl font-bold">
-          ${(subscription.price / 100).toFixed(2)}
+          {(subscription.price / 100).toLocaleString('en-US', {
+            style: 'currency',
+            currency: subscription.currency
+          })}
           <span className="text-base font-normal opacity-70">
             /{subscription.interval}
           </span>
@@ -35,7 +38,7 @@ const SubscriptionCard = ({ subscription, onSubscribe, isLoading }) => (
           onClick={() => onSubscribe(subscription.priceId)}
           disabled={isLoading}
         >
-          {isLoading ? 'Processing...' : 'Get Premium'}
+          {isLoading ? 'Processing...' : 'Get Pro'}
         </button>
       </div>
     </div>
@@ -53,13 +56,27 @@ const Subscriptions = ({ onClose }) => {
       try {
         const response = await fetch('/api/subscriptions');
         if (!response.ok) {
-          throw new Error('Failed to fetch subscriptions');
+          const errorData = await response.json();
+          throw new Error(errorData.message || 'Failed to fetch subscriptions');
         }
         const data = await response.json();
-        if (!Array.isArray(data)) {
-          throw new Error('Invalid subscription data format');
+        
+        // Handle the case where the API returns a message instead of an array
+        if (data.message) {
+          throw new Error(data.message);
         }
-        setSubscriptions(data);
+
+        // Transform the data to include default features if needed
+        const transformedData = data.map(subscription => ({
+          ...subscription,
+          features: [
+            `${subscription.interval}ly billing`,
+            'Full access to all features',
+            'Priority support'
+          ]
+        }));
+
+        setSubscriptions(transformedData);
       } catch (err) {
         setError(err.message);
         console.error('Error fetching subscriptions:', err);
@@ -74,7 +91,12 @@ const Subscriptions = ({ onClose }) => {
   const handleSubscribe = async (priceId) => {
     try {
       setProcessingPriceId(priceId);
+      setError(null);
+
       const stripe = await stripePromise;
+      if (!stripe) {
+        throw new Error('Stripe failed to initialize');
+      }
       
       const response = await fetch('/api/subscriptions/create-checkout-session', {
         method: 'POST',
@@ -84,14 +106,18 @@ const Subscriptions = ({ onClose }) => {
         body: JSON.stringify({ priceId }),
       });
 
+      const data = await response.json();
+
       if (!response.ok) {
-        throw new Error('Failed to create checkout session');
+        throw new Error(data.error || 'Failed to create checkout session');
       }
 
-      const session = await response.json();
+      if (!data.sessionId) {
+        throw new Error('No session ID returned from the server');
+      }
       
       const { error } = await stripe.redirectToCheckout({ 
-        sessionId: session.id 
+        sessionId: data.sessionId 
       });
 
       if (error) {
@@ -99,7 +125,7 @@ const Subscriptions = ({ onClose }) => {
       }
     } catch (err) {
       console.error('Error creating checkout session:', err);
-      setError('Failed to initiate checkout. Please try again.');
+      setError(err.message || 'Failed to initiate checkout. Please try again.');
     } finally {
       setProcessingPriceId(null);
     }
@@ -127,7 +153,7 @@ const Subscriptions = ({ onClose }) => {
         
         <div className="space-y-6">
           <div className="text-center">
-            <h2 className="text-3xl font-bold">Upgrade to Premium</h2>
+            <h2 className="text-3xl font-bold">Upgrade to Pro</h2>
             <p className="text-base-content/70 mt-2">
               Get unlimited access to all features
             </p>
@@ -135,20 +161,32 @@ const Subscriptions = ({ onClose }) => {
 
           {error && (
             <div className="alert alert-error">
+              <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
               <span>{error}</span>
             </div>
           )}
 
-          <div className="grid md:grid-cols-2 gap-6">
-            {subscriptions.map((subscription) => (
-              <SubscriptionCard
-                key={subscription.priceId}
-                subscription={subscription}
-                onSubscribe={handleSubscribe}
-                isLoading={processingPriceId === subscription.priceId}
-              />
-            ))}
-          </div>
+          {subscriptions.length === 0 && !error ? (
+            <div className="alert alert-info">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-current shrink-0 w-6 h-6">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              <span>No subscription plans are currently available. Please check back later.</span>
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-2 gap-6">
+              {subscriptions.map((subscription) => (
+                <SubscriptionCard
+                  key={subscription.priceId}
+                  subscription={subscription}
+                  onSubscribe={handleSubscribe}
+                  isLoading={processingPriceId === subscription.priceId}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>
