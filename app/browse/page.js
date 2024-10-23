@@ -3,13 +3,20 @@ import BrowserCard from '../components/BrowserCard'; // Adjust the import path a
 
 
 // Images
-import friendsImage from '../../public/Images/Friends/Friends_Back.png'; 
-import LoversImage from '../../public/Images/Couples/Couples_Back.png'; 
-
+import friendsImage from '../../public/Images/Friends/Friends_Front.png'; 
+import LoversImage from '../../public/Images/Couples/Couples_Front.png'; 
+import familyImage from '../../public/Images/Family/Family_Front.png'; 
+import newConnectionsImage from '../../public/Images/New_Connections/NewConnections_Front.png'; 
+import WorkColleaguesImage from '../../public/Images/WorkColleagues/WorkColleagues_Front.png'; 
+import ChristmasImage from '../../public/Images/Christmas/Christmas_Front.png'
 
 const decks = [
   { to: '/friends', image: friendsImage, description: 'Questions for Friends' },
   { to: '/lovers', image: LoversImage, description: 'Questions for Lovers' },
+  { to: '/', image: familyImage, description: 'Questions for Family' },
+  { to: '/', image: newConnectionsImage, description: 'Questions for New Connections' },
+  { to: '/', image: WorkColleaguesImage, description: 'Questions for Work Colleagues' },
+  { to: '/', image: ChristmasImage, description: 'Questions for Christmas' },
 ];
 
 const Browser = () => {
