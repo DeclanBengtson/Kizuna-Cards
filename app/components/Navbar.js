@@ -3,8 +3,8 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import navigationIcon from '../../public/Images/navigation.png'; // Adjust the path as needed
-import Subscriptions from './subscription'; // Import the Subscriptions modal component
+import navigationIcon from '../../public/Images/navigation.png';
+import Subscriptions from './subscription';
 
 export default function Navbar() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -16,10 +16,16 @@ export default function Navbar() {
 
   const openModal = () => {
     setIsModalOpen(true);
+    setIsDropdownOpen(false); // Close dropdown when opening modal
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
+  };
+
+  // Function to handle navigation item clicks
+  const handleNavClick = () => {
+    setIsDropdownOpen(false);
   };
 
   // Close the dropdown menu when the window is resized
@@ -36,19 +42,32 @@ export default function Navbar() {
     };
   }, [isDropdownOpen]);
 
+  // Create a NavLink component to handle both Link and click behavior
+  const NavLink = ({ href, children, className = "btn btn-ghost" }) => (
+    <Link href={href} className={className} onClick={handleNavClick}>
+      {children}
+    </Link>
+  );
+
   return (
     <>
       <nav className="navbar bg-base-100 shadow-lg fixed top-0 left-0 w-full z-50">
         <div className="flex justify-between items-center w-full px-4">
           <div className="flex-1">
-            <Link href="/" className="btn btn-ghost normal-case text-xl">Couples Questions</Link>
+            <NavLink href="/" className="btn btn-ghost normal-case text-xl">
+              Couples Questions
+            </NavLink>
           </div>
           <div className="hidden lg:flex">
             <ul className="menu menu-horizontal px-1">
-              <li><Link href="/myo" className="btn btn-ghost">MYO</Link></li>
-              <li><Link href="/browse" className="btn btn-ghost">Browse</Link></li>
-              <li><Link href="/login" className="btn btn-ghost">Login</Link></li>
-              <li><button className="btn bg-black text-white" onClick={openModal}>Get Pro</button></li>
+              <li><NavLink href="/myo">MYO</NavLink></li>
+              <li><NavLink href="/browse">Browse</NavLink></li>
+              <li><NavLink href="/login">Login</NavLink></li>
+              <li>
+                <button className="btn bg-black text-white" onClick={openModal}>
+                  Get Pro
+                </button>
+              </li>
             </ul>
           </div>
           <div className="lg:hidden">
@@ -60,10 +79,14 @@ export default function Navbar() {
         {isDropdownOpen && (
           <div className="absolute top-full left-0 w-full bg-base-100 shadow-lg lg:hidden">
             <ul className="menu menu-vertical w-full p-2">
-              <li><Link href="/myo" className="btn btn-ghost">MYO</Link></li>
-              <li><Link href="/browse" className="btn btn-ghost">Browse</Link></li>
-              <li><Link href="/login" className="btn btn-ghost">Login</Link></li>
-              <li><button className="btn bg-black text-white" onClick={openModal}>Get Pro</button></li>
+              <li><NavLink href="/myo">MYO</NavLink></li>
+              <li><NavLink href="/browse">Browse</NavLink></li>
+              <li><NavLink href="/login">Login</NavLink></li>
+              <li>
+                <button className="btn bg-black text-white" onClick={openModal}>
+                  Get Pro
+                </button>
+              </li>
             </ul>
           </div>
         )}
