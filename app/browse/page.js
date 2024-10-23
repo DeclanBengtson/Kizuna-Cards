@@ -13,10 +13,10 @@ import ChristmasImage from '../../public/Images/Christmas/Christmas_Front.png'
 const decks = [
   { to: '/friends', image: friendsImage, description: 'Questions for Friends' },
   { to: '/lovers', image: LoversImage, description: 'Questions for Lovers' },
-  { to: '/', image: familyImage, description: 'Questions for Family' },
-  { to: '/', image: newConnectionsImage, description: 'Questions for New Connections' },
-  { to: '/', image: WorkColleaguesImage, description: 'Questions for Work Colleagues' },
-  { to: '/', image: ChristmasImage, description: 'Questions for Christmas' },
+  { to: '/family', image: familyImage, description: 'Questions for Family' },
+  { to: '/newconnections', image: newConnectionsImage, description: 'Questions for New Connections' },
+  { to: '/workcolleagues', image: WorkColleaguesImage, description: 'Questions for Work Colleagues' },
+  { to: '/christmas', image: ChristmasImage, description: 'Questions for Christmas' },
 ];
 
 const Browser = () => {

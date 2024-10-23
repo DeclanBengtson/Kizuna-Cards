@@ -1,12 +1,12 @@
 import React from 'react';
 import Deck from '../components/Deck';
 
-import FrontImage from '../../public/Images/Friends/Friends_Front.png';
-import BackImage from '../../public/Images/Friends/Friends_Back.png';
-import friendsQuestions from '../../questions/friendsQuestions.json';
+import FrontImage from '../../public/Images/Christmas/Christmas_Front.png';
+import BackImage from '../../public/Images/Christmas/Christmas_Back.png';
+import ChristmasQuestions from '../../questions/ChristmasQuestions.json';
 
-const Friends = () => {
-  const initialCards = friendsQuestions.slice(0, 1).map((question) => ({
+const Christmas = () => {
+  const initialCards = ChristmasQuestions.slice(0, 1).map((question) => ({
     ...question,
     isFlipped: false,
     isSlid: false,
@@ -23,8 +23,8 @@ const Friends = () => {
     >
       <Deck
         initialCards={initialCards}
-        questions={friendsQuestions}
-        customStyles={`friends-card ${cardStyles}`}
+        questions={ChristmasQuestions}
+        customStyles={`family-card ${cardStyles}`}
         frontImage={FrontImage.src}
         backImage={BackImage.src}
       />
@@ -32,4 +32,4 @@ const Friends = () => {
   );
 };
 
-export default Friends;
+export default Christmas;
