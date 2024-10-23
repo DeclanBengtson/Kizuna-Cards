@@ -2,7 +2,7 @@ import React from 'react';
 import Deck from '../components/Deck';
 
 import FrontImage from '../../public/Images/WorkColleagues/WorkColleagues_Front.png';
-import BackImage from '../../public/Images/WorkColleagues/WorkColleagues_Front_Back.png';
+import BackImage from '../../public/Images/WorkColleagues/WorkColleagues_Back.png';
 import WorkColleaguesQuestions from '../../questions/WorkColleaguesQuestions.json';
 
 const WorkColleagues = () => {
