@@ -13,12 +13,8 @@ const Friends = () => {
     zIndex: 1
   }));
 
-  const fontStyle = {
-    fontFamily: 'Arial, sans-serif',
-    fontSize: '18px',
-    color: '#FF8C00', // Dark orange color
-    padding: '0 20px', // Add padding to the sides
-    };
+ // Replace inline fontStyle with Tailwind classes
+ const cardStyles = "font-titanOne font-bold text-orange-400 text-3xl ";
 
   return (
     <div
@@ -28,8 +24,7 @@ const Friends = () => {
       <Deck
         initialCards={initialCards}
         questions={friendsQuestions}
-        customStyles="friends-card"
-        fontStyle={fontStyle}
+        customStyles={`lovers-card ${cardStyles}`}
         frontImage={FrontImage.src}
         backImage={BackImage.src}
       />
