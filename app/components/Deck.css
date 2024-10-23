@@ -60,9 +60,7 @@
   flex-direction: column;
   background-size: cover;
   background-position: center;
-  color: rgb(7, 7, 7);
-  font-size: 16px;
-  background-color: white;
+  padding: 22px; /* Add padding to provide space around the text */
 }
 
 .card .back {
@@ -87,7 +85,6 @@
     width: 350px; /* Keep the card size consistent */
     height: 540px; /* Keep the card size consistent */
     position: absolute;
-    margin-bottom: 20px;
   }
 
   .card.slid {

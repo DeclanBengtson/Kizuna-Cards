@@ -13,30 +13,25 @@ const Lovers = () => {
     isFlipped: false,
     isSlid: false,
     zIndex: 1
-}));
+  }));
 
-const fontStyle = {
-  fontFamily: 'Arial, sans-serif',
-  fontSize: '18px',
-  color: '#FF69B4', // Hot pink color
-  padding: '0 20px', // Add padding to the sides
-  };
+  // Replace inline fontStyle with Tailwind classes
+  const cardStyles = "font-titanOne font-bold text-pink-400 text-3xl ";
 
-return (
-  <div
-    className="flex flex-col justify-center items-center h-screen w-full bg-cover bg-center"
-    style={{ backgroundImage: `url(${Wallpaper.src})` }}
-  >
-    <Deck
-      initialCards={initialCards}
-      questions={friendsQuestions}
-      customStyles="lovers-card"
-      frontImage={FrontImage.src}
-      backImage={BackImage.src}
-      fontStyle={fontStyle}
-    />
-  </div>
-);
+  return (
+    <div
+      className="flex flex-col justify-center items-center h-screen w-full bg-cover bg-center"
+      style={{ backgroundImage: `url(${Wallpaper.src})` }}
+    >
+      <Deck
+        initialCards={initialCards}
+        questions={friendsQuestions}
+        customStyles={`lovers-card ${cardStyles}`}
+        frontImage={FrontImage.src}
+        backImage={BackImage.src}
+      />
+    </div>
+  );
 };
 
 export default Lovers;
