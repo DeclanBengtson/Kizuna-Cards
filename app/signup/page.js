@@ -77,6 +77,9 @@ const SignupPage = () => {
         <p className="text-center">
           Already have an account? <a href="/login" className="link link-primary">Login</a>
         </p>
+        <p className="text-center">
+          Forgot your password? <a href="/recover-password" className="link link-secondary">Recover it here</a>
+        </p>
       </form>
     </div>
   );
