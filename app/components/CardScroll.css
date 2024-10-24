@@ -1,49 +1,56 @@
-.card-scroll {
-    overflow: hidden;
-    width: 60%;
-    position: relative;
-    box-sizing: border-box;
-    padding: 20px 0;
-    margin: 0 auto; /* Center the container */
-    background-color: #ede6fa; /* Match this to your page's background color */
+:root {
+    --card-width: 200px;
+    --card-height: 300px;
+    --card-margin: 10px;
+    --animation-duration: 20s;
   }
+  
+.card-scroll {
+overflow: hidden;
+width: 80%; /* Take up more of the page */
+position: relative;
+box-sizing: border-box;
+padding: 20px 0;
+margin: 0 auto;
+background-color: #ede6fa !important;
+}
 
 .card-scroll::before,
 .card-scroll::after {
 content: '';
 position: absolute;
 top: 0;
-width: 10%; /* Adjust the width of the gradient overlay */
+width: 10%;
 height: 100%;
 z-index: 1;
-pointer-events: none; /* Allow clicks to pass through */
+pointer-events: none;
 }
 
 .card-scroll::before {
 left: 0;
-background: linear-gradient(to right, #ede6fa, rgba(240, 240, 240, 0)); /* Match the background color */
+background: linear-gradient(to right, rgba(237, 230, 250, 1), rgba(237, 230, 250, 0));
 }
 
 .card-scroll::after {
 right: 0;
-background: linear-gradient(to left, #ede6fa, rgba(240, 240, 240, 0)); /* Match the background color */
+background: linear-gradient(to left, rgba(237, 230, 250, 1), rgba(237, 230, 250, 0));
 }
 
 .card-scroll-track {
 display: flex;
-width: calc(200px * 40); /* Adjust based on the number of duplicated cards */
-animation: scroll 40s linear infinite; /* Slower animation */
+width: calc(var(--card-width) * 12); /* Adjust based on the number of duplicated cards */
+animation: scroll var(--animation-duration) linear infinite;
 }
 
 .card-scroll-item {
 flex: 0 0 auto;
-margin: 0 10px;
+margin: 0 var(--card-margin);
 transition: transform 0.2s;
 }
 
 .card-scroll-item img {
 width: 100%;
-max-width: 200px;
+max-width: var(--card-width);
 border-radius: 10px;
 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -53,19 +60,18 @@ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transform: translateX(0);
 }
 100% {
-    transform: translateX(calc(-200px * 20)); /* Adjust based on the number of original cards */
+    transform: translateX(calc(-1 * (var(--card-width) + 2 * var(--card-margin)) * 6)); /* Adjust based on the number of original cards */
 }
 }
 
-/* Media query for smaller screens */
 @media (max-width: 600px) {
-.card-scroll-track {
-    width: calc(150px * 20); /* Adjust based on the number of duplicated cards */
-    animation: scroll 40s linear infinite; /* Slower animation */
+:root {
+    --card-width: 150px;
 }
 
-.card-scroll-item img {
-    max-width: 150px;
+.card-scroll-track {
+    width: calc(var(--card-width) * 12);
+    animation: scroll var(--animation-duration) linear infinite;
 }
 
 @keyframes scroll {
@@ -73,7 +79,7 @@ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transform: translateX(0);
     }
     100% {
-    transform: translateX(calc(-150px * 20)); /* Adjust based on the number of original cards */
+    transform: translateX(calc(-1 * (var(--card-width) + 2 * var(--card-margin)) * 6));
     }
 }
 }
