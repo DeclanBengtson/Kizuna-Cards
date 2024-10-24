@@ -1,48 +1,79 @@
-/* app/components/CardLink.css */
-.card-link {
-    perspective: 1000px;
-    width: 175px; /* 70% of 250px */
-    height: 266px; /* 70% of 380px */
-    margin: 20px;
-    display: inline-block;
-    text-decoration: none;
-    color: inherit;
+.card-scroll {
+    overflow: hidden;
+    width: 60%;
     position: relative;
-  }
-  
-  .card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-  }
-  
-  .card-link:hover .card-inner {
-    transform: rotateY(180deg);
-  }
-  
-  .card-front, .card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    border-radius: 27px;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-  
-  .card-front {
-    background-size: contain;
-    background-position: center;
-  }
-  
-  .card-back {
-    background: #f8f8f8;
-    transform: rotateY(180deg);
-    padding: 20px;
     box-sizing: border-box;
+    padding: 20px 0;
+    margin: 0 auto; /* Center the container */
+    background-color: #ede6fa; /* Match this to your page's background color */
   }
+
+.card-scroll::before,
+.card-scroll::after {
+content: '';
+position: absolute;
+top: 0;
+width: 10%; /* Adjust the width of the gradient overlay */
+height: 100%;
+z-index: 1;
+pointer-events: none; /* Allow clicks to pass through */
+}
+
+.card-scroll::before {
+left: 0;
+background: linear-gradient(to right, #ede6fa, rgba(240, 240, 240, 0)); /* Match the background color */
+}
+
+.card-scroll::after {
+right: 0;
+background: linear-gradient(to left, #ede6fa, rgba(240, 240, 240, 0)); /* Match the background color */
+}
+
+.card-scroll-track {
+display: flex;
+width: calc(200px * 40); /* Adjust based on the number of duplicated cards */
+animation: scroll 40s linear infinite; /* Slower animation */
+}
+
+.card-scroll-item {
+flex: 0 0 auto;
+margin: 0 10px;
+transition: transform 0.2s;
+}
+
+.card-scroll-item img {
+width: 100%;
+max-width: 200px;
+border-radius: 10px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes scroll {
+0% {
+    transform: translateX(0);
+}
+100% {
+    transform: translateX(calc(-200px * 20)); /* Adjust based on the number of original cards */
+}
+}
+
+/* Media query for smaller screens */
+@media (max-width: 600px) {
+.card-scroll-track {
+    width: calc(150px * 20); /* Adjust based on the number of duplicated cards */
+    animation: scroll 40s linear infinite; /* Slower animation */
+}
+
+.card-scroll-item img {
+    max-width: 150px;
+}
+
+@keyframes scroll {
+    0% {
+    transform: translateX(0);
+    }
+    100% {
+    transform: translateX(calc(-150px * 20)); /* Adjust based on the number of original cards */
+    }
+}
+}
