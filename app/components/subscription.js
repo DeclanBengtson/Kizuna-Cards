@@ -153,7 +153,7 @@ const Subscriptions = ({ onClose }) => {
         
         <div className="space-y-6">
           <div className="text-center">
-            <h2 className="text-3xl font-bold">Upgrade to Pro</h2>
+            <h2 className="text-3xl font-bold">Upgrade to Premium</h2>
             <p className="text-base-content/70 mt-2">
               Get unlimited access to all features
             </p>
