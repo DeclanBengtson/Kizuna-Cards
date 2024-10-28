@@ -1,18 +1,26 @@
 // pages/Collections.js
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import dynamic from 'next/dynamic';
 
 const Collections = () => {
-  const [collections, setCollections] = useState([
-    { id: 1, name: 'Family Deck', description: 'A deck for family gatherings' },
-    { id: 2, name: 'Work Deck', description: 'A deck for work colleagues' },
-    // Add more mock collections as needed
-  ]);
-
+  const [collections, setCollections] = useState([]);
   const router = useRouter();
+  const userId = 'your-user-id'; // Replace with actual user ID from authentication context
+
+  useEffect(() => {
+    const fetchCollections = async () => {
+      const response = await fetch(`/api/decks?userId=${userId}`);
+      if (response.ok) {
+        const data = await response.json();
+        setCollections(data);
+      }
+    };
+
+    fetchCollections();
+  }, [userId]);
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center py-10 pt-24">
@@ -23,9 +31,14 @@ const Collections = () => {
         ) : (
           <ul className="space-y-4">
             {collections.map((collection) => (
-              <li key={collection.id} className="bg-gray-50 p-4 rounded-lg shadow-sm">
-                <h3 className="text-lg font-semibold">{collection.name}</h3>
+              <li key={collection._id} className="bg-gray-50 p-4 rounded-lg shadow-sm">
+                <h3 className="text-lg font-semibold">{collection.title}</h3>
                 <p className="text-gray-700">{collection.description}</p>
+                <ul className="list-disc list-inside mt-2">
+                  {collection.questions.map((question, index) => (
+                    <li key={index} className="text-gray-600">{question}</li>
+                  ))}
+                </ul>
               </li>
             ))}
           </ul>

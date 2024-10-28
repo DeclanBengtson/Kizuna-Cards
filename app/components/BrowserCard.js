@@ -4,12 +4,13 @@ import Image from 'next/image';
 
 const BrowserCard = ({ to, image, description }) => {
   return (
-    <a href={to} className="card w-full md:w-100 bg-base-100 shadow-xl transition-transform transform hover:scale-105 ">
-      <figure className="px-10 pt-10">
+    <a href={to} className="flex w-full bg-base-100 shadow-xl transition-transform transform hover:scale-105 p-4 rounded-lg">
+      <div className="flex-shrink-0">
         <Image src={image} alt={description} width={100} height={100} className="rounded-xl" />
-      </figure>
-      <div className="card-body items-center text-center">
-        <h2 className="card-title">{description}</h2>
+      </div>
+      <div className="ml-4 flex flex-col justify-center">
+        <h2 className="text-xl font-bold">{description}</h2>
+        <p className="text-gray-600">Explore this deck to find insightful questions.</p>
       </div>
     </a>
   );
