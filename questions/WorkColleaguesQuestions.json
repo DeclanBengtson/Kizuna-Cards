@@ -1,7 +1,252 @@
 [
     {
         "id": 1,
-        "frontContent": "",
+        "frontContent": "What was your first job?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 2,
+        "frontContent": "What's your favorite thing about working here?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 3,
+        "frontContent": "If you could have any superpower at work, what would it be?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 4,
+        "frontContent": "What's the best career advice you've ever received?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 5,
+        "frontContent": "What's your favorite way to unwind after a long day?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 6,
+        "frontContent": "What's a skill you'd like to learn or improve?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 7,
+        "frontContent": "What project are you most proud of?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 8,
+        "frontContent": "What's your favorite lunch spot near the office?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 9,
+        "frontContent": "What's your go-to productivity hack?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 10,
+        "frontContent": "If you could switch roles with anyone in the company for a day, who would it be?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 11,
+        "frontContent": "What's your favorite book or podcast related to your field?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 12,
+        "frontContent": "What's your favorite way to start the workday?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 13,
+        "frontContent": "What do you enjoy most about your current role?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 14,
+        "frontContent": "What's one thing you'd like to achieve this year?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 15,
+        "frontContent": "What's a fun fact about yourself that most colleagues don't know?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 16,
+        "frontContent": "What's your favorite way to celebrate team successes?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 17,
+        "frontContent": "What's the most interesting place you've traveled to?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 18,
+        "frontContent": "What's your favorite aspect of our company culture?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 19,
+        "frontContent": "What motivates you the most at work?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 20,
+        "frontContent": "What's the best team-building activity you've participated in?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 21,
+        "frontContent": "What's your favorite app or tool for work?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 22,
+        "frontContent": "What's the most challenging part of your job?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 23,
+        "frontContent": "What's your favorite way to give back to the community?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 24,
+        "frontContent": "What's your favorite thing to do on weekends?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 25,
+        "frontContent": "What's one thing you can't work without?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 26,
+        "frontContent": "What's your favorite way to get feedback from colleagues?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 27,
+        "frontContent": "What's your favorite type of music to listen to while working?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 28,
+        "frontContent": "What's a hobby you enjoy outside of work?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 29,
+        "frontContent": "What's your favorite way to stay organized?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 30,
+        "frontContent": "What's the most valuable lesson you've learned at work?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 31,
+        "frontContent": "What's your favorite way to connect with colleagues outside of work?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 32,
+        "frontContent": "What's your favorite way to handle stress at work?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 33,
+        "frontContent": "What's your favorite project you've worked on this year?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 34,
+        "frontContent": "What's your favorite way to stay motivated during tough tasks?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 35,
+        "frontContent": "What's your favorite way to celebrate personal milestones?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 36,
+        "frontContent": "What's your favorite way to learn new skills?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 37,
+        "frontContent": "What's your favorite snack to have at work?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 38,
+        "frontContent": "What's your favorite way to start a meeting?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 39,
+        "frontContent": "What's your favorite way to end the workweek?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 40,
+        "frontContent": "What's your favorite memory from a work event?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 41,
+        "frontContent": "What's your favorite way to stay healthy at work?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 42,
+        "frontContent": "What's your favorite way to contribute to team success?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 43,
+        "frontContent": "What's your favorite way to stay informed about industry trends?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 44,
+        "frontContent": "What's your favorite way to collaborate with colleagues?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 45,
+        "frontContent": "What's your favorite way to handle constructive criticism?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 46,
+        "frontContent": "What's your favorite way to set goals?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 47,
+        "frontContent": "What's your favorite way to celebrate a job well done?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 48,
+        "frontContent": "What's your favorite way to stay connected with remote colleagues?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 49,
+        "frontContent": "What's your favorite way to give positive feedback?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 50,
+        "frontContent": "What's your favorite way to balance work and personal life?",
         "backContent": "Is this it?"
     }
 ]

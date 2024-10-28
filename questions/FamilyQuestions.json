@@ -1,7 +1,252 @@
 [
     {
         "id": 1,
-        "frontContent": "",
+        "frontContent": "What's your favorite family tradition?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 2,
+        "frontContent": "What's a memorable family vacation you've been on?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 3,
+        "frontContent": "What's your favorite family recipe?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 4,
+        "frontContent": "What's a funny story from your childhood?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 5,
+        "frontContent": "What's your favorite way to spend time with family?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 6,
+        "frontContent": "What's a valuable lesson you've learned from a family member?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 7,
+        "frontContent": "What's your favorite family holiday memory?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 8,
+        "frontContent": "What's something unique about your family?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 9,
+        "frontContent": "What's your favorite childhood memory?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 10,
+        "frontContent": "What's a favorite game or activity you enjoy with family?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 11,
+        "frontContent": "What's a family tradition you'd like to start?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 12,
+        "frontContent": "What's your favorite family gathering or event?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 13,
+        "frontContent": "What's a skill or talent you admire in a family member?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 14,
+        "frontContent": "What's the best piece of advice a family member has given you?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 15,
+        "frontContent": "What's your favorite family photo?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 16,
+        "frontContent": "What's a family story that always makes you laugh?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 17,
+        "frontContent": "What's your favorite thing to do with siblings or cousins?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 18,
+        "frontContent": "What's a family tradition you hope to pass on?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 19,
+        "frontContent": "What's something you appreciate about your family?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 20,
+        "frontContent": "What's your favorite way to celebrate birthdays in your family?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 21,
+        "frontContent": "What's a favorite song or music that reminds you of family?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 22,
+        "frontContent": "What's a goal you have for your family?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 23,
+        "frontContent": "What's your favorite way to show appreciation to family members?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 24,
+        "frontContent": "What's a memorable family meal you've had?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 25,
+        "frontContent": "What's a family tradition you look forward to every year?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 26,
+        "frontContent": "What's your favorite way to help out in the family?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 27,
+        "frontContent": "What's a family activity you wish you could do more often?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 28,
+        "frontContent": "What's a favorite family story or legend?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 29,
+        "frontContent": "What's your favorite way to connect with distant relatives?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 30,
+        "frontContent": "What's a family tradition that has changed over time?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 31,
+        "frontContent": "What's a cherished family heirloom or keepsake?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 32,
+        "frontContent": "What's your favorite way to capture family memories?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 33,
+        "frontContent": "What's a family value that's important to you?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 34,
+        "frontContent": "What's a family tradition from your childhood that you miss?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 35,
+        "frontContent": "What's your favorite way to support family members?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 36,
+        "frontContent": "What's a family recipe you'd like to learn?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 37,
+        "frontContent": "What's a family holiday or event you look forward to?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 38,
+        "frontContent": "What's a family tradition you hope never changes?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 39,
+        "frontContent": "What's a way your family celebrates achievements?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 40,
+        "frontContent": "What's a family tradition that you find unique?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 41,
+        "frontContent": "What's your favorite way to spend a family night?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 42,
+        "frontContent": "What's a family tradition that brings you comfort?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 43,
+        "frontContent": "What's your favorite way to welcome new family members?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 44,
+        "frontContent": "What's a family tradition that involves music or dancing?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 45,
+        "frontContent": "What's a family tradition that involves storytelling?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 46,
+        "frontContent": "What's a family tradition that involves food?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 47,
+        "frontContent": "What's a family tradition that involves travel?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 48,
+        "frontContent": "What's a family tradition that involves games or sports?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 49,
+        "frontContent": "What's a family tradition that involves nature?",
+        "backContent": "Is this it?"
+    },
+    {
+        "id": 50,
+        "frontContent": "What's a family tradition that involves crafts or creativity?",
         "backContent": "Is this it?"
     }
 ]
