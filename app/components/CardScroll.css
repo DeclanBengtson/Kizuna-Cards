@@ -12,7 +12,7 @@ position: relative;
 box-sizing: border-box;
 padding: 20px 0;
 margin: 0 auto;
-background-color: #ede6fa !important;
+background-color: #F3E8FF !important;
 }
 
 .card-scroll::before,
@@ -27,13 +27,13 @@ pointer-events: none;
 }
 
 .card-scroll::before {
-left: 0;
-background: linear-gradient(to right, rgba(237, 230, 250, 1), rgba(237, 230, 250, 0));
+    left: 0;
+    background: linear-gradient(to right, #F3E8FF, rgba(243, 232, 255, 0));
 }
 
 .card-scroll::after {
-right: 0;
-background: linear-gradient(to left, rgba(237, 230, 250, 1), rgba(237, 230, 250, 0));
+    right: 0;
+    background: linear-gradient(to left, #F3E8FF, rgba(243, 232, 255, 0));
 }
 
 .card-scroll-track {
