@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import navigationIcon from '../../public/Images/navigation.png';
-import Subscriptions from './subscription';
+import Subscriptions from './subscriptions/subscription';
 
 export default function Navbar() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
