@@ -51,7 +51,7 @@ transition: transform 0.2s;
 .card-scroll-item img {
 width: 100%;
 max-width: var(--card-width);
-border-radius: 10px;
+border-radius: 20px; /* Increase the border-radius for more rounded corners */
 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
