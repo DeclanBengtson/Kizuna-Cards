@@ -59,9 +59,9 @@ const WithAuth = dynamic(() => import('../components/withAuth'), { ssr: false })
 
 // Create a wrapper component that applies the HOC
 const CollectionsPage = () => (
-  //  <WithAuth>
+    <WithAuth>
     <Collections />
-    // </WithAuth> 
+     </WithAuth> 
 );
 
 export default CollectionsPage;

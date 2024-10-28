@@ -10,15 +10,31 @@ const CreateDeck = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [selectedStyle, setSelectedStyle] = useState(null);
+  const [questions, setQuestions] = useState([]); // Assuming QuestionInput updates this state
   const [decks, setDecks] = useState([]);
+  const userId = 'your-user-id'; // Replace with actual user ID from authentication context
 
-  const handleCreateDeck = (e) => {
+  const handleCreateDeck = async (e) => {
     e.preventDefault();
-    const newDeck = { title, description, style: selectedStyle };
-    setDecks([...decks, newDeck]);
-    setTitle('');
-    setDescription('');
-    setSelectedStyle(null);
+    const newDeck = { title, description, style: selectedStyle, questions, userId };
+
+    const response = await fetch('/api/decks/create', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newDeck),
+    });
+
+    if (response.ok) {
+      const createdDeck = await response.json();
+      setDecks([...decks, createdDeck.deck]);
+      setTitle('');
+      setDescription('');
+      setSelectedStyle(null);
+    } else {
+      console.error('Failed to create deck');
+    }
   };
 
   return (
@@ -87,9 +103,9 @@ const WithAuth = dynamic(() => import('../../components/withAuth'), { ssr: false
 
 // Create a wrapper component that applies the HOC
 const CreateDeckPage = () => (
-  //  <WithAuth>
+   <WithAuth>
     <CreateDeck />
-    // </WithAuth> 
+     </WithAuth> 
 );
 
 export default CreateDeckPage;
