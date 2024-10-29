@@ -13,7 +13,7 @@ const WithAuth = ({ children }) => {
 
     if (status === 'unauthenticated' || !session?.user?.hasAccess) {
       // Redirect to home page if no access
-      router.push('/login');
+      router.push('/premium');
     }
   }, [session, status, router]);
 
