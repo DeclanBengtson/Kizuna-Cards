@@ -1,3 +1,4 @@
+// DeckPage.js
 'use client';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
@@ -24,6 +25,7 @@ const DeckPage = () => {
         const response = await fetch(`/api/decks/${params.id}`);
         if (response.ok) {
           const data = await response.json();
+          console.log('Fetched deck:', data);
           setDeck(data);
         } else {
           setError('Failed to fetch deck');
@@ -62,20 +64,20 @@ const DeckPage = () => {
     );
   }
 
-  const initialCards = deck.questions.map((question, index) => ({
-    text: question,
+  // Transform questions into initialCards format
+  const initialCards = deck.questions.map((question) => ({
+    backContent: question,
     isFlipped: false,
     isSlid: false,
-    zIndex: index + 1,
+    zIndex: 1,
   }));
 
   const cardStyles = "font-titanOne font-bold text-pink-400 text-3xl ";
 
   return (
-    <div
-      className="flex flex-col justify-center items-center h-screen w-full bg-cover bg-center"
-    >
+    <div className="flex flex-col justify-center items-center h-screen w-full bg-cover bg-center">
       <Deck
+        title=''
         initialCards={initialCards}
         questions={deck.questions}
         customStyles={`lovers-card ${cardStyles}`}
