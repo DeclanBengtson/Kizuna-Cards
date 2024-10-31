@@ -1,3 +1,4 @@
+// Deck.js
 'use client';
 
 import React, { useReducer, useRef, useEffect } from 'react';
@@ -87,7 +88,6 @@ const Deck = ({ title, initialCards, questions, customStyles, frontImage, backIm
 
   return (
     <div className="deck-container">
-      <h1>{title}</h1>
       <div className="card-container">
         <AnimatePresence>
           {state.cards.map(card => (
@@ -119,7 +119,9 @@ const Card = ({ card, customStyles, fontStyle, onClick, frontImage, backImage })
   >
     <div className="card-inner">
       <div className="front" style={{ backgroundImage: frontImage ? `url(${frontImage})` : 'none' }}>
-        <div className="content" style={fontStyle}>{card.frontContent}</div>
+        <div className="content" style={{ ...fontStyle, display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+          {card.frontContent}
+        </div>
       </div>
       <div className="back" style={{ backgroundImage: backImage ? `url(${backImage})` : 'none' }}>
         <div className="content" style={fontStyle}>{card.backContent}</div>

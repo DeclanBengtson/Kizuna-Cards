@@ -4,9 +4,6 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import Deck from '../../components/Deck';
 
-import FrontImage from '../../../public/Images/Couples/Couples_Front.png';
-import BackImage from '../../../public/Images/Couples/Couples_Back.png';
-
 const DeckPage = () => {
   const params = useParams();
   const [deck, setDeck] = useState(null);
@@ -66,6 +63,7 @@ const DeckPage = () => {
 
   // Transform questions into initialCards format
   const initialCards = deck.questions.map((question) => ({
+    frontContent: deck.title, // Display the title on the front
     backContent: question,
     isFlipped: false,
     isSlid: false,
@@ -77,12 +75,12 @@ const DeckPage = () => {
   return (
     <div className="flex flex-col justify-center items-center h-screen w-full bg-cover bg-center">
       <Deck
-        title=''
+        title={deck.title}
         initialCards={initialCards}
         questions={deck.questions}
         customStyles={`lovers-card ${cardStyles}`}
-        frontImage={FrontImage.src}
-        backImage={BackImage.src}
+        frontImage={deck.style.imageUrl.src} // Use deck's image as the front
+        backImage={deck.style.imageUrl.src}  // Use deck's image as the back
       />
     </div>
   );
