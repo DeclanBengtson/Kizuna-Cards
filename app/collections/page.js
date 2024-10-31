@@ -1,11 +1,12 @@
-// pages/Collections.js
 'use client';
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 import DeckCard from '../components/DeckCard';
+import createDeckImage from '../../public/Images/buttons/Add.png'; // Adjust the path as necessary
 
 const Collections = () => {
   const [collections, setCollections] = useState([]);
@@ -39,9 +40,9 @@ const Collections = () => {
           <h2 className="text-2xl font-bold">Your Collections</h2>
           <button
             onClick={() => router.push('/collections/create-deck')}
-            className="btn btn-primary"
+            className="btn btn-danger ml-2"
           >
-            Create New Deck
+            <Image src={createDeckImage} alt="Create New Deck" width={40} height={40} />
           </button>
         </div>
         {collections.length === 0 ? (
