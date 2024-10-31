@@ -20,7 +20,7 @@ const WorkColleagues = () => {
   }));
 
   // Replace inline fontStyle with Tailwind classes
-  const cardStyles = "font-titanOne font-bold text-orange-400 text-3xl";
+  const cardStyles = "font-titanOne font-bold text-blue-500 text-3xl";
 
   return (
     <div className="flex flex-col justify-center items-center h-screen w-full bg-cover bg-center">
