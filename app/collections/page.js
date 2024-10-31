@@ -1,12 +1,12 @@
+// Collections.js
 'use client';
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import dynamic from 'next/dynamic';
-import Image from 'next/image';
 import DeckCard from '../components/DeckCard';
-import createDeckImage from '../../public/Images/buttons/Add.png'; // Adjust the path as necessary
+import CreateDeckCard from '../components/CreateDeckCard'; // Import the new component
 
 const Collections = () => {
   const [collections, setCollections] = useState([]);
@@ -38,21 +38,15 @@ const Collections = () => {
       <div className="w-full max-w-2xl bg-white rounded-lg shadow-md p-6">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-2xl font-bold">Your Collections</h2>
-          <button
-            onClick={() => router.push('/collections/create-deck')}
-            className="btn btn-danger ml-2"
-          >
-            <Image src={createDeckImage} alt="Create New Deck" width={40} height={40} />
-          </button>
         </div>
-        {collections.length === 0 ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <CreateDeckCard /> {/* Add the Create Deck Card */}
+          {collections.map((collection) => (
+            <DeckCard key={collection._id} deck={collection} onDelete={handleDelete} />
+          ))}
+        </div>
+        {collections.length === 0 && (
           <p className="text-gray-500">No collections available.</p>
-        ) : (
-          <ul className="space-y-4">
-            {collections.map((collection) => (
-              <DeckCard key={collection._id} deck={collection} onDelete={handleDelete} />
-            ))}
-          </ul>
         )}
       </div>
     </div>

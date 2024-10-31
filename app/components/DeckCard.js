@@ -26,47 +26,35 @@ const DeckCard = ({ deck, onDelete }) => {
     }
   };
 
-  const { title, description, style } = deck;
+  const { title, style } = deck;
   const { src } = style.imageUrl || {};
 
   return (
-    <li className="flex w-full bg-base-100 shadow-xl transition-transform transform hover:scale-105 p-4 rounded-lg">
-      <div className="relative flex-shrink-0 p-1">
+    <li className="relative w-48 shadow-xl transition-transform transform hover:scale-105 rounded-lg overflow-hidden">
+      <div className="cursor-pointer" onClick={handleViewDeck}>
         {src ? (
           <Image
             src={src}
             alt={title}
-            width={100}
+            width={100} 
             height={100}
-            className="rounded-xl"
+            className="object-cover w-full h-full"
           />
         ) : (
-          <div className="w-24 h-24 bg-gray-200 rounded-xl flex items-center justify-center">
+          <div className="w-full h-full bg-gray-200 flex items-center justify-center">
             <span className="text-gray-500">No Image</span>
           </div>
         )}
-        <h3 className="absolute top-1/4 left-0 right-0 text-center text-white font-bold text-sm">
-          {title}
-        </h3>
-      </div>
-      <div className="ml-4 flex flex-col justify-center flex-1">
-        <p className="text-gray-600">{description}</p>
-        <div className="mt-2 flex space-x-2">
+        <div className="absolute inset-0 flex justify-end items-start p-1 space-x-1">
           <button
-            onClick={handleViewDeck}
-            className="btn btn-secondary"
-          >
-            View Deck
-          </button>
-          <button
-            onClick={handleEditDeck}
-            className="btn btn-info"
+            onClick={(e) => { e.stopPropagation(); handleEditDeck(); }}
+            className="btn btn-info text-xs"
           >
             Edit
           </button>
           <button
-            onClick={handleDeleteDeck}
-            className="btn btn-danger"
+            onClick={(e) => { e.stopPropagation(); handleDeleteDeck(); }}
+            className="btn btn-danger text-xs"
           >
             Delete
           </button>
