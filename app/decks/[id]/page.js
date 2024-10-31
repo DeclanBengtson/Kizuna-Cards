@@ -5,7 +5,6 @@ import Deck from '../../components/Deck';
 
 import FrontImage from '../../../public/Images/Couples/Couples_Front.png';
 import BackImage from '../../../public/Images/Couples/Couples_Back.png';
-import Wallpaper from '../../../public/Images/Backgrounds/Couples.png';
 
 const DeckPage = () => {
   const params = useParams();
@@ -75,7 +74,6 @@ const DeckPage = () => {
   return (
     <div
       className="flex flex-col justify-center items-center h-screen w-full bg-cover bg-center"
-      style={{ backgroundImage: `url(${Wallpaper.src})` }}
     >
       <Deck
         initialCards={initialCards}

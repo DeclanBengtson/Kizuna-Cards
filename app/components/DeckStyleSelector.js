@@ -23,6 +23,7 @@ const DeckStyleSelector = ({ selectedStyle, setSelectedStyle }) => {
   return (
     <div className="relative">
       <button
+        type="button" // Ensure the button type is set to "button"
         onClick={() => setIsOpen(!isOpen)}
         className="w-full bg-white border border-gray-300 rounded-lg p-4 flex justify-between items-center"
       >
@@ -34,10 +35,11 @@ const DeckStyleSelector = ({ selectedStyle, setSelectedStyle }) => {
       {isOpen && (
         <div className="absolute mt-2 w-full bg-white border border-gray-300 rounded-lg shadow-lg">
           {deckStyles.map((style) => (
-            <div
+            <button
               key={style.id}
+              type="button" // Ensure the button type is set to "button"
               onClick={() => handleSelect(style)}
-              className="p-2 flex items-center cursor-pointer hover:bg-gray-100"
+              className="w-full text-left p-2 flex items-center cursor-pointer hover:bg-gray-100"
             >
               <Image
                 src={style.imageUrl}
@@ -47,7 +49,7 @@ const DeckStyleSelector = ({ selectedStyle, setSelectedStyle }) => {
                 className="rounded-full mr-3"
               />
               <span>{style.name}</span>
-            </div>
+            </button>
           ))}
         </div>
       )}
