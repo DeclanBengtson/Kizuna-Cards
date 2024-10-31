@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import dynamic from 'next/dynamic';
 import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 import DeckStyleSelector from '../../components/DeckStyleSelector';
 import QuestionInput from '../../components/QuestionInput';
 
@@ -13,16 +14,22 @@ const CreateDeck = () => {
   const [questions, setQuestions] = useState([]); // Assuming QuestionInput updates this state
   const [decks, setDecks] = useState([]);
   const { data: session } = useSession();
+  const router = useRouter();
 
   const handleCreateDeck = async (e) => {
     e.preventDefault();
-    
+
     if (!session) {
       console.error('User is not authenticated');
       return;
     }
 
-    const userId = session.user.id; // Get userId from session
+    if (questions.length === 0) {
+      alert('Please add at least one question to the deck.');
+      return;
+    }
+
+    const userId = session.user.id;
     const newDeck = { title, description, style: selectedStyle, questions, userId };
 
     const response = await fetch('/api/decks/create', {
@@ -39,15 +46,17 @@ const CreateDeck = () => {
       setTitle('');
       setDescription('');
       setSelectedStyle(null);
+      setQuestions([]);
+      router.push('/collections');
     } else {
       console.error('Failed to create deck');
     }
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center py-10 pt-24">
-      <div className="w-full max-w-md bg-white rounded-lg shadow-md p-6">
-        <h2 className="text-2xl font-bold mb-4">Create a New Deck</h2>
+    <div className="min-h-screen flex flex-col items-center py-10 pt-24 bg-gray-50">
+      <div className="w-full max-w-lg bg-white rounded-lg shadow-md p-8">
+        <h2 className="text-3xl font-bold text-center mb-6">Create a New Deck</h2>
         <form onSubmit={handleCreateDeck}>
           <div className="mb-4">
             <label className="block text-sm font-medium mb-2">Deck Title</label>
@@ -77,13 +86,21 @@ const CreateDeck = () => {
               setSelectedStyle={setSelectedStyle}
             />
           </div>
-          <button type="submit" className="btn btn-primary w-full">
+          <div className="mb-4">
+            <QuestionInput questions={questions} setQuestions={setQuestions} />
+          </div>
+          <button type="submit" className="btn btn-primary w-full mb-4">
             Create Deck
+          </button>
+          <button
+            type="button"
+            onClick={() => router.push('/collections')}
+            className="btn btn-secondary w-full"
+          >
+            Back to Collections
           </button>
         </form>
       </div>
-
-      <QuestionInput />
     </div>
   );
 };

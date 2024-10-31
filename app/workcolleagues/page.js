@@ -37,9 +37,7 @@ const WorkColleagues = () => {
 
 // Create a wrapper component that applies the HOC
 const WorkColleaguesPage = () => (
-  <WithAuth>
     <WorkColleagues />
-  </WithAuth>
 );
 
 export default WorkColleaguesPage;

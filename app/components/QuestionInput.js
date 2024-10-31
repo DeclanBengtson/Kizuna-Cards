@@ -31,7 +31,7 @@ const QuestionInput = () => {
         {questions.length === 0 ? (
           <p className="text-gray-500">No questions added yet.</p>
         ) : (
-          <ul className="list-disc list-inside space-y-2">
+          <ul className="max-h-40 overflow-y-auto list-disc list-inside space-y-2">
             {questions.map((q, index) => (
               <li key={index} className="text-gray-700">
                 {q}

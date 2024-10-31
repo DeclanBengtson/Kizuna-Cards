@@ -9,12 +9,9 @@ import newConnectionsImage from '../../public/Images/New_Connections/NewConnecti
 import WorkColleaguesImage from '../../public/Images/WorkColleagues/WorkColleagues_Front.png';
 import ChristmasImage from '../../public/Images/Christmas/Christmas_Front.png';
 
-const FreeDecks = [
+const Decks = [
   { to: '/lovers', image: LoversImage, description: 'Questions for Lovers' },
   { to: '/friends', image: friendsImage, description: 'Questions for Friends' },
-];
-
-const PremiumDecks = [
   { to: '/family', image: familyImage, description: 'Questions for Family' },
   { to: '/newconnections', image: newConnectionsImage, description: 'Questions for New Connections' },
   { to: '/workcolleagues', image: WorkColleaguesImage, description: 'Questions for Work Colleagues' },
@@ -38,23 +35,15 @@ const Browser = () => {
       {/* Browser Cards on the Right */}
       <div className="w-2/3 overflow-y-auto p-8">
         <div className="text-center mb-8">
-          <h2 className="text-4xl font-bold mb-4">Free Decks</h2>
+          <h2 className="text-4xl font-bold mb-4">Our Decks</h2>
           <p className="text-lg text-gray-600">Explore our collection of free question decks to spark interesting conversations.</p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {FreeDecks.map((deck, index) => (
+          {Decks.map((deck, index) => (
             <BrowserCard key={index} to={deck.to} image={deck.image} description={deck.description} />
           ))}
         </div>
-        <div className="text-center mb-8 pt-12">
-          <h2 className="text-4xl font-bold mb-4">Premium Decks</h2>
-          <p className="text-lg text-gray-600">Explore our premium collection of question decks designed to explore deeper.</p>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {PremiumDecks.map((deck, index) => (
-            <BrowserCard key={index} to={deck.to} image={deck.image} description={deck.description} />
-          ))}
-        </div>
+
       </div>
     </div>
   );

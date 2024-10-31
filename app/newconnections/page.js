@@ -37,9 +37,7 @@ const NewConnections = () => {
 
 // Create a wrapper component that applies the HOC
 const NewConnectionsPage = () => (
-  <WithAuth>
     <NewConnections />
-  </WithAuth>
 );
 
 export default NewConnectionsPage;

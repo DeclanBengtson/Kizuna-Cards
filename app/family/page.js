@@ -37,9 +37,7 @@ const Family = () => {
 
 // Create a wrapper component that applies the HOC
 const FamilyPage = () => (
-  <WithAuth>
     <Family />
-  </WithAuth>
 );
 
 export default FamilyPage;

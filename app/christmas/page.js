@@ -37,9 +37,7 @@ const Christmas = () => {
 
 // Create a wrapper component that applies the HOC
 const ChristmasPage = () => (
-  <WithAuth>
     <Christmas />
-  </WithAuth>
 );
 
 export default ChristmasPage;
