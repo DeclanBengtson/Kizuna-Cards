@@ -1,13 +1,12 @@
 // components/QuestionInput.js
 import React, { useState } from 'react';
 
-const QuestionInput = () => {
+const QuestionInput = ({ questions, setQuestions }) => {
   const [question, setQuestion] = useState('');
-  const [questions, setQuestions] = useState([]);
 
   const handleAddQuestion = () => {
     if (question.trim()) {
-      setQuestions([...questions, question]);
+      setQuestions([...questions, question.trim()]);
       setQuestion('');
     }
   };
@@ -23,7 +22,7 @@ const QuestionInput = () => {
           placeholder="Enter your question"
         />
       </div>
-      <button onClick={handleAddQuestion} className="btn btn-primary w-full mb-4">
+      <button type="button" onClick={handleAddQuestion} className="btn btn-primary w-full mb-4">
         Add Question
       </button>
       <div>

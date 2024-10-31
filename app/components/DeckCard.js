@@ -3,11 +3,23 @@ import React from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
-const DeckCard = ({ deck }) => {
+const DeckCard = ({ deck, onDelete }) => {
   const router = useRouter();
 
   const handleViewDeck = () => {
     router.push(`/decks/${deck._id}`);
+  };
+
+  const handleDeleteDeck = async () => {
+    const response = await fetch(`/api/decks/${deck._id}`, {
+      method: 'DELETE',
+    });
+
+    if (response.ok) {
+      onDelete(deck._id);
+    } else {
+      console.error('Failed to delete deck');
+    }
   };
 
   const { title, description, imageUrl } = deck;
@@ -37,6 +49,12 @@ const DeckCard = ({ deck }) => {
         className="btn btn-secondary ml-4"
       >
         View Deck
+      </button>
+      <button
+        onClick={handleDeleteDeck}
+        className="btn btn-danger ml-2"
+      >
+        Delete
       </button>
     </li>
   );

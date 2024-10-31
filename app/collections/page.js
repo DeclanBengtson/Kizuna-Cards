@@ -26,6 +26,12 @@ const Collections = () => {
     fetchCollections();
   }, [session]);
 
+  const handleDelete = (id) => {
+    setCollections((prevCollections) =>
+      prevCollections.filter((collection) => collection._id !== id)
+    );
+  };
+
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center py-10 pt-24">
       <div className="w-full max-w-2xl bg-white rounded-lg shadow-md p-6">
@@ -43,7 +49,7 @@ const Collections = () => {
         ) : (
           <ul className="space-y-4">
             {collections.map((collection) => (
-              <DeckCard key={collection._id} deck={collection} />
+              <DeckCard key={collection._id} deck={collection} onDelete={handleDelete} />
             ))}
           </ul>
         )}
