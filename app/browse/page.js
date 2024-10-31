@@ -1,5 +1,5 @@
 import React from 'react';
-import BrowserCard from '../components/BrowserCard'; // Adjust the import path as necessary
+import BrowserCard from '../components/Browse/BrowserCard'; // Adjust the import path as necessary
 
 // Images
 import friendsImage from '../../public/Images/Friends/Friends_Front.png';

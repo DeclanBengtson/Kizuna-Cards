@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import dynamic from 'next/dynamic';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import DeckStyleSelector from '../../components/DeckStyleSelector';
+import DeckStyleSelector from '../../components/Collections/DeckStyleSelector';
 import QuestionInput from '../../components/QuestionInput';
 
 const CreateDeck = () => {

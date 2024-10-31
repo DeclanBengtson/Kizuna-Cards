@@ -3,16 +3,16 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 
 // Images
-import friendsImage from '../../public/Images/Friends/Friends_Back.png';
-import LoversImage from '../../public/Images/Couples/Couples_Back.png';
-import familyImage from '../../public/Images/Family/Family_Back.png';
-import newConnectionsImage from '../../public/Images/New_Connections/NewConnections_Back.png';
-import WorkColleaguesImage from '../../public/Images/WorkColleagues/WorkColleagues_Back.png';
-import ChristmasImage from '../../public/Images/Christmas/Christmas_Back.png';
+import friendsImage from '../../../public/Images/Friends/Friends_Back.png';
+import LoversImage from '../../../public/Images/Couples/Couples_Back.png';
+import familyImage from '../../../public/Images/Family/Family_Back.png';
+import newConnectionsImage from '../../../public/Images/New_Connections/NewConnections_Back.png';
+import WorkColleaguesImage from '../../../public/Images/WorkColleagues/WorkColleagues_Back.png';
+import ChristmasImage from '../../../public/Images/Christmas/Christmas_Back.png';
 
 // Toggle Images
-import expandMoreImage from '../../public/Images/buttons/down.png';
-import expandLessImage from '../../public/Images/buttons/Up.png';
+import expandMoreImage from '../../../public/Images/buttons/down.png';
+import expandLessImage from '../../../public/Images/buttons/Up.png';
 
 const deckStyles = [
   { id: 1, name: 'Pink', imageUrl: LoversImage },

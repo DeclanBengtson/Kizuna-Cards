@@ -2,7 +2,7 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import createDeckImage from '../../public/Images/buttons/Add.png'; // Adjust the path as necessary
+import createDeckImage from '../../../public/Images/buttons/Add.png'; // Adjust the path as necessary
 
 const CreateDeckCard = () => {
     const router = useRouter();

@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { useSession } from 'next-auth/react';
-import DeckStyleSelector from '../../../components/DeckStyleSelector';
+import DeckStyleSelector from '../../../components/Collections/DeckStyleSelector';
 import QuestionInput from '../../../components/QuestionInput';
 
 const EditDeck = () => {
