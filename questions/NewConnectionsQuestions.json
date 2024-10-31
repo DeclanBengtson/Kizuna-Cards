@@ -1,252 +1,252 @@
 [
     {
         "id": 1,
-        "frontContent": "What's your favorite way to spend a weekend?",
-        "backContent": "Is this it?"
+        "frontContent": "",
+        "backContent": "What's your favorite way to spend a weekend?"
     },
     {
         "id": 2,
-        "frontContent": "What's the most interesting place you've ever visited?",
-        "backContent": "Is this it?"
+        "frontContent": "",
+        "backContent": "What's the most interesting place you've ever visited?"
     },
     {
         "id": 3,
-        "frontContent": "What's a hobby you're passionate about?",
-        "backContent": "Is this it?"
+        "frontContent": "",
+        "backContent": "What's a hobby you're passionate about?"
     },
     {
         "id": 4,
-        "frontContent": "Do you have a favorite book or movie?",
-        "backContent": "Is this it?"
+        "frontContent": "",
+        "backContent": "Do you have a favorite book or movie?"
     },
     {
         "id": 5,
-        "frontContent": "What's one thing on your bucket list?",
-        "backContent": "Is this it?"
+        "frontContent": "",
+        "backContent": "What's one thing on your bucket list?"
     },
     {
         "id": 6,
-        "frontContent": "What's your favorite type of music?",
-        "backContent": "Is this it?"
+        "frontContent": "",
+        "backContent": "What's your favorite type of music?"
     },
     {
         "id": 7,
-        "frontContent": "What do you enjoy most about your current job or studies?",
-        "backContent": "Is this it?"
+        "frontContent": "",
+        "backContent": "What do you enjoy most about your current job or studies?"
     },
     {
         "id": 8,
-        "frontContent": "Do you have a favorite quote or saying?",
-        "backContent": "Is this it?"
+        "frontContent": "",
+        "backContent": "Do you have a favorite quote or saying?"
     },
     {
         "id": 9,
-        "frontContent": "What's your favorite way to relax?",
-        "backContent": "Is this it?"
+        "frontContent": "",
+        "backContent": "What's your favorite way to relax?"
     },
     {
         "id": 10,
-        "frontContent": "Do you have any pets?",
-        "backContent": "Is this it?"
+        "frontContent": "",
+        "backContent": "Do you have any pets?"
     },
     {
         "id": 11,
-        "frontContent": "What's a skill you'd like to learn?",
-        "backContent": "Is this it?"
+        "frontContent": "",
+        "backContent": "What's a skill you'd like to learn?"
     },
     {
         "id": 12,
-        "frontContent": "What's your favorite food or cuisine?",
-        "backContent": "Is this it?"
+        "frontContent": "",
+        "backContent": "What's your favorite food or cuisine?"
     },
     {
         "id": 13,
-        "frontContent": "What's the best piece of advice you've ever received?",
-        "backContent": "Is this it?"
+        "frontContent": "",
+        "backContent": "What's the best piece of advice you've ever received?"
     },
     {
         "id": 14,
-        "frontContent": "What's your favorite app or website?",
-        "backContent": "Is this it?"
+        "frontContent": "",
+        "backContent": "What's your favorite app or website?"
     },
     {
         "id": 15,
-        "frontContent": "What's something you enjoy doing alone?",
-        "backContent": "Is this it?"
+        "frontContent": "",
+        "backContent": "What's something you enjoy doing alone?"
     },
     {
         "id": 16,
-        "frontContent": "What's your favorite season and why?",
-        "backContent": "Is this it?"
+        "frontContent": "",
+        "backContent": "What's your favorite season and why?"
     },
     {
         "id": 17,
-        "frontContent": "What's a cause or charity you care about?",
-        "backContent": "Is this it?"
+        "frontContent": "",
+        "backContent": "What's a cause or charity you care about?"
     },
     {
         "id": 18,
-        "frontContent": "What's your favorite way to stay active?",
-        "backContent": "Is this it?"
+        "frontContent": "",
+        "backContent": "What's your favorite way to stay active?"
     },
     {
         "id": 19,
-        "frontContent": "What's your dream travel destination?",
-        "backContent": "Is this it?"
+        "frontContent": "",
+        "backContent": "What's your dream travel destination?"
     },
     {
         "id": 20,
-        "frontContent": "What's a fun fact about yourself?",
-        "backContent": "Is this it?"
+        "frontContent": "",
+        "backContent": "What's a fun fact about yourself?"
     },
     {
         "id": 21,
-        "frontContent": "What's your favorite childhood memory?",
-        "backContent": "Is this it?"
+        "frontContent": "",
+        "backContent": "What's your favorite childhood memory?"
     },
     {
         "id": 22,
-        "frontContent": "What's your favorite way to spend a day off?",
-        "backContent": "Is this it?"
+        "frontContent": "",
+        "backContent": "What's your favorite way to spend a day off?"
     },
     {
         "id": 23,
-        "frontContent": "What's your favorite thing to cook or bake?",
-        "backContent": "Is this it?"
+        "frontContent": "",
+        "backContent": "What's your favorite thing to cook or bake?"
     },
     {
         "id": 24,
-        "frontContent": "What's your favorite holiday or celebration?",
-        "backContent": "Is this it?"
+        "frontContent": "",
+        "backContent": "What's your favorite holiday or celebration?"
     },
     {
         "id": 25,
-        "frontContent": "What's your favorite way to meet new people?",
-        "backContent": "Is this it?"
+        "frontContent": "",
+        "backContent": "What's your favorite way to meet new people?"
     },
     {
         "id": 26,
-        "frontContent": "What's the most adventurous thing you've ever done?",
-        "backContent": "Is this it?"
+        "frontContent": "",
+        "backContent": "What's the most adventurous thing you've ever done?"
     },
     {
         "id": 27,
-        "frontContent": "What's your favorite way to stay informed about the world?",
-        "backContent": "Is this it?"
+        "frontContent": "",
+        "backContent": "What's your favorite way to stay informed about the world?"
     },
     {
         "id": 28,
-        "frontContent": "What's your favorite type of art or creativity?",
-        "backContent": "Is this it?"
+        "frontContent": "",
+        "backContent": "What's your favorite type of art or creativity?"
     },
     {
         "id": 29,
-        "frontContent": "What's a goal you're currently working towards?",
-        "backContent": "Is this it?"
+        "frontContent": "",
+        "backContent": "What's a goal you're currently working towards?"
     },
     {
         "id": 30,
-        "frontContent": "What's your favorite way to give back to your community?",
-        "backContent": "Is this it?"
+        "frontContent": "",
+        "backContent": "What's your favorite way to give back to your community?"
     },
     {
         "id": 31,
-        "frontContent": "What's your favorite way to start the day?",
-        "backContent": "Is this it?"
+        "frontContent": "",
+        "backContent": "What's your favorite way to start the day?"
     },
     {
         "id": 32,
-        "frontContent": "What's your favorite way to end the day?",
-        "backContent": "Is this it?"
+        "frontContent": "",
+        "backContent": "What's your favorite way to end the day?"
     },
     {
         "id": 33,
-        "frontContent": "What's a memorable concert or event you've attended?",
-        "backContent": "Is this it?"
+        "frontContent": "",
+        "backContent": "What's a memorable concert or event you've attended?"
     },
     {
         "id": 34,
-        "frontContent": "What's your favorite way to celebrate achievements?",
-        "backContent": "Is this it?"
+        "frontContent": "",
+        "backContent": "What's your favorite way to celebrate achievements?"
     },
     {
         "id": 35,
-        "frontContent": "What's your favorite way to stay creative?",
-        "backContent": "Is this it?"
+        "frontContent": "",
+        "backContent": "What's your favorite way to stay creative?"
     },
     {
         "id": 36,
-        "frontContent": "What's your favorite way to learn something new?",
-        "backContent": "Is this it?"
+        "frontContent": "",
+        "backContent": "What's your favorite way to learn something new?"
     },
     {
         "id": 37,
-        "frontContent": "What's your favorite way to connect with nature?",
-        "backContent": "Is this it?"
+        "frontContent": "",
+        "backContent": "What's your favorite way to connect with nature?"
     },
     {
         "id": 38,
-        "frontContent": "What's your favorite type of weather?",
-        "backContent": "Is this it?"
+        "frontContent": "",
+        "backContent": "What's your favorite type of weather?"
     },
     {
         "id": 39,
-        "frontContent": "What's your favorite way to express yourself?",
-        "backContent": "Is this it?"
+        "frontContent": "",
+        "backContent": "What's your favorite way to express yourself?"
     },
     {
         "id": 40,
-        "frontContent": "What's a tradition you enjoy?",
-        "backContent": "Is this it?"
+        "frontContent": "",
+        "backContent": "What's a tradition you enjoy?"
     },
     {
         "id": 41,
-        "frontContent": "What's your favorite way to spend time with family?",
-        "backContent": "Is this it?"
+        "frontContent": "",
+        "backContent": "What's your favorite way to spend time with family?"
     },
     {
         "id": 42,
-        "frontContent": "What's your favorite way to spend time with friends?",
-        "backContent": "Is this it?"
+        "frontContent": "",
+        "backContent": "What's your favorite way to spend time with friends?"
     },
     {
         "id": 43,
-        "frontContent": "What's your favorite way to get inspired?",
-        "backContent": "Is this it?"
+        "frontContent": "",
+        "backContent": "What's your favorite way to get inspired?"
     },
     {
         "id": 44,
-        "frontContent": "What's your favorite way to practice mindfulness?",
-        "backContent": "Is this it?"
+        "frontContent": "",
+        "backContent": "What's your favorite way to practice mindfulness?"
     },
     {
         "id": 45,
-        "frontContent": "What's your favorite way to handle challenges?",
-        "backContent": "Is this it?"
+        "frontContent": "",
+        "backContent": "What's your favorite way to handle challenges?"
     },
     {
         "id": 46,
-        "frontContent": "What's your favorite way to stay positive?",
-        "backContent": "Is this it?"
+        "frontContent": "",
+        "backContent": "What's your favorite way to stay positive?"
     },
     {
         "id": 47,
-        "frontContent": "What's your favorite way to explore new cultures?",
-        "backContent": "Is this it?"
+        "frontContent": "",
+        "backContent": "What's your favorite way to explore new cultures?"
     },
     {
         "id": 48,
-        "frontContent": "What's your favorite way to make new friends?",
-        "backContent": "Is this it?"
+        "frontContent": "",
+        "backContent": "What's your favorite way to make new friends?"
     },
     {
         "id": 49,
-        "frontContent": "What's your favorite way to stay connected with loved ones?",
-        "backContent": "Is this it?"
+        "frontContent": "",
+        "backContent": "What's your favorite way to stay connected with loved ones?"
     },
     {
         "id": 50,
-        "frontContent": "What's your favorite way to reflect on life?",
-        "backContent": "Is this it?"
+        "frontContent": "",
+        "backContent": "What's your favorite way to reflect on life?"
     }
 ]
