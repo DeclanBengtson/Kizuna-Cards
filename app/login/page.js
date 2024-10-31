@@ -1,7 +1,8 @@
-"use client"; // Ensure this page is a client component
+"use client";
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { signIn } from 'next-auth/react';
 import 'tailwindcss/tailwind.css';
 import 'daisyui/dist/full.css';
 
@@ -9,26 +10,21 @@ const LoginPage = () => {
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    const res = await fetch('/api/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ email, password }),
+    const res = await signIn('credentials', {
+      redirect: false,
+      email,
+      password,
     });
 
-    if (res.ok) {
-      const data = await res.json();
-      // Store the token in localStorage or cookies
-      localStorage.setItem('token', data.token);
-      router.push('/');
+    if (res?.error) {
+      setError(res.error);
     } else {
-      const data = await res.json();
-      alert(data.message);
+      router.push('/');
     }
   };
 
@@ -36,6 +32,7 @@ const LoginPage = () => {
     <div className="flex items-center justify-center min-h-screen">
       <form className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md" onSubmit={handleLogin}>
         <h2 className="text-2xl font-bold text-center">Login</h2>
+        {error && <p className="text-red-500 text-center">{error}</p>}
         <div className="form-control">
           <label className="label">
             <span className="label-text">Email</span>

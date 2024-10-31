@@ -79,7 +79,7 @@ export default function Navbar() {
         {isDropdownOpen && (
           <div className="absolute top-full left-0 w-full bg-base-100 shadow-lg lg:hidden">
             <ul className="menu menu-vertical w-full p-2">
-              <li><NavLink href="/Collections">Collections</NavLink></li>
+              <li><NavLink href="/collections">Collections</NavLink></li>
               <li><NavLink href="/browse">Browse</NavLink></li>
               <li><NavLink href="/login">Login</NavLink></li>
               <li>

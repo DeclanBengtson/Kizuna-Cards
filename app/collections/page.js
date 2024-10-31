@@ -25,7 +25,15 @@ const Collections = () => {
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center py-10 pt-24">
       <div className="w-full max-w-2xl bg-white rounded-lg shadow-md p-6">
-        <h2 className="text-2xl font-bold mb-4">Your Collections</h2>
+        <div className="flex justify-between items-center mb-4">
+          <h2 className="text-2xl font-bold">Your Collections</h2>
+          <button
+            onClick={() => router.push('/collections/create-deck')}
+            className="btn btn-primary"
+          >
+            Create New Deck
+          </button>
+        </div>
         {collections.length === 0 ? (
           <p className="text-gray-500">No collections available.</p>
         ) : (
@@ -43,12 +51,6 @@ const Collections = () => {
             ))}
           </ul>
         )}
-        <button
-          onClick={() => router.push('/collections/create-deck')}
-          className="btn btn-primary w-full mt-4"
-        >
-          Create New Deck
-        </button>
       </div>
     </div>
   );
@@ -59,9 +61,9 @@ const WithAuth = dynamic(() => import('../components/withAuth'), { ssr: false })
 
 // Create a wrapper component that applies the HOC
 const CollectionsPage = () => (
-    <WithAuth>
-    <Collections />
-     </WithAuth> 
+  <WithAuth>
+  <Collections />
+  </WithAuth>
 );
 
 export default CollectionsPage;

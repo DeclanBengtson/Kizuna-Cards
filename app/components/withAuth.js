@@ -8,6 +8,8 @@ const WithAuth = ({ children }) => {
   const { data: session, status } = useSession();
   const router = useRouter();
 
+  console.log('Session:', session);
+
   useEffect(() => {
     if (status === 'loading') return; // Do nothing while loading
 

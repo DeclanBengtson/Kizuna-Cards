@@ -38,7 +38,7 @@ const CreateDeck = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center py-10 pt-24">
+    <div className="min-h-screen flex flex-col items-center py-10 pt-24">
       <div className="w-full max-w-md bg-white rounded-lg shadow-md p-6">
         <h2 className="text-2xl font-bold mb-4">Create a New Deck</h2>
         <form onSubmit={handleCreateDeck}>
@@ -77,23 +77,6 @@ const CreateDeck = () => {
       </div>
 
       <QuestionInput />
-
-      <div className="w-full max-w-md mt-10">
-        <h2 className="text-xl font-bold mb-4">Your Decks</h2>
-        {decks.length === 0 ? (
-          <p className="text-gray-500">No decks created yet.</p>
-        ) : (
-          <ul className="space-y-4">
-            {decks.map((deck, index) => (
-              <li key={index} className="bg-white p-4 rounded-lg shadow-md">
-                <h3 className="text-lg font-semibold">{deck.title}</h3>
-                <p className="text-gray-700">{deck.description}</p>
-                <p className="text-gray-500">Style: {deck.style?.name}</p>
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
     </div>
   );
 };
@@ -105,7 +88,7 @@ const WithAuth = dynamic(() => import('../../components/withAuth'), { ssr: false
 const CreateDeckPage = () => (
    <WithAuth>
     <CreateDeck />
-     </WithAuth> 
+  </WithAuth> 
 );
 
 export default CreateDeckPage;
