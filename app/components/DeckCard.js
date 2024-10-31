@@ -2,6 +2,8 @@
 import React from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import deleteIcon from '../../public/Images/buttons/Delete.png'; // Import the delete icon
+import editIcon from '../../public/Images/buttons/Edit.png'; // Import the edit icon
 
 const DeckCard = ({ deck, onDelete }) => {
   const router = useRouter();
@@ -30,14 +32,14 @@ const DeckCard = ({ deck, onDelete }) => {
   const { src } = style.imageUrl || {};
 
   return (
-    <li className="relative w-48 shadow-xl transition-transform transform hover:scale-105 rounded-lg overflow-hidden">
-      <div className="cursor-pointer" onClick={handleViewDeck}>
+    <li className="relative w-48 shadow-xl transition-transform transform hover:scale-105 rounded-3xl overflow-hidden list-none">
+      <div className="cursor-pointer relative" onClick={handleViewDeck}>
         {src ? (
           <Image
             src={src}
             alt={title}
-            width={100} 
-            height={100}
+            width={200} // Use consistent dimensions
+            height={200}
             className="object-cover w-full h-full"
           />
         ) : (
@@ -45,18 +47,21 @@ const DeckCard = ({ deck, onDelete }) => {
             <span className="text-gray-500">No Image</span>
           </div>
         )}
-        <div className="absolute inset-0 flex justify-end items-start p-1 space-x-1">
+        <h3 className="absolute inset-0 flex items-center justify-center text-white font-bold text-sm">
+          {title}
+        </h3>
+        <div className="absolute top-2 right-2 flex space-x-1">
           <button
             onClick={(e) => { e.stopPropagation(); handleEditDeck(); }}
-            className="btn btn-info text-xs"
+            className="flex items-center justify-center w-8 h-8 bg-blue-500 bg-opacity-50 rounded-md"
           >
-            Edit
+            <Image src={editIcon} alt="Edit" width={16} height={16} />
           </button>
           <button
             onClick={(e) => { e.stopPropagation(); handleDeleteDeck(); }}
-            className="btn btn-danger text-xs"
+            className="flex items-center justify-center w-8 h-8 bg-red-500 bg-opacity-50 rounded-md"
           >
-            Delete
+            <Image src={deleteIcon} alt="Delete" width={16} height={16} />
           </button>
         </div>
       </div>

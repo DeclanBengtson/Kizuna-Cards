@@ -5,21 +5,30 @@ import Image from 'next/image';
 import createDeckImage from '../../public/Images/buttons/Add.png'; // Adjust the path as necessary
 
 const CreateDeckCard = () => {
-  const router = useRouter();
-
-  const handleCreateDeck = () => {
-    router.push('/collections/create-deck');
+    const router = useRouter();
+  
+    const handleCreateDeck = () => {
+      router.push('/collections/create-deck');
+    };
+  
+    return (
+      <li 
+        className="relative w-48 shadow-xl transition-transform transform hover:scale-105 rounded-lg overflow-hidden list-none cursor-pointer bg-white"
+        onClick={handleCreateDeck}
+      >
+        <div 
+          className="flex items-center justify-center"
+          style={{ height: '200px' }}
+        >
+          <Image 
+            src={createDeckImage} 
+            alt="Create New Deck" 
+            width={60} 
+            height={60}
+          />
+        </div>
+      </li>
+    );
   };
-
-  return (
-    <div
-      className="bg-white rounded-lg shadow-md flex items-center justify-center cursor-pointer transition-transform transform hover:scale-105"
-      style={{ width: '200px', height: '320px' }} // Adjust width and height here
-      onClick={handleCreateDeck}
-    >
-      <Image src={createDeckImage} alt="Create New Deck" width={60} height={60} />
-    </div>
-  );
-};
 
 export default CreateDeckCard;
