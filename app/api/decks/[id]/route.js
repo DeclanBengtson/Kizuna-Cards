@@ -49,3 +49,32 @@ export async function DELETE(req, { params }) {
     return NextResponse.json({ message: 'Internal Server Error' }, { status: 500 });
   }
 }
+
+export async function PUT(req, { params }) {
+  const { id } = params;
+
+  if (!id) {
+    return NextResponse.json({ message: 'Deck ID is required' }, { status: 400 });
+  }
+
+  try {
+    const { title, description, style, questions } = await req.json();
+
+    const client = await clientPromise;
+    const db = client.db('Couples-Questions');
+
+    const result = await db.collection('decks').updateOne(
+      { _id: new ObjectId(id) },
+      { $set: { title, description, style, questions } }
+    );
+
+    if (result.matchedCount === 0) {
+      return NextResponse.json({ message: 'Deck not found' }, { status: 404 });
+    }
+
+    return NextResponse.json({ success: true }, { status: 200 });
+  } catch (error) {
+    console.error('Error updating deck:', error);
+    return NextResponse.json({ message: 'Internal Server Error' }, { status: 500 });
+  }
+}

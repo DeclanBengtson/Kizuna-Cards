@@ -1,22 +1,40 @@
 'use client';
 
-import React, { useState } from 'react';
-import dynamic from 'next/dynamic';
+import React, { useState, useEffect } from 'react';
+import { useRouter, useParams } from 'next/navigation';
 import { useSession } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
-import DeckStyleSelector from '../../components/DeckStyleSelector';
-import QuestionInput from '../../components/QuestionInput';
+import DeckStyleSelector from '../../../components/DeckStyleSelector';
+import QuestionInput from '../../../components/QuestionInput';
 
-const CreateDeck = () => {
+const EditDeck = () => {
+  const { id } = useParams();
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [selectedStyle, setSelectedStyle] = useState(null);
-  const [questions, setQuestions] = useState([]); // Assuming QuestionInput updates this state
-  const [decks, setDecks] = useState([]);
+  const [questions, setQuestions] = useState([]);
   const { data: session } = useSession();
   const router = useRouter();
 
-  const handleCreateDeck = async (e) => {
+  useEffect(() => {
+    const fetchDeck = async () => {
+      const response = await fetch(`/api/decks/${id}`);
+      if (response.ok) {
+        const data = await response.json();
+        setTitle(data.title);
+        setDescription(data.description);
+        setSelectedStyle(data.style);
+        setQuestions(data.questions);
+      } else {
+        console.error('Failed to fetch deck');
+      }
+    };
+
+    if (id) {
+      fetchDeck();
+    }
+  }, [id]);
+
+  const handleUpdateDeck = async (e) => {
     e.preventDefault();
 
     if (!session) {
@@ -24,40 +42,28 @@ const CreateDeck = () => {
       return;
     }
 
-    if (questions.length === 0) {
-      alert('Please add at least one question to the deck.');
-      return;
-    }
+    const updatedDeck = { title, description, style: selectedStyle, questions };
 
-    const userId = session.user.id;
-    const newDeck = { title, description, style: selectedStyle, questions, userId };
-
-    const response = await fetch('/api/decks/create', {
-      method: 'POST',
+    const response = await fetch(`/api/decks/${id}`, {
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(newDeck),
+      body: JSON.stringify(updatedDeck),
     });
 
     if (response.ok) {
-      const createdDeck = await response.json();
-      setDecks([...decks, createdDeck.deck]);
-      setTitle('');
-      setDescription('');
-      setSelectedStyle(null);
-      setQuestions([]);
       router.push('/collections');
     } else {
-      console.error('Failed to create deck');
+      console.error('Failed to update deck');
     }
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center py-10 pt-24">
+    <div className="min-h-screen flex flex-col items-center py-10 pt-24 bg-gray-50">
       <div className="w-full max-w-lg bg-white rounded-lg shadow-md p-8">
-        <h2 className="text-3xl font-bold text-center mb-6">Create a New Deck</h2>
-        <form onSubmit={handleCreateDeck}>
+        <h2 className="text-3xl font-bold text-center mb-6">Edit Deck</h2>
+        <form onSubmit={handleUpdateDeck}>
           <div className="mb-4">
             <label className="block text-sm font-medium mb-2">Deck Title</label>
             <input
@@ -90,7 +96,14 @@ const CreateDeck = () => {
             <QuestionInput questions={questions} setQuestions={setQuestions} />
           </div>
           <button type="submit" className="btn btn-primary w-full mb-4">
-            Create Deck
+            Update Deck
+          </button>
+          <button
+            type="button"
+            onClick={() => router.push('/collections')}
+            className="btn btn-secondary w-full"
+          >
+            Back to Collections
           </button>
         </form>
       </div>
@@ -98,14 +111,4 @@ const CreateDeck = () => {
   );
 };
 
-// Dynamically import the withAuth HOC with no SSR
-const WithAuth = dynamic(() => import('../../components/withAuth'), { ssr: false });
-
-// Create a wrapper component that applies the HOC
-const CreateDeckPage = () => (
-  <WithAuth>
-    <CreateDeck />
-  </WithAuth>
-);
-
-export default CreateDeckPage;
+export default EditDeck;

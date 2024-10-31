@@ -33,7 +33,7 @@ const Collections = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center py-10 pt-24">
+    <div className="min-h-screen flex flex-col items-center py-10 pt-24">
       <div className="w-full max-w-2xl bg-white rounded-lg shadow-md p-6">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-2xl font-bold">Your Collections</h2>

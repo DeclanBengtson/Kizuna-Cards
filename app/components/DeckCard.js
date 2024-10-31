@@ -10,6 +10,10 @@ const DeckCard = ({ deck, onDelete }) => {
     router.push(`/decks/${deck._id}`);
   };
 
+  const handleEditDeck = () => {
+    router.push(`/collections/${deck._id}/edit`);
+  };
+
   const handleDeleteDeck = async () => {
     const response = await fetch(`/api/decks/${deck._id}`, {
       method: 'DELETE',
@@ -49,6 +53,12 @@ const DeckCard = ({ deck, onDelete }) => {
         className="btn btn-secondary ml-4"
       >
         View Deck
+      </button>
+      <button
+        onClick={handleEditDeck}
+        className="btn btn-info ml-2"
+      >
+        Edit
       </button>
       <button
         onClick={handleDeleteDeck}

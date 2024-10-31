@@ -11,6 +11,10 @@ const QuestionInput = ({ questions, setQuestions }) => {
     }
   };
 
+  const handleRemoveQuestion = (index) => {
+    setQuestions(questions.filter((_, i) => i !== index));
+  };
+
   return (
     <div className="bg-white rounded-lg shadow-md p-6 w-full max-w-md">
       <h2 className="text-xl font-bold mb-4">Add Questions</h2>
@@ -32,8 +36,15 @@ const QuestionInput = ({ questions, setQuestions }) => {
         ) : (
           <ul className="max-h-40 overflow-y-auto list-disc list-inside space-y-2">
             {questions.map((q, index) => (
-              <li key={index} className="text-gray-700">
-                {q}
+              <li key={index} className="text-gray-700 flex justify-between items-center">
+                <span>{q}</span>
+                <button
+                  type="button"
+                  onClick={() => handleRemoveQuestion(index)}
+                  className="text-red-500 hover:text-red-700 ml-2"
+                >
+                  Remove
+                </button>
               </li>
             ))}
           </ul>
