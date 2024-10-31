@@ -1,8 +1,8 @@
-// pages/create-deck.js
 'use client';
 
 import React, { useState } from 'react';
 import dynamic from 'next/dynamic';
+import { useSession } from 'next-auth/react';
 import DeckStyleSelector from '../../components/DeckStyleSelector';
 import QuestionInput from '../../components/QuestionInput';
 
@@ -12,10 +12,17 @@ const CreateDeck = () => {
   const [selectedStyle, setSelectedStyle] = useState(null);
   const [questions, setQuestions] = useState([]); // Assuming QuestionInput updates this state
   const [decks, setDecks] = useState([]);
-  const userId = 'your-user-id'; // Replace with actual user ID from authentication context
+  const { data: session } = useSession();
 
   const handleCreateDeck = async (e) => {
     e.preventDefault();
+    
+    if (!session) {
+      console.error('User is not authenticated');
+      return;
+    }
+
+    const userId = session.user.id; // Get userId from session
     const newDeck = { title, description, style: selectedStyle, questions, userId };
 
     const response = await fetch('/api/decks/create', {
@@ -86,9 +93,9 @@ const WithAuth = dynamic(() => import('../../components/withAuth'), { ssr: false
 
 // Create a wrapper component that applies the HOC
 const CreateDeckPage = () => (
-   <WithAuth>
+  <WithAuth>
     <CreateDeck />
-  </WithAuth> 
+  </WithAuth>
 );
 
 export default CreateDeckPage;

@@ -3,16 +3,20 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 import dynamic from 'next/dynamic';
+import DeckCard from '../components/DeckCard';
 
 const Collections = () => {
   const [collections, setCollections] = useState([]);
+  const { data: session } = useSession();
   const router = useRouter();
-  const userId = 'your-user-id'; // Replace with actual user ID from authentication context
 
   useEffect(() => {
+    if (!session) return;
+
     const fetchCollections = async () => {
-      const response = await fetch(`/api/decks?userId=${userId}`);
+      const response = await fetch(`/api/decks?userId=${session.user.id}`);
       if (response.ok) {
         const data = await response.json();
         setCollections(data);
@@ -20,7 +24,7 @@ const Collections = () => {
     };
 
     fetchCollections();
-  }, [userId]);
+  }, [session]);
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center py-10 pt-24">
@@ -39,15 +43,7 @@ const Collections = () => {
         ) : (
           <ul className="space-y-4">
             {collections.map((collection) => (
-              <li key={collection._id} className="bg-gray-50 p-4 rounded-lg shadow-sm">
-                <h3 className="text-lg font-semibold">{collection.title}</h3>
-                <p className="text-gray-700">{collection.description}</p>
-                <ul className="list-disc list-inside mt-2">
-                  {collection.questions.map((question, index) => (
-                    <li key={index} className="text-gray-600">{question}</li>
-                  ))}
-                </ul>
-              </li>
+              <DeckCard key={collection._id} deck={collection} />
             ))}
           </ul>
         )}
@@ -62,7 +58,7 @@ const WithAuth = dynamic(() => import('../components/withAuth'), { ssr: false })
 // Create a wrapper component that applies the HOC
 const CollectionsPage = () => (
   <WithAuth>
-  <Collections />
+    <Collections />
   </WithAuth>
 );
 
