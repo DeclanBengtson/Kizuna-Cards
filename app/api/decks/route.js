@@ -9,8 +9,7 @@ export async function GET(req) {
 
     // Extract userId from the request URL
     const { searchParams } = new URL(req.url);
-    // const userId = searchParams.get('userId');
-    const userId = "your-user-id";
+    const userId = searchParams.get('userId');
 
     if (!userId) {
       return NextResponse.json({ message: 'Missing user ID' }, { status: 400 });
