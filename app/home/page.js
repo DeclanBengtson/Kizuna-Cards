@@ -19,11 +19,8 @@ const HomePage = () => {
               Discover a variety of questions designed to spark interesting conversations and deepen your connections with friends and loved ones. Play for free or subscribe for unlimited access to more decks with deeper questions and different themes.
             </p>
             <div className="flex space-x-4 justify-center lg:justify-start">
-              <Link href="/friends" className="w-32 text-center bg-transparent hover:bg-purple-200 text-purple-700 font-semibold py-2 px-4 border border-purple-500 rounded">
-                Friends
-              </Link>
-              <Link href="/couples" className="w-32 text-center bg-transparent hover:bg-purple-200 text-purple-700 font-semibold py-2 px-4 border border-purple-500 rounded">
-                Couples
+              <Link href="/browse" className="w-32 text-center bg-transparent hover:bg-purple-200 text-purple-700 font-semibold py-2 px-4 border border-purple-500 rounded">
+                Browse
               </Link>
             </div>
           </div>
