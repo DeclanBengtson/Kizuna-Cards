@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        customBackground: '#ede6fa', // Add your custom background color here
+ // Add your custom background color here
       },
       fontFamily: {
         sriracha: ['Sriracha', 'cursive'],
