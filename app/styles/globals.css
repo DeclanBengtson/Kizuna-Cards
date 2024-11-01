@@ -1,27 +1,101 @@
-/* styles/globals.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+:root {
+  --vertical-scroll-speed: 25s;
+  --horizontal-scroll-speed: 30s;
+}
 
-@keyframes scroll {
+/* Base styles */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Vertical scroll animations */
+@keyframes scrollUp {
   0% {
-    transform: translateX(0);
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  90% {
-    opacity: 1;
+    transform: translateY(0);
   }
   100% {
-    transform: translateX(-50%);
-    opacity: 0;
+    transform: translateY(-50%);
   }
 }
 
-.animate-scroll {
-  animation: scroll 20s linear infinite;
+@keyframes scrollDown {
+  0% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Horizontal scroll animation */
+@keyframes scrollHorizontal {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Animation classes */
+.animate-scroll-up {
+  animation: scrollUp var(--vertical-scroll-speed) linear infinite;
+}
+
+.animate-scroll-down {
+  animation: scrollDown var(--vertical-scroll-speed) linear infinite;
+}
+
+.animate-scroll-horizontal {
+  animation: scrollHorizontal var(--horizontal-scroll-speed) linear infinite;
+}
+
+/* Pause animations on hover */
+.animate-scroll-up:hover,
+.animate-scroll-down:hover,
+.animate-scroll-horizontal:hover {
+  animation-play-state: paused;
+}
+
+/* Smooth transitions */
+.transition-transform {
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Optional: Add smooth scrolling to the whole page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbars but keep functionality */
+.overflow-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+.overflow-hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Additional styles for horizontal scroll container */
+.whitespace-nowrap {
+  white-space: nowrap;
+}
+
+.inline-flex {
+  display: inline-flex;
 }

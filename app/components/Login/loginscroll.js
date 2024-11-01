@@ -10,7 +10,6 @@ import WorkColleaguesImage from '../../../public/Images/WorkColleagues/WorkColle
 import ChristmasImage from '../../../public/Images/Christmas/Christmas_Front.png';
 
 const LoginScroll = () => {
-  // Define the card data directly within the component
   const cards = [
     { image: friendsImage, alt: 'Friends Card' },
     { image: LoversImage, alt: 'Couples Card' },
@@ -20,12 +19,11 @@ const LoginScroll = () => {
     { image: ChristmasImage, alt: 'Christmas Card' },
   ];
 
-  // Duplicate cards to create a seamless loop
   const duplicatedCards = [...cards, ...cards];
 
   return (
     <div className="overflow-hidden whitespace-nowrap py-4">
-      <div className="inline-flex space-x-4 animate-scroll">
+      <div className="inline-flex space-x-4 animate-scroll-horizontal">
         {duplicatedCards.map((card, index) => (
           <div
             key={`${card.alt}-${index}`}

@@ -64,10 +64,11 @@ const LoginPage = () => {
               required
             />
           </div>
-          <button type="submit" className="btn btn-primary w-full">Login</button>
-          <p className="text-center">
-            Don&apos;t have an account? <a href="/signup" className="link link-primary">Sign up</a>
-          </p>
+          <button type="submit" className="btn w-full bg-black text-white">Login</button>
+          <div className="flex justify-between items-center">
+            <p className="text-left">Don&apos;t have an account?</p>
+            <a href="/signup" className="btn bg-black text-white">Sign up</a>
+          </div>
         </form>
       </div>
 

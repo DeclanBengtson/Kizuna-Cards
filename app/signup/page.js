@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import 'tailwindcss/tailwind.css';
 import 'daisyui/dist/full.css';
+import VerticalCardAnimation from '../components/Signup/VerticalCardAnimation'; // Import the new component
 
 const SignupPage = () => {
   const router = useRouter();
@@ -34,7 +35,7 @@ const SignupPage = () => {
     <div className="flex min-h-screen">
       {/* Left side for signup form */}
       <div className="flex items-center justify-center w-full md:w-1/2 bg-white">
-        <form className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md" onSubmit={handleSignup}>
+        <form className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg" onSubmit={handleSignup}>
           <h2 className="text-2xl font-bold text-center">Sign Up</h2>
           <div className="form-control">
             <label className="label">
@@ -89,11 +90,7 @@ const SignupPage = () => {
 
       {/* Right side for additional content */}
       <div className="hidden md:flex w-1/2 items-center justify-center bg-blue-100">
-        {/* Add any additional content or components here */}
-        <div className="text-center">
-          <h2 className="text-2xl font-bold">Welcome to Our Platform</h2>
-          <p>Explore new features and opportunities.</p>
-        </div>
+        <VerticalCardAnimation /> {/* Use the VerticalCardAnimation component here */}
       </div>
     </div>
   );
