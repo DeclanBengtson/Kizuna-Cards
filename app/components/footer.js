@@ -9,8 +9,8 @@ const Footer = () => {
           <span className="text-sm">&copy; {new Date().getFullYear()} Your Company Name. All rights reserved.</span>
         </div>
         <div className="flex space-x-4">
-          <a href="#" className="hover:text-gray-400">Privacy Policy</a>
-          <a href="#" className="hover:text-gray-400">Terms of Service</a>
+          <a href="/privacy" className="hover:text-gray-400">Privacy Policy</a>
+          <a href="/terms" className="hover:text-gray-400">Terms of Service</a>
           <a href="#" className="hover:text-gray-400">Contact Us</a>
         </div>
       </div>
