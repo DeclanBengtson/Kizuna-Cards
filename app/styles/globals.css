@@ -8,3 +8,24 @@
 body {
   @apply bg-customBackground;
 }
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-50%);
+    opacity: 0;
+  }
+}
+
+.animate-scroll {
+  animation: scroll 20s linear infinite;
+}

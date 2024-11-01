@@ -5,8 +5,8 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import dynamic from 'next/dynamic';
-import DeckCard from '../components/DeckCard';
-import CreateDeckCard from '../components/CreateDeckCard'; // Import the new component
+import DeckCard from '../components/Collections/DeckCard';
+import CreateDeckCard from '../components/Collections/CreateDeckCard'; // Import the new component
 
 const Collections = () => {
   const [collections, setCollections] = useState([]);

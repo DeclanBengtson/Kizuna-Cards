@@ -2,8 +2,8 @@
 import React from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import deleteIcon from '../../public/Images/buttons/Delete.png'; // Import the delete icon
-import editIcon from '../../public/Images/buttons/Edit.png'; // Import the edit icon
+import deleteIcon from '../../../public/Images/buttons/Delete.png'; // Import the delete icon
+import editIcon from '../../../public/Images/buttons/Edit.png'; // Import the edit icon
 
 const DeckCard = ({ deck, onDelete }) => {
   const router = useRouter();

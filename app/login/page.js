@@ -6,6 +6,9 @@ import { signIn } from 'next-auth/react';
 import 'tailwindcss/tailwind.css';
 import 'daisyui/dist/full.css';
 
+// Import the CardScroll component
+import LoginScroll from '../components/Login/loginscroll';  // Adjust the path as necessary
+
 const LoginPage = () => {
   const router = useRouter();
   const [email, setEmail] = useState('');
@@ -31,7 +34,7 @@ const LoginPage = () => {
   return (
     <div className="flex min-h-screen">
       {/* Left side for login form */}
-      <div className="flex items-center justify-center w-1/2 bg-white">
+      <div className="flex items-center justify-center w-full md:w-1/2 bg-white">
         <form className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg" onSubmit={handleLogin}>
           <h2 className="text-2xl font-bold text-center">Welcome Back</h2>
           {error && <p className="text-red-500 text-center">{error}</p>}
@@ -68,13 +71,9 @@ const LoginPage = () => {
         </form>
       </div>
 
-      {/* Right side for additional component */}
-      <div className="w-1/2 flex items-center justify-center bg-blue-100">
-        {/* Add your additional component here */}
-        <div className="text-center">
-          <h2 className="text-2xl font-bold">Welcome to Our Service</h2>
-          <p>Here you can add any content or components you like.</p>
-        </div>
+      {/* Right side for CardScroll component */}
+      <div className="hidden md:flex w-1/2 items-center justify-center bg-blue-100">
+        <LoginScroll />
       </div>
     </div>
   );
