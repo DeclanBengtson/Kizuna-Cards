@@ -1,8 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
-import CardScroll from '../components/CardScroll';
 import Subscriptions from '../components/subscriptions/subscriptionsembed';
 import CardBox from '../components/Home/CardBox';
+import KizunaHighlight from '../components/Home/KizunaHighlight'; // Import the new component
 
 const HomePage = () => {
   return (
@@ -24,6 +24,7 @@ const HomePage = () => {
             <CardBox />
           </div>
         </div>
+        <KizunaHighlight /> {/* Use the new component here */}
         <h2 className="text-3xl font-bold mb-4 text-center">Collections</h2>
         <div className="container mx-auto p-4 bg-gray-100 rounded-lg shadow-md">
           <p className="text-center text-lg">

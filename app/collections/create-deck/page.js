@@ -1,5 +1,4 @@
 'use client';
-
 import React, { useState } from 'react';
 import dynamic from 'next/dynamic';
 import { useSession } from 'next-auth/react';
@@ -11,7 +10,7 @@ const CreateDeck = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [selectedStyle, setSelectedStyle] = useState(null);
-  const [questions, setQuestions] = useState([]); // Assuming QuestionInput updates this state
+  const [questions, setQuestions] = useState([]);
   const [decks, setDecks] = useState([]);
   const { data: session } = useSession();
   const router = useRouter();
@@ -55,9 +54,9 @@ const CreateDeck = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-center py-10 pt-24">
-      <div className="w-full max-w-lg bg-white rounded-lg shadow-md p-8">
+      <div className="w-full max-w-lg bg-white rounded-lg shadow-md p-8 mb-8">
         <h2 className="text-3xl font-bold text-center mb-6">Create a New Deck</h2>
-        <form onSubmit={handleCreateDeck}>
+        <form onSubmit={handleCreateDeck} className="space-y-4">
           <div className="mb-4">
             <label className="block text-sm font-medium mb-2">Deck Title</label>
             <input
@@ -86,10 +85,12 @@ const CreateDeck = () => {
               setSelectedStyle={setSelectedStyle}
             />
           </div>
-          <div className="mb-4">
-            <QuestionInput questions={questions} setQuestions={setQuestions} />
+          <div className="flex space-x-4">
+            <div className="flex-1">
+              <QuestionInput questions={questions} setQuestions={setQuestions} />
+            </div>
           </div>
-          <button type="submit" className="btn btn-primary w-full mb-4">
+          <button type="submit" className="btn bg-black text-white w-full">
             Create Deck
           </button>
         </form>
@@ -98,10 +99,8 @@ const CreateDeck = () => {
   );
 };
 
-// Dynamically import the withAuth HOC with no SSR
 const WithAuth = dynamic(() => import('../../components/withAuth'), { ssr: false });
 
-// Create a wrapper component that applies the HOC
 const CreateDeckPage = () => (
   <WithAuth>
     <CreateDeck />

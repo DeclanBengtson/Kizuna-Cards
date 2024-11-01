@@ -55,7 +55,7 @@ export default function Navbar() {
         <div className="flex justify-between items-center w-full px-4">
           <div className="flex-1">
             <NavLink href="/" className="btn btn-ghost normal-case text-xl">
-              Couples Questions
+              Kizuna
             </NavLink>
           </div>
           <div className="hidden lg:flex">
