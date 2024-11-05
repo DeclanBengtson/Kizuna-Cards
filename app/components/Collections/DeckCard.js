@@ -52,13 +52,13 @@ const DeckCard = ({ deck, onDelete }) => {
         )}
       </div>
 
-      <div className="ml-4 flex flex-col justify-between flex-grow h-32">
+      <div className="ml-4 flex flex-col justify-between flex-grow h-44 relative">
         <div className="flex-grow overflow-hidden">
           <h2 className="text-xl font-bold truncate">{title}</h2>
           <p className="text-gray-600 line-clamp-2">{description}</p>
         </div>
 
-        <div className="flex gap-2 justify-end mt-auto">
+        <div className="absolute bottom-0 right-0 flex gap-2 p-2">
           <button
             onClick={handleEditDeck}
             className="btn btn-ghost btn-sm"

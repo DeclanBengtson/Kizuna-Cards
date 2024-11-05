@@ -7,6 +7,11 @@
   --horizontal-scroll-speed: 30s;
 }
 
+/* Apply the Oswald font to all h1, h2, and h3 tags */
+h1, h2, h3 {
+  @apply font-heading; /* Use the custom font family defined in Tailwind config */
+}
+
 /* Base styles */
 * {
   box-sizing: border-box;

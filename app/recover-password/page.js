@@ -30,7 +30,7 @@ const RecoverPasswordPage = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen">
-      <form className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md" onSubmit={handleRecover}>
+      <form className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg" onSubmit={handleRecover}>
         <h2 className="text-2xl font-bold text-center">Recover Password</h2>
         <div className="form-control">
           <label className="label">
@@ -45,7 +45,7 @@ const RecoverPasswordPage = () => {
             required
           />
         </div>
-        <button type="submit" className="btn btn-primary w-full">Send Recovery Email</button>
+        <button type="submit" className="btn bg-black text-white w-full">Send Recovery Email</button>
         {message && <p className="text-center mt-4">{message}</p>}
       </form>
     </div>

@@ -8,9 +8,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
- // Add your custom background color here
+        // Add your custom background color here
       },
       fontFamily: {
+        heading: ['Poppin', 'sans-serif'], 
         sriracha: ['Sriracha', 'cursive'],
         titanOne: ['Titan One', 'serif'],
       },
