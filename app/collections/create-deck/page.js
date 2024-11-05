@@ -1,8 +1,8 @@
 'use client';
-import React, { useState } from 'react';
-import dynamic from 'next/dynamic';
-import { useSession } from 'next-auth/react';
+
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 import DeckStyleSelector from '../../components/Collections/DeckStyleSelector';
 import QuestionInput from '../../components/QuestionInput';
 
@@ -12,8 +12,15 @@ const CreateDeck = () => {
   const [selectedStyle, setSelectedStyle] = useState(null);
   const [questions, setQuestions] = useState([]);
   const [decks, setDecks] = useState([]);
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const router = useRouter();
+
+  useEffect(() => {
+    if (status === 'loading') return; // Wait for session status to resolve
+    if (!session) {
+      router.push('/login'); // Redirect to login if not authenticated
+    }
+  }, [session, status, router]);
 
   const handleCreateDeck = async (e) => {
     e.preventDefault();
@@ -51,6 +58,10 @@ const CreateDeck = () => {
       console.error('Failed to create deck');
     }
   };
+
+  if (status === 'loading') {
+    return <p>Loading...</p>; // Optional: Loading state while checking session
+  }
 
   return (
     <div className="min-h-screen flex flex-col items-center py-10 pt-24">
@@ -99,12 +110,4 @@ const CreateDeck = () => {
   );
 };
 
-const WithAuth = dynamic(() => import('../../components/withAuth'), { ssr: false });
-
-const CreateDeckPage = () => (
-  <WithAuth>
-    <CreateDeck />
-  </WithAuth>
-);
-
-export default CreateDeckPage;
+export default CreateDeck;

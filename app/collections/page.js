@@ -1,20 +1,22 @@
-// Collections.js
 'use client';
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
-import dynamic from 'next/dynamic';
 import DeckCard from '../components/Collections/DeckCard';
-import CreateDeckCard from '../components/Collections/CreateDeckCard'; // Import the new component
+import CreateDeckCard from '../components/Collections/CreateDeckCard';
 
 const Collections = () => {
   const [collections, setCollections] = useState([]);
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const router = useRouter();
 
   useEffect(() => {
-    if (!session) return;
+    if (status === 'loading') return; // Wait for session status to resolve
+    if (!session) {
+      router.push('/login'); // Redirect to login if not authenticated
+      return;
+    }
 
     const fetchCollections = async () => {
       const response = await fetch(`/api/decks?userId=${session.user.id}`);
@@ -25,7 +27,7 @@ const Collections = () => {
     };
 
     fetchCollections();
-  }, [session]);
+  }, [session, status, router]);
 
   const handleDelete = (id) => {
     setCollections((prevCollections) =>
@@ -33,13 +35,17 @@ const Collections = () => {
     );
   };
 
+  if (status === 'loading') {
+    return <p>Loading...</p>; // Optional: Loading state while checking session
+  }
+
   return (
     <div className="min-h-screen flex flex-col items-center py-10 pt-24">
-      <div className="w-full max-w-2xl bg-white rounded-lg shadow-md p-6"> {/* adjusted max-w-6xl to max-w-5xl */}
+      <div className="w-full max-w-2xl bg-white rounded-lg shadow-md p-6">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-2xl font-bold">Your Collections</h2>
         </div>
-        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-1"> {/* reduced gap-6 to gap-4 */}
+        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-1">
           <CreateDeckCard />
           {collections.map((collection) => (
             <DeckCard key={collection._id} deck={collection} onDelete={handleDelete} />
@@ -53,14 +59,4 @@ const Collections = () => {
   );
 };
 
-// Dynamically import the withAuth HOC with no SSR
-const WithAuth = dynamic(() => import('../components/withAuth'), { ssr: false });
-
-// Create a wrapper component that applies the HOC
-const CollectionsPage = () => (
-  <WithAuth>
-    <Collections />
-  </WithAuth>
-);
-
-export default CollectionsPage;
+export default Collections;

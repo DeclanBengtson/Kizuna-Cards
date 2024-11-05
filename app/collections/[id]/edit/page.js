@@ -12,10 +12,16 @@ const EditDeck = () => {
   const [description, setDescription] = useState('');
   const [selectedStyle, setSelectedStyle] = useState(null);
   const [questions, setQuestions] = useState([]);
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const router = useRouter();
 
   useEffect(() => {
+    if (status === 'loading') return; // Wait for session status to resolve
+    if (!session) {
+      router.push('/login'); // Redirect to login if not authenticated
+      return;
+    }
+
     const fetchDeck = async () => {
       const response = await fetch(`/api/decks/${id}`);
       if (response.ok) {
@@ -32,7 +38,7 @@ const EditDeck = () => {
     if (id) {
       fetchDeck();
     }
-  }, [id]);
+  }, [id, session, status, router]);
 
   const handleUpdateDeck = async (e) => {
     e.preventDefault();
@@ -58,6 +64,10 @@ const EditDeck = () => {
       console.error('Failed to update deck');
     }
   };
+
+  if (status === 'loading') {
+    return <p>Loading...</p>; // Optional: Loading state while checking session
+  }
 
   return (
     <div className="min-h-screen flex flex-col items-center py-10 pt-24 bg-gray-50">

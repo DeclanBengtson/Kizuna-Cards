@@ -32,9 +32,6 @@ const HomePage = () => {
           </p>
         </div>
       </div>
-      <div className="container mx-auto p-4">
-        <Subscriptions />
-      </div>
     </div>
   );
 };

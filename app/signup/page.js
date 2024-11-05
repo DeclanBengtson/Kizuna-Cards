@@ -76,7 +76,7 @@ const SignupPage = () => {
               required
             />
           </div>
-          <button type="submit" className="btn w-full bg-black text-white">Sign Up</button>
+          <button type="submit" className="btn w-full bg-black text-white">Create an account</button>
           <div className="flex justify-between items-center">
             <p className="text-left">Already have an account?</p>
             <a href="/login" className="btn bg-black text-white">Login</a>

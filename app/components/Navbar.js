@@ -63,11 +63,6 @@ export default function Navbar() {
               <li><NavLink href="/collections">Collections</NavLink></li>
               <li><NavLink href="/browse">Browse</NavLink></li>
               <li><NavLink href="/login">Login</NavLink></li>
-              <li>
-                <button className="btn bg-black text-white" onClick={openModal}>
-                  Get Premium
-                </button>
-              </li>
             </ul>
           </div>
           <div className="lg:hidden">
@@ -82,11 +77,6 @@ export default function Navbar() {
               <li><NavLink href="/collections">Collections</NavLink></li>
               <li><NavLink href="/browse">Browse</NavLink></li>
               <li><NavLink href="/login">Login</NavLink></li>
-              <li>
-                <button className="btn bg-black text-white" onClick={openModal}>
-                  Get Premium
-                </button>
-              </li>
             </ul>
           </div>
         )}
