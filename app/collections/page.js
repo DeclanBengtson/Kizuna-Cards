@@ -1,5 +1,4 @@
 'use client';
-
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
@@ -8,13 +7,14 @@ import CreateDeckCard from '../components/Collections/CreateDeckCard';
 
 const Collections = () => {
   const [collections, setCollections] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
   const { data: session, status } = useSession();
   const router = useRouter();
 
   useEffect(() => {
-    if (status === 'loading') return; // Wait for session status to resolve
+    if (status === 'loading') return;
     if (!session) {
-      router.push('/login'); // Redirect to login if not authenticated
+      router.push('/login');
       return;
     }
 
@@ -36,24 +36,35 @@ const Collections = () => {
   };
 
   if (status === 'loading') {
-    return <p>Loading...</p>; // Optional: Loading state while checking session
+    return <div>Loading...</div>;
   }
 
+  const filteredCollections = collections.filter((collection) =>
+    collection.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
-    <div className="min-h-screen flex flex-col items-center py-10 pt-24">
-      <div className="w-full max-w-2xl bg-white rounded-lg shadow-md p-6">
+    <div className="min-h-screen bg-gray-100 p-4 pt-24">
+      <div className="max-w-4xl mx-auto">
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-2xl font-bold">Your Collections</h2>
+          <h1 className="text-2xl font-bold">Your Collections</h1>
+          <input
+            type="text"
+            placeholder="Search..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="input input-bordered w-full max-w-xs"
+          />
         </div>
-        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-1">
-          <CreateDeckCard />
-          {collections.map((collection) => (
+
+        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+          {filteredCollections.map((collection) => (
             <DeckCard key={collection._id} deck={collection} onDelete={handleDelete} />
           ))}
-        </ul>
-        {collections.length === 0 && (
-          <p className="text-gray-500">No collections available.</p>
-        )}
+          {filteredCollections.length === 0 && (
+            <div className="text-center text-gray-500">No collections available.</div>
+          )}
+        </div>
       </div>
     </div>
   );
