@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
+import { Plus } from 'lucide-react';
 import DeckCard from '../components/Collections/DeckCard';
 import CreateDeckCard from '../components/Collections/CreateDeckCard';
 
@@ -35,6 +36,10 @@ const Collections = () => {
     );
   };
 
+  const handleCreateDeck = () => {
+    router.push('/create-deck');
+  };
+
   if (status === 'loading') {
     return <div>Loading...</div>;
   }
@@ -46,15 +51,24 @@ const Collections = () => {
   return (
     <div className="min-h-screen bg-gray-100 p-4 pt-24">
       <div className="max-w-4xl mx-auto">
-        <div className="flex justify-between items-center mb-4">
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mb-4">
           <h1 className="text-2xl font-bold">Your Collections</h1>
-          <input
-            type="text"
-            placeholder="Search..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="input input-bordered w-full max-w-xs"
-          />
+          <div className="flex gap-4 w-full sm:w-auto">
+            <input
+              type="text"
+              placeholder="Search..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="input input-bordered flex-grow sm:flex-grow-0 sm:w-64"
+            />
+            <button
+              onClick={handleCreateDeck}
+              className="btn bg-white text-black flex items-center gap-2"
+            >
+              <Plus className="w-4 h-4" />
+              Create Deck
+            </button>
+          </div>
         </div>
 
         <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">

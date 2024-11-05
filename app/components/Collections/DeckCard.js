@@ -43,7 +43,7 @@ const DeckCard = ({ deck, onDelete }) => {
             alt={title}
             width={200}
             height={600}
-            className="object-cover w-full h-40"
+            className="object-cover w-full h-40 rounded-lg"
           />
         ) : (
           <div className="rounded-xl w-full h-32 bg-gray-200 flex items-center justify-center">
