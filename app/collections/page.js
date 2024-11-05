@@ -37,7 +37,7 @@ const Collections = () => {
   };
 
   const handleCreateDeck = () => {
-    router.push('/create-deck');
+    router.push('/collections/create-deck');
   };
 
   if (status === 'loading') {
