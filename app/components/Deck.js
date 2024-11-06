@@ -1,10 +1,10 @@
-// Deck.js
 'use client';
 
 import React, { useReducer, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './Deck.css';
 
+// Initial state setup
 const initialState = (initialCards, questions) => ({
   cards: initialCards,
   nextCardId: initialCards.length + 1,
@@ -12,6 +12,7 @@ const initialState = (initialCards, questions) => ({
   isAnimating: false,
 });
 
+// Reducer function to manage state transitions
 const reducer = (state, action) => {
   switch (action.type) {
     case 'FLIP_CARD':
@@ -31,7 +32,15 @@ const reducer = (state, action) => {
         isAnimating: true,
       };
     case 'ADD_NEW_CARD':
-      if (state.questions.length === 0) return { ...state, isAnimating: false };
+      if (state.questions.length === 0) {
+        // Reshuffle and reset questions if all are used
+        const reshuffledQuestions = shuffleArray([...friendsQuestions]);
+        return {
+          ...state,
+          questions: reshuffledQuestions,
+          isAnimating: false,
+        };
+      }
 
       const newQuestion = state.questions[0];
       const newCard = {
