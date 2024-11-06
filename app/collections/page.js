@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
-import { Plus } from 'lucide-react';
+import { Plus, Search } from 'lucide-react';
 import DeckCard from '../components/Collections/DeckCard';
 
 const Collections = () => {
@@ -39,43 +39,71 @@ const Collections = () => {
     router.push('/collections/create-deck');
   };
 
-  if (status === 'loading') {
-    return <div>Loading...</div>;
-  }
-
   const filteredCollections = collections.filter((collection) =>
     collection.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  if (status === 'loading') {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-pulse text-xl text-gray-600">Loading your collections...</div>
+      </div>
+    );
+  }
+
   return (
-    <div className="min-h-screen bg-gray-100 p-4 pt-24">
-      <div className="max-w-4xl mx-auto">
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mb-4">
-          <h1 className="text-2xl font-bold">Your Collections</h1>
-          <div className="flex gap-4 w-full sm:w-auto">
-            <input
-              type="text"
-              placeholder="Search..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="input input-bordered flex-grow sm:flex-grow-0 sm:w-64"
-            />
-            <button
-              onClick={handleCreateDeck}
-              className="btn bg-white text-black flex items-center gap-2"
-            >
-              <Plus className="w-4 h-4" />
-              Create Deck
-            </button>
-          </div>
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-6 pt-24">
+      <div className="max-w-6xl mx-auto">
+        {/* Header Section */}
+        <div className="mb-12 text-center">
+          <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-black mb-4">
+            Your Collections
+          </h1>
+          <div className="w-24 h-1 bg-black mx-auto rounded-full" />
         </div>
 
-        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        {/* Search and Create Section */}
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-8">
+          <div className="relative w-full sm:w-96">
+            <input
+              type="text"
+              placeholder="Search collections..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full px-4 py-3 pl-12 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 bg-white/80 backdrop-blur-sm"
+            />
+            <Search className="w-5 h-5 text-gray-400 absolute left-4 top-1/2 transform -translate-y-1/2" />
+          </div>
+          <button
+            onClick={handleCreateDeck}
+            className="px-6 py-3 bg-white text-black rounded-xl border border-gray-300 hover:shadow-lg transition-all duration-200 flex items-center gap-2 hover:scale-105 transform"
+            >
+            <Plus className="w-5 h-5" />
+            Create Deck
+          </button>
+        </div>
+
+        {/* Collections Grid */}
+        <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {filteredCollections.map((collection) => (
-            <DeckCard key={collection._id} deck={collection} onDelete={handleDelete} />
+            <div key={collection._id} className="transform hover:scale-102 transition-all duration-200">
+              <DeckCard deck={collection} onDelete={handleDelete} />
+            </div>
           ))}
           {filteredCollections.length === 0 && (
-            <div className="text-center text-gray-500">No collections available.</div>
+            <div className="col-span-full py-12 text-center">
+              <div className="text-gray-500 text-lg">
+                {searchTerm ? 'No collections match your search.' : 'Create your first collection!'}
+              </div>
+              {!searchTerm && (
+                <button
+                  onClick={handleCreateDeck}
+                  className="mt-4 px-6 py-2 text-blue-600 border border-blue-600 rounded-lg hover:bg-blue-50 transition-colors duration-200"
+                >
+                  Get Started
+                </button>
+              )}
+            </div>
           )}
         </div>
       </div>
