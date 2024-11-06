@@ -16,7 +16,7 @@ function shuffleArray(array) {
   return array;
 }
 const NewConnections = () => {
-  const shuffledQuestions = shuffleArray([...friendsQuestions]);
+  const shuffledQuestions = shuffleArray([...NewConnectionsQuestions]);
   const initialCards = shuffledQuestions.slice(0, 1).map((question, index) => ({
     id: index,
     ...question,
