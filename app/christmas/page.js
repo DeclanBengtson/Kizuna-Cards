@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import dynamic from 'next/dynamic';
 import Deck from '../components/Deck';
 
 import FrontImage from '../../public/Images/Christmas/Christmas_Front.png';
@@ -15,8 +14,9 @@ function shuffleArray(array) {
   }
   return array;
 }
+
 const Christmas = () => {
-  const shuffledQuestions = shuffleArray([...familyQuestions]);
+  const shuffledQuestions = shuffleArray([...ChristmasQuestions]);
   const initialCards = shuffledQuestions.slice(0, 1).map((question, index) => ({
     id: index,
     ...question,
@@ -25,21 +25,34 @@ const Christmas = () => {
     zIndex: 1
   }));
 
-  const remainingQuestions = shuffledQuestions.slice(1); // Get remaining shuffled questions
+  const remainingQuestions = shuffledQuestions.slice(1);
 
-
-  // Replace inline fontStyle with Tailwind classes
-  const cardStyles = "font-titanOne font-bold text-green-600 text-3xl";
+  const cardStyles = "font-titanOne font-bold text-3xl text-green-600";
 
   return (
-    <div className="flex flex-col justify-center items-center h-screen w-full bg-cover bg-center">
-      <Deck
-        initialCards={initialCards}
-        questions={remainingQuestions}
-        customStyles={`family-card ${cardStyles}`}
-        frontImage={FrontImage.src}
-        backImage={BackImage.src}
-      />
+    <div className="relative h-screen w-full overflow-hidden">
+      {/* Animated gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-green-100 via-red-100 to-green-200 animate-gradient-xy" />
+      
+      {/* Floating bubbles (snowflakes) */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-white rounded-full mix-blend-multiply filter blur-xl animate-float-delay-1 opacity-40" />
+        <div className="absolute top-3/4 left-1/3 w-96 h-96 bg-white rounded-full mix-blend-multiply filter blur-xl animate-float-delay-2 opacity-40" />
+        <div className="absolute top-1/3 right-1/4 w-72 h-72 bg-white rounded-full mix-blend-multiply filter blur-xl animate-float-delay-3 opacity-30" />
+        <div className="absolute bottom-1/4 right-1/3 w-80 h-80 bg-white rounded-full mix-blend-multiply filter blur-xl animate-float-delay-4 opacity-30" />
+        <div className="absolute top-1/2 left-1/2 w-60 h-60 bg-white rounded-full mix-blend-multiply filter blur-xl animate-float opacity-40" />
+      </div>
+
+      {/* Content container */}
+      <div className="relative flex flex-col justify-center items-center h-full w-full z-10">
+        <Deck
+          initialCards={initialCards}
+          questions={remainingQuestions}
+          customStyles={`christmas-card ${cardStyles}`}
+          frontImage={FrontImage.src}
+          backImage={BackImage.src}
+        />
+      </div>
     </div>
   );
 };

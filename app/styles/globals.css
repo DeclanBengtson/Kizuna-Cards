@@ -104,3 +104,72 @@ html {
 .inline-flex {
   display: inline-flex;
 }
+
+@keyframes gradient-xy {
+  0%, 100% {
+    background-size: 400% 400%;
+    background-position: left center;
+  }
+  50% {
+    background-size: 200% 200%;
+    background-position: right center;
+  }
+}
+
+/* Float animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* Animation utility classes */
+.animate-gradient-xy {
+  animation: gradient-xy 15s ease infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delay-1 {
+  animation: float 7s ease-in-out infinite;
+}
+
+.animate-float-delay-2 {
+  animation: float 8s ease-in-out infinite;
+}
+
+.animate-float-delay-3 {
+  animation: float 9s ease-in-out infinite;
+}
+
+.animate-float-delay-4 {
+  animation: float 10s ease-in-out infinite;
+}
+
+/* Optional: Add smooth transitions for the gradient */
+.bg-gradient-to-br {
+  transition: background-position 0.3s ease;
+}
+
+/* Ensure proper blur rendering */
+.filter.blur-xl {
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+/* Optional: Improve performance for animations */
+.animate-gradient-xy,
+.animate-float,
+.animate-float-delay-1,
+.animate-float-delay-2,
+.animate-float-delay-3,
+.animate-float-delay-4 {
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
