@@ -4,7 +4,6 @@ import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import { Plus } from 'lucide-react';
 import DeckCard from '../components/Collections/DeckCard';
-import CreateDeckCard from '../components/Collections/CreateDeckCard';
 
 const Collections = () => {
   const [collections, setCollections] = useState([]);

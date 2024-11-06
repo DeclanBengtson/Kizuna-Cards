@@ -1,14 +1,12 @@
 import React from 'react';
 import Link from 'next/link';
-import Subscriptions from '../components/subscriptions/subscriptionsembed';
 import CardBox from '../components/Home/CardBox';
-import KizunaHighlight from '../components/Home/KizunaHighlight'; // Import the new component
 
 const HomePage = () => {
   return (
     <div className="min-h-screen flex flex-col">
-      <div className="container mx-auto p-4 pt-24 flex-grow">
-        <div className="flex flex-col lg:flex-row items-center justify-between mb-8">
+      <div className="pt-24 flex-grow"> {/* Removed container class here */}
+        <div className="p-8 flex flex-col lg:flex-row items-center justify-between mb-8">
           <div className="lg:w-1/2 mb-4 lg:mb-0 text-center lg:text-left pr-20">
             <h2 className="text-3xl font-bold mb-4">Play and Create</h2>
             <p className="text-lg mb-4">
@@ -24,12 +22,13 @@ const HomePage = () => {
             <CardBox />
           </div>
         </div>
-        <KizunaHighlight /> {/* Use the new component here */}
-        <h2 className="text-3xl font-bold mb-4 text-center">Collections</h2>
-        <div className="container mx-auto p-4 bg-gray-100 rounded-lg shadow-md">
-          <p className="text-center text-lg">
-            Explore our curated collections of decks designed to enhance your experience. Dive into different themes and find the perfect set of questions for any occasion.
-          </p>
+        <div className='w-full bg-purple-100 py-8'>
+          <h2 className="text-3xl font-bold mb-4 text-center">Collections</h2>
+          <div className="p-4"> {/* Removed container class here */}
+            <p className="text-center text-lg">
+              Explore our curated collections of decks designed to enhance your experience. Dive into different themes and find the perfect set of questions for any occasion.
+            </p>
+          </div>
         </div>
       </div>
     </div>
