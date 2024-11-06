@@ -34,14 +34,14 @@ const HomePage = () => {
               Join us to explore a world of creativity and connection. Start your journey by browsing our collections or creating your own custom decks.
             </p>
             <div className="flex justify-center space-x-4">
-              <Link href="/get-started" legacyBehavior>
+              <Link href="/browse" legacyBehavior>
                 <a className="w-40 text-center bg-purple-700 hover:bg-purple-800 text-white font-semibold py-3 px-4 rounded">
-                  Get Started
+                  Browse
                 </a>
               </Link>
-              <Link href="/learn-more" legacyBehavior>
+              <Link href="/collections" legacyBehavior>
                 <a className="w-40 text-center bg-transparent hover:bg-purple-200 text-purple-700 font-semibold py-3 px-4 border border-purple-500 rounded">
-                  Learn More
+                  Create
                 </a>
               </Link>
             </div>
