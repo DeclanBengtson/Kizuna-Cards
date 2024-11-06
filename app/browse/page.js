@@ -22,7 +22,7 @@ const Browser = () => {
   return (
     <div className="flex h-screen pt-24">
       {/* Static Content on the Left */}
-      <div className="w-1/3 bg-gray-100 p-8 hidden lg:block">
+      <div className="w-1/3 bg-purple-100 p-8 hidden lg:block">
         <h2 className="text-2xl font-bold mb-4">About Our Decks</h2>
         <p className="text-gray-700 mb-4">
           Our decks are designed to spark interesting conversations and deepen connections with friends, family, and colleagues.
