@@ -56,10 +56,10 @@ const Collections = () => {
       <div className="max-w-6xl mx-auto">
         {/* Header Section */}
         <div className="mb-12 text-center">
-          <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-black mb-4">
+          <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600 mb-4">
             Your Collections
           </h1>
-          <div className="w-24 h-1 bg-black mx-auto rounded-full" />
+          <div className="w-24 h-1 bg-black mx-auto bg-gradient-to-r from-purple-600 to-pink-600 rounded-full" />
         </div>
 
         {/* Search and Create Section */}
