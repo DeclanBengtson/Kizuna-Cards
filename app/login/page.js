@@ -3,8 +3,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { signIn } from 'next-auth/react';
-import 'tailwindcss/tailwind.css';
-import 'daisyui/dist/full.css';
 
 // Import the CardScroll component
 import LoginScroll from '../components/Login/loginscroll';  // Adjust the path as necessary
