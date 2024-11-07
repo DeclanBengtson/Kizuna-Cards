@@ -52,7 +52,7 @@ const Collections = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-6 pt-24">
+    <div className="min-h-screen bg-gradient-to-br from-purple-200 via-white to-pink-200 relative">
       <div className="max-w-6xl mx-auto">
         {/* Header Section */}
         <div className="mb-12 text-center">
@@ -95,14 +95,6 @@ const Collections = () => {
               <div className="text-gray-500 text-lg">
                 {searchTerm ? 'No collections match your search.' : 'Create your first collection!'}
               </div>
-              {!searchTerm && (
-                <button
-                  onClick={handleCreateDeck}
-                  className="mt-4 px-6 py-2 text-blue-600 border border-blue-600 rounded-lg hover:bg-blue-50 transition-colors duration-200"
-                >
-                  Get Started
-                </button>
-              )}
             </div>
           )}
         </div>

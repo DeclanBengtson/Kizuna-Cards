@@ -1,5 +1,5 @@
 import React from 'react';
-import BrowserCard from '../components/Browse/BrowserCard'; // Adjust the import path as necessary
+import BrowserCard from '../components/Browse/BrowserCard';
 
 // Images
 import friendsImage from '../../public/Images/Friends/Friends_Front.png';
@@ -20,11 +20,17 @@ const Decks = [
 
 const Browser = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pt-24">
+    <div className="min-h-screen bg-gradient-to-br from-purple-200 via-white to-pink-200 relative">
+      {/* Decorative background elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute -top-48 -right-48 w-96 h-96 bg-purple-100 rounded-full opacity-20 blur-3xl" />
+        <div className="absolute -bottom-48 -left-48 w-96 h-96 bg-pink-100 rounded-full opacity-20 blur-3xl" />
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pt-24">
         {/* Hero Section */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl mb-4">
+          <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600">
             Discover Meaningful Conversations
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -36,7 +42,7 @@ const Browser = () => {
         <div className="grid lg:grid-cols-3 gap-8">
           {/* About Section */}
           <div className="lg:col-span-1">
-            <div className="bg-purple-100 rounded-xl p-8 sticky top-8">
+            <div className="bg-white/70 backdrop-blur-sm rounded-xl p-8 sticky top-8 border border-purple-100/50 shadow-lg">
               <div className="flex items-center space-x-3 mb-6">
                 <h2 className="text-2xl font-bold text-gray-900">About Our Decks</h2>
               </div>
@@ -55,7 +61,10 @@ const Browser = () => {
           <div className="lg:col-span-2">
             <div className="grid sm:grid-cols-2 gap-6">
               {Decks.map((deck, index) => (
-                <div key={index} className="transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                <div 
+                  key={index} 
+                  className="transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl bg-white/70 backdrop-blur-sm rounded-xl border border-purple-100/50"
+                >
                   <BrowserCard
                     to={deck.to}
                     image={deck.image}

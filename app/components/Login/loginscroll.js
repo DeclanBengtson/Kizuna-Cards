@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 
+
 // Import images directly
 import friendsImage from '../../../public/Images/Friends/Friends_Front.png'; 
 import LoversImage from '../../../public/Images/Couples/Couples_Front.png'; 
