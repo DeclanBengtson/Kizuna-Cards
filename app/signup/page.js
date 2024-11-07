@@ -2,8 +2,6 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import 'tailwindcss/tailwind.css';
-import 'daisyui/dist/full.css';
 import VerticalCardAnimation from '../components/Signup/VerticalCardAnimation'; // Import the new component
 
 const SignupPage = () => {
