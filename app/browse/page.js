@@ -39,27 +39,10 @@ const Browser = () => {
         </div>
 
         {/* Main Content */}
-        <div className="grid lg:grid-cols-3 gap-8">
-          {/* About Section */}
-          <div className="lg:col-span-1">
-            <div className="bg-white/70 backdrop-blur-sm rounded-xl p-8 sticky top-8 border border-purple-100/50 shadow-lg">
-              <div className="flex items-center space-x-3 mb-6">
-                <h2 className="text-2xl font-bold text-gray-900">About Our Decks</h2>
-              </div>
-              <div className="space-y-4 text-gray-700">
-                <p>
-                  Our decks are designed to spark interesting conversations and deepen connections with friends, family, and colleagues.
-                </p>
-                <p>
-                  Whether you&apos;re looking to break the ice with new acquaintances or strengthen bonds with loved ones, we have a deck for every occasion.
-                </p>
-              </div>
-            </div>
-          </div>
-
+        <div className="grid gap-8">
           {/* Cards Grid */}
           <div className="lg:col-span-2">
-            <div className="grid sm:grid-cols-2 gap-6">
+            <div className="grid sm:grid-cols-3 gap-6">
               {Decks.map((deck, index) => (
                 <div 
                   key={index} 
