@@ -52,7 +52,7 @@ const Collections = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-200 via-white to-pink-200 relative">
+    <div className="min-h-screen bg-gradient-to-br from-purple-200 via-white to-pink-200 relative pt-24">
       <div className="max-w-6xl mx-auto">
         {/* Header Section */}
         <div className="mb-12 text-center">
