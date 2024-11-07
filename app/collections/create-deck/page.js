@@ -10,61 +10,61 @@ import QuestionInput from '../../components/QuestionInput';
 
 // CreateDeck.js
 const CreateDeck = () => {
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [selectedStyle, setSelectedStyle] = useState(null);
-  const [questions, setQuestions] = useState([]);
-  const [decks, setDecks] = useState([]);
-  const { data: session, status } = useSession();
-  const router = useRouter();
+const [title, setTitle] = useState('');
+const [description, setDescription] = useState('');
+const [selectedStyle, setSelectedStyle] = useState(null);
+const [questions, setQuestions] = useState([]);
+const [decks, setDecks] = useState([]);
+const { data: session, status } = useSession();
+const router = useRouter();
 
-  useEffect(() => {
-    if (status === 'loading') return;
-    if (!session) {
-      router.push('/login');
-    }
-  }, [session, status, router]);
-
-  const handleCreateDeck = async (e) => {
-    e.preventDefault();
-    if (!session) {
-      console.error('User is not authenticated');
-      return;
-    }
-    if (questions.length === 0) {
-      alert('Please add at least one question to the deck.');
-      return;
-    }
-
-    const userId = session.user.id;
-    const newDeck = { title, description, style: selectedStyle, questions, userId };
-
-    const response = await fetch('/api/decks/create', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(newDeck),
-    });
-
-    if (response.ok) {
-      const createdDeck = await response.json();
-      setDecks([...decks, createdDeck.deck]);
-      setTitle('');
-      setDescription('');
-      setSelectedStyle(null);
-      setQuestions([]);
-      router.push('/collections');
-    } else {
-      console.error('Failed to create deck');
-    }
-  };
-
-  if (status === 'loading') {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-pulse text-gray-600">Loading...</div>
-      </div>
-    );
+useEffect(() => {
+  if (status === 'loading') return;
+  if (!session) {
+    router.push('/login');
   }
+}, [session, status, router]);
+
+const handleCreateDeck = async (e) => {
+  e.preventDefault();
+  if (!session) {
+    console.error('User is not authenticated');
+    return;
+  }
+  if (questions.length === 0) {
+    alert('Please add at least one question to the deck.');
+    return;
+  }
+
+  const userId = session.user.id;
+  const newDeck = { title, description, style: selectedStyle, questions, userId };
+
+  const response = await fetch('/api/decks/create', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(newDeck),
+  });
+
+  if (response.ok) {
+    const createdDeck = await response.json();
+    setDecks([...decks, createdDeck.deck]);
+    setTitle('');
+    setDescription('');
+    setSelectedStyle(null);
+    setQuestions([]);
+    router.push('/collections');
+  } else {
+    console.error('Failed to create deck');
+  }
+};
+
+if (status === 'loading') {
+  return (
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="animate-pulse text-gray-600">Loading...</div>
+    </div>
+  );
+}
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-200 via-white to-pink-200 pt-16">

@@ -1,8 +1,8 @@
-// DeckPage.js
 'use client';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import Deck from '../../components/Deck';
+import PersonalDeck from '../../components/Collections/PersonalDeck'; // Import PersonalDeck
 
 const DeckPage = () => {
   const params = useParams();
@@ -63,7 +63,7 @@ const DeckPage = () => {
 
   // Transform questions into initialCards format
   const initialCards = deck.questions.map((question) => ({
-    frontContent: deck.title, // Display the title on the front
+    frontContent: deck.title,
     backContent: question,
     isFlipped: false,
     isSlid: false,
@@ -74,13 +74,14 @@ const DeckPage = () => {
 
   return (
     <div className="flex flex-col justify-center items-center h-screen w-full bg-cover bg-center">
+      <PersonalDeck deck={deck} /> {/* Use PersonalDeck */}
       <Deck
         title={deck.title}
         initialCards={initialCards}
         questions={deck.questions}
         customStyles={`lovers-card ${cardStyles}`}
-        frontImage={deck.style.imageUrl.src} // Use deck's image as the front
-        backImage={deck.style.imageUrl.src}  // Use deck's image as the back
+        frontImage={deck.style.imageUrl.src}
+        backImage={deck.style.imageUrl.src}
       />
     </div>
   );

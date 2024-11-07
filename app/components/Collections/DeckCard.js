@@ -1,7 +1,7 @@
 import React from 'react';
-import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { Pencil, Trash2 } from 'lucide-react';
+import Card from './Card'; // Import the Card component
 
 const DeckCard = ({ deck, onDelete }) => {
   const router = useRouter();
@@ -29,49 +29,22 @@ const DeckCard = ({ deck, onDelete }) => {
   };
 
   const { title, description = "No description available", style } = deck;
-  const { src } = style.imageUrl || {};
 
   return (
-    <div 
+    <div
       onClick={handleViewDeck}
-      className="flex w-full bg-base-100 shadow-xl transition-transform transform hover:scale-105 p-4 rounded-lg cursor-pointer h-48"
+      className="flex items-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer"
     >
-      <div className="flex-shrink-0 relative w-24">
-        {src ? (
-          <Image
-            src={src}
-            alt={title}
-            width={200}
-            height={600}
-            className="object-cover w-full h-40 rounded-lg"
-          />
-        ) : (
-          <div className="rounded-xl w-full h-32 bg-gray-200 flex items-center justify-center">
-            <span className="text-gray-500">No Image</span>
-          </div>
-        )}
-      </div>
-
-      <div className="ml-4 flex flex-col justify-between flex-grow h-44 relative">
-        <div className="flex-grow overflow-hidden">
-          <h2 className="text-xl font-bold truncate">{title}</h2>
-          <p className="text-gray-600 line-clamp-2">{description}</p>
-        </div>
-
-        <div className="absolute bottom-0 right-0 flex gap-2 p-2">
-          <button
-            onClick={handleEditDeck}
-            className="btn btn-ghost btn-sm"
-            aria-label="Edit deck"
-          >
-            <Pencil className="w-4 h-4" />
+      <Card color={style.color} title={title} />
+      <div className="ml-4">
+        <h3 className="text-lg font-semibold">{title}</h3>
+        <p className="text-sm text-gray-700">{description}</p>
+        <div className="flex space-x-2 mt-2">
+          <button onClick={handleEditDeck} className="text-gray-500 hover:text-gray-700">
+            <Pencil size={20} />
           </button>
-          <button
-            onClick={handleDeleteDeck}
-            className="btn btn-ghost btn-sm text-red-500"
-            aria-label="Delete deck"
-          >
-            <Trash2 className="w-4 h-4" />
+          <button onClick={handleDeleteDeck} className="text-red-500 hover:text-red-700">
+            <Trash2 size={20} />
           </button>
         </div>
       </div>
