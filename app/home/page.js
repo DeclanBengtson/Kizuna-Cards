@@ -3,7 +3,7 @@ import React from 'react';
 import Link from 'next/link';
 import CardBox from '../components/Home/CardBox';
 import LoginScroll from '../components/Login/loginscroll';
-import DeckCard from '../components/Home/CollectionsCard'; // Import the DeckCard component
+import DeckCard from '../components/Home/CollectionsCard';
 
 import friendsImage from '../../public/Images/Friends/Friends_Front.png';
 import LoversImage from '../../public/Images/Couples/Couples_Front.png';
@@ -11,7 +11,6 @@ import familyImage from '../../public/Images/Family/Family_Front.png';
 import newConnectionsImage from '../../public/Images/New_Connections/NewConnections_Front.png';
 
 const HomePage = () => {
-  // Hardcoded deck examples
   const exampleDecks = [
     { _id: '1', title: 'First Date', description: 'Questions for first dates', style: { imageUrl: { src: friendsImage } } },
     { _id: '2', title: 'Going Deeper', description: 'Deep questions for couples', style: { imageUrl: { src: LoversImage } } },
@@ -24,7 +23,6 @@ const HomePage = () => {
       <div className="pt-24 flex-grow">
         {/* New Landing Page Section */}
         <div className="bg-white py-16 relative">
-          {/* Positioning LoginScroll behind the title */}
           <div className="absolute inset-0 z-0 opacity-20">
             <LoginScroll />
           </div>
@@ -49,10 +47,10 @@ const HomePage = () => {
         </div>
         
         {/* Browse Our Decks Section */}
-        <div className="p-8 flex flex-col lg:flex-row items-center justify-between mb-8 bg-purple-100">
-          <div className="lg:w-1/2 mb-4 lg:mb-0 text-center lg:text-left pr-20">
-            <h2 className="text-3xl font-bold mb-4">Browse our decks</h2>
-            <p className="text-lg mb-4">
+        <div className="p-8 flex flex-col lg:flex-row items-center justify-between bg-purple-100">
+          <div className="lg:w-1/2 mb-4 lg:mb-0 text-center lg:text-left lg:pr-20">
+            <h2 className="text-3xl font-bold mb-4 text-center lg:text-left">Browse our decks</h2>
+            <p className="text-lg mb-4 text-center lg:text-left">
               Discover a variety of questions designed to spark interesting conversations and deepen your connections with friends and loved ones. Browse our decks or subscribe for unlimited access to create your own decks with deeper questions and different themes.
             </p>
             <div className="flex space-x-4 justify-center lg:justify-start">
@@ -67,13 +65,13 @@ const HomePage = () => {
         </div>
 
         {/* Collections Section with DeckCards in 2x2 Grid */}
-        <div className="p-8 flex flex-col lg:flex-row items-center justify-between mb-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:w-1/2">
+        <div className="p-8 flex flex-col lg:flex-row items-center justify-between  bg-gradient-to-br from-pink-100 via-white to-purple-100 w-full">
+          <div className="w-full lg:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-4 order-2 lg:order-1">
             {exampleDecks.map(deck => (
               <DeckCard key={deck._id} deck={deck} />
             ))}
           </div>
-          <div className="lg:w-1/2 text-center lg:text-left lg:pl-20">
+          <div className="w-full lg:w-1/2 text-center lg:text-left lg:pl-20 mb-8 lg:mb-0 order-1 lg:order-2">
             <h2 className="text-3xl font-bold mb-4">Collections</h2>
             <p className="text-lg mb-4">
               Explore our curated collections of decks designed to enhance your experience. Dive into different themes and find the perfect set of questions for any occasion.
