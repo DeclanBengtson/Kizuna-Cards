@@ -54,7 +54,7 @@ export default function Navbar() {
       <nav className="navbar bg-base-100 shadow-lg fixed top-0 left-0 w-full z-50">
         <div className="flex justify-between items-center w-full px-4">
           <div className="flex-1">
-            <NavLink href="/" className="btn btn-ghost normal-case text-xl">
+            <NavLink href="/" className="btn btn-ghost normal-case text-2xl">
               Kizuna
             </NavLink>
           </div>
