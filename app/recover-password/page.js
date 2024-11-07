@@ -1,8 +1,6 @@
 "use client"; // Ensure this page is a client component
 
 import { useState } from 'react';
-import 'tailwindcss/tailwind.css';
-import 'daisyui/dist/full.css';
 
 const RecoverPasswordPage = () => {
   const [email, setEmail] = useState('');
