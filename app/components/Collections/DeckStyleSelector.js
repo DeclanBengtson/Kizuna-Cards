@@ -1,72 +1,62 @@
 // components/DeckStyleSelector.js
 import React, { useState } from 'react';
 import Image from 'next/image';
+import { Plus, X, Edit2, Save, XCircle } from 'lucide-react';
 
-// Images
-import friendsImage from '../../../public/Images/Friends/Friends_Back.png';
-import LoversImage from '../../../public/Images/Couples/Couples_Back.png';
-import familyImage from '../../../public/Images/Family/Family_Back.png';
-import newConnectionsImage from '../../../public/Images/New_Connections/NewConnections_Back.png';
-import WorkColleaguesImage from '../../../public/Images/WorkColleagues/WorkColleagues_Back.png';
-import ChristmasImage from '../../../public/Images/Christmas/Christmas_Back.png';
-
-// Toggle Images
-import expandMoreImage from '../../../public/Images/buttons/down.png';
-import expandLessImage from '../../../public/Images/buttons/Up.png';
-
-const deckStyles = [
-  { id: 1, name: 'Pink', imageUrl: LoversImage },
-  { id: 2, name: 'Green', imageUrl: familyImage },
-  { id: 3, name: 'Blue', imageUrl: WorkColleaguesImage },
-  { id: 4, name: 'Purple', imageUrl: newConnectionsImage },
-  { id: 5, name: 'Orange', imageUrl: friendsImage },
-  { id: 6, name: 'Christmas', imageUrl: ChristmasImage },
-];
 
 const DeckStyleSelector = ({ selectedStyle, setSelectedStyle }) => {
-  const [isOpen, setIsOpen] = useState(false);
+const [isOpen, setIsOpen] = useState(false);
 
-  const handleSelect = (style) => {
-    setSelectedStyle(style);
-    setIsOpen(false);
-  };
+const deckStyles = [
+  { id: 1, name: 'Pink', color: 'bg-pink-500' },
+  { id: 2, name: 'Green', color: 'bg-green-500' },
+  { id: 3, name: 'Blue', color: 'bg-blue-500' },
+  { id: 4, name: 'Purple', color: 'bg-purple-500' },
+  { id: 5, name: 'Orange', color: 'bg-orange-500' },
+  { id: 6, name: 'Christmas', color: 'bg-red-500' },
+];
 
   return (
-    <div className="relative">
-      <button
-        type="button"
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-full bg-white border border-gray-300 rounded-lg p-4 flex justify-between items-center"
-      >
-        <span>{selectedStyle ? selectedStyle.name : 'Select Deck Style'}</span>
-        <Image
-          src={isOpen ? expandLessImage : expandMoreImage}
-          alt={isOpen ? 'Collapse' : 'Expand'}
-          width={24}
-          height={24}
-        />
-      </button>
-      {isOpen && (
-        <div className="mt-2 w-full bg-white border border-gray-300 rounded-lg shadow-lg p-4 grid grid-cols-3 gap-4">
-          {deckStyles.map((style) => (
-            <button
-              key={style.id}
-              type="button"
-              onClick={() => handleSelect(style)}
-              className="flex flex-col items-center cursor-pointer hover:bg-gray-100 p-2 rounded-lg"
-            >
-              <Image
-                src={style.imageUrl}
-                alt={style.name}
-                width={80}
-                height={80}
-                className="rounded-lg"
-              />
-              <span className="mt-2">{style.name}</span>
-            </button>
-          ))}
-        </div>
-      )}
+    <div className="space-y-2">
+      <label className="block text-sm font-medium text-gray-700">Deck Style</label>
+      <div className="relative">
+        <button
+          type="button"
+          onClick={() => setIsOpen(!isOpen)}
+          className="w-full px-4 py-3 bg-white rounded-lg border border-gray-200 flex items-center justify-between hover:border-gray-300 transition-all"
+        >
+          {selectedStyle ? (
+            <div className="flex items-center space-x-2">
+              <div className={`w-4 h-4 rounded-full ${selectedStyle.color}`} />
+              <span>{selectedStyle.name}</span>
+            </div>
+          ) : (
+            <span className="text-gray-500">Select a style</span>
+          )}
+          <Plus className={`w-5 h-5 transition-transform ${isOpen ? 'rotate-45' : ''}`} />
+        </button>
+
+        {isOpen && (
+          <div className="absolute z-10 w-full mt-2 bg-white rounded-lg shadow-lg border border-gray-100 p-2">
+            <div className="grid grid-cols-2 gap-2">
+              {deckStyles.map((style) => (
+                <button
+                  key={style.id}
+                  type="button"
+                  onClick={() => {
+                    setSelectedStyle(style);
+                    setIsOpen(false);
+                  }}
+                  className="flex items-center space-x-2 p-3 rounded-lg hover:bg-gray-50 transition-colors w-full"
+                >
+                  <div className={`w-4 h-4 rounded-full ${style.color}`} />
+                  <span>{style.name}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

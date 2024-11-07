@@ -16,9 +16,9 @@ const EditDeck = () => {
   const router = useRouter();
 
   useEffect(() => {
-    if (status === 'loading') return; // Wait for session status to resolve
+    if (status === 'loading') return;
     if (!session) {
-      router.push('/login'); // Redirect to login if not authenticated
+      router.push('/login');
       return;
     }
 
@@ -66,56 +66,54 @@ const EditDeck = () => {
   };
 
   if (status === 'loading') {
-    return <p>Loading...</p>; // Optional: Loading state while checking session
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-pulse text-gray-600">Loading...</div>
+      </div>
+    );
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center py-10 pt-24 bg-gray-50">
-      <div className="w-full max-w-lg bg-white rounded-lg shadow-md p-8">
-        <h2 className="text-3xl font-bold text-center mb-6">Edit Deck</h2>
-        <form onSubmit={handleUpdateDeck}>
-          <div className="mb-4">
-            <label className="block text-sm font-medium mb-2">Deck Title</label>
-            <input
-              type="text"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              className="input input-bordered w-full"
-              placeholder="Enter deck title"
-              required
-            />
-          </div>
-          <div className="mb-4">
-            <label className="block text-sm font-medium mb-2">Description</label>
-            <textarea
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              className="textarea textarea-bordered w-full"
-              placeholder="Enter deck description"
-              required
-            />
-          </div>
-          <div className="mb-4">
-            <label className="block text-sm font-medium mb-2">Deck Style</label>
-            <DeckStyleSelector
-              selectedStyle={selectedStyle}
-              setSelectedStyle={setSelectedStyle}
-            />
-          </div>
-          <div className="mb-4">
+    <div className="min-h-screen bg-gradient-to-br from-purple-200 via-white to-pink-200 pt-16">
+      <div className="max-w-3xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+        <div className="bg-white/70 backdrop-blur-sm rounded-2xl shadow-xl border border-purple-100/50 p-8">
+          <h2 className="text-3xl font-bold text-gray-900 text-center mb-8">Edit Deck</h2>
+          <form onSubmit={handleUpdateDeck} className="space-y-6">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Deck Title</label>
+              <input
+                type="text"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                placeholder="Enter a memorable title"
+                required
+              />
+            </div>
+            
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Description</label>
+              <textarea
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                placeholder="Describe your deck's purpose"
+                rows={3}
+                required
+              />
+            </div>
+
+            <DeckStyleSelector selectedStyle={selectedStyle} setSelectedStyle={setSelectedStyle} />
             <QuestionInput questions={questions} setQuestions={setQuestions} />
-          </div>
-          <button type="submit" className="btn btn-primary w-full mb-4">
-            Update Deck
-          </button>
-          <button
-            type="button"
-            onClick={() => router.push('/collections')}
-            className="btn btn-secondary w-full"
-          >
-            Back to Collections
-          </button>
-        </form>
+
+            <button
+              type="submit"
+              className="w-full bg-black hover:bg-gray-800 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200"
+            >
+              Update Deck
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );
