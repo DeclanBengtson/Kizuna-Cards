@@ -4,7 +4,7 @@ import 'tailwindcss/tailwind.css';
 
 const PrivacyPolicy = () => {
   return (
-    <div className="min-h-screen bg-gray-100 p-8 pt-24">
+    <div className="min-h-screen p-8 pt-24 bg-gradient-to-br from-pink-100 via-white to-purple-100">
       <div className="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-md">
         <h1 className="text-3xl font-bold mb-4">Privacy Policy</h1>
         <p className="mb-4">
