@@ -3,11 +3,11 @@
 ## Overview
 
 Kizuna Cards is a web application built with Next.js that helps people explore engaging questions to deepen their relationships and understanding. It offers a collection of themed decks with insightful questions that can be browsed and shared between people.
-![Home Page](./Public/Images/readme/Home.png)
+![Home Page](./public/Images/readme/Home.png)
 
-![Browse Page](./Public/Images/readme/Browse.png)
+![Browse Page](./public/Images/readme/Browse.png)
 
-![Cards Display](./Public/Images/readme/Cards.png)
+![Cards Display](./public/Images/readme/Cards.png)
 
 ## Features
 
