@@ -1,8 +1,8 @@
-# Couples Questions
+# Kizuna Cards
 
 ## Overview
 
-Couples Questions is a web application built with Next.js that helps couples explore engaging questions to deepen their relationships and understanding. It offers a collection of themed decks with insightful questions that can be browsed and shared between partners.
+Kizuna Cards is a web application built with Next.js that helps people explore engaging questions to deepen their relationships and understanding. It offers a collection of themed decks with insightful questions that can be browsed and shared between people.
 
 ## Features
 
@@ -30,5 +30,4 @@ Couples Questions is a web application built with Next.js that helps couples exp
 * MongoDB
 
 ### Additional Libraries
-* Stripe for payment processing
 * Nodemailer for email services
